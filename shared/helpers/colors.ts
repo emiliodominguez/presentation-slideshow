@@ -4,6 +4,11 @@ interface RGB {
     b: number;
 }
 
+/**
+ * Converts a hex color to RGB
+ * @param hex = The hex
+ * @returns The RGB color object
+ */
 export function hexToRgb(hex: string): RGB {
     const shortHexRegExp = /^#?([a-f\d])([a-f\d])([a-f\d])$/i; // Validates a 3 digit hex
     hex = hex.replace(shortHexRegExp, (_, r, g, b) => r + r + g + g + b + b);

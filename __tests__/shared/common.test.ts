@@ -1,4 +1,4 @@
-import { isBrowser } from "@shared/helpers/common";
+import { isBrowser } from "@app/shared/helpers/common";
 
 describe("isBrowser", () => {
     let windowSpy: jest.SpyInstance<Window | undefined>;

@@ -1,4 +1,4 @@
-import { capitalize, slugify } from "@shared/helpers/strings";
+import { slugify, capitalize } from "@app/shared/helpers/strings";
 
 describe("slugify", () => {
     test("should return a slug like string", () => {

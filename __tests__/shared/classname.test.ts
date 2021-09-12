@@ -1,4 +1,4 @@
-import { className } from "@shared/helpers/classname";
+import { className } from "@app/shared/helpers/classname";
 
 test("should return a className object containing the classes string", () => {
     // Given

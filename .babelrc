@@ -6,9 +6,7 @@
             {
                 "root": ["./"],
                 "alias": {
-                    "@components": "./components",
-                    "@shared": "./shared",
-                    "@helpers": "./shared/helpers",
+                    "@app": "./",
                     "__tests__": "./__tests__"
                 }
             }

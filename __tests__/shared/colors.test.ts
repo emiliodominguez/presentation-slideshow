@@ -1,4 +1,4 @@
-import { getContrastColor, hexToRgb } from "@shared/helpers/colors";
+import { hexToRgb, getContrastColor } from "@app/shared/helpers/colors";
 
 describe("hexToRgb", () => {
     test("should return an RGB color both for 6 or 3 digit hex input", () => {
