@@ -24,6 +24,7 @@ describe("isBrowser", () => {
 
     test("should return true if window is not undefined", () => {
         // Given
+        // The window object as is
 
         // When
         const result = isBrowser();

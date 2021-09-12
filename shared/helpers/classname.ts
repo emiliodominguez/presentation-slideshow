@@ -1,3 +1,7 @@
+interface ClassName {
+    className: string;
+}
+
 /**
  * A helper function to handle classname conditions easily.
  * Recieves an object containing strings or an object with the CSS class as key
@@ -6,7 +10,7 @@
  * @param classNames - The classnames object
  * @returns The classes separated by a space
  */
-export function className(...classNames: any): { className: string } {
+export function className(...classNames: any): ClassName {
     const classes = [];
 
     for (const className of classNames) {

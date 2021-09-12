@@ -15,7 +15,7 @@ test("should return a className object containing the classes string", () => {
     const result = className(...classNames);
     const expectedResult = {
         className: "test-class-1 test-class-2 conditional-class-1"
-    } as any;
+    };
 
     // Then
     expect(result).toEqual(expectedResult);
