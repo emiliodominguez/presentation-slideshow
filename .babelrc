@@ -1,0 +1,17 @@
+{
+    "presets": ["next/babel"],
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": ["./"],
+                "alias": {
+                    "@components": "./components",
+                    "@shared": "./shared",
+                    "@helpers": "./shared/helpers",
+                    "__tests__": "./__tests__"
+                }
+            }
+        ]
+    ]
+}

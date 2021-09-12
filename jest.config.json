@@ -1,0 +1,16 @@
+{
+    "roots": ["<rootDir>"],
+    "verbose": true,
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
+    "testPathIgnorePatterns": ["<rootDir>/.next/", "<rootDir>/node_modules/"],
+    "moduleFileExtensions": ["js", "ts", "tsx", "json"],
+    "moduleNameMapper": {
+        "\\.(scss|sass|css)$": "identity-obj-proxy",
+        "^@components(.*)$": "<rootDir>/components$1",
+        "^@helpers(.*)$": "<rootDir>/helpers$1"
+    },
+    "transform": {
+        "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    }
+}
