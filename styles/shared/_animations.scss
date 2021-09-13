@@ -1,0 +1,54 @@
+// Reveal
+// -------------
+@keyframes reveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@mixin reveal($duration: 500ms, $delay: 0ms) {
+    opacity: 0;
+    animation: reveal ease forwards $duration $delay;
+}
+
+// Fade
+// -------------
+$fade-offset: 15px;
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY($fade-offset);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@mixin fade-in-up($duration: 500ms, $delay: 0ms) {
+    opacity: 0;
+    transform: translateY($fade-offset);
+    animation: fade-in-up ease-out forwards $duration $delay;
+}
+
+// Scale
+// -------------
+@keyframes scale-x {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@mixin scale-x($duration: 500ms, $delay: 0ms) {
+    animation: scale-x ease-out forwards $duration $delay;
+}
