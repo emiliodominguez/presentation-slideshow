@@ -20,9 +20,9 @@ export const locales = Object.freeze<Locale[]>([
         default: true
     },
     {
-        id: "en-uk",
+        id: "en-gb",
         alt: "English - United Kingdom",
-        text: "EN-UK"
+        text: "EN-GB"
     }
 ]);
 

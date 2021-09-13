@@ -1,0 +1,14 @@
+.textAndMemeSlide {
+    background-color: var(--slideBgColor, var(--secondary-color));
+    background-image: var(--slideBgImage);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 50px;
+    }
+}

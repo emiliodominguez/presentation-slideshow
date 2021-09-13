@@ -2,7 +2,7 @@ import React from "react";
 import { AppProps } from "next/app";
 import LocalizationContextProvider from "@app/contexts/localization";
 import useRealViewportHeight from "@app/hooks/useRealViewportHeight";
-import "../styles/main.scss";
+import "@app/styles/main.scss";
 
 /**
  * App component

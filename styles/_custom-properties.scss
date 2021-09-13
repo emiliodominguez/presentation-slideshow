@@ -3,27 +3,13 @@
     --fullVH: calc(var(--vh, 1vh) * 100);
 
     // Theme variables
-    .light-theme {
-        --primary-color: #fff;
-        --primary-color-darker: #f9f9f9;
-        --primary-color-contrast: #222;
+    --primary-color: #fff;
+    --primary-color-darker: #f9f9f9;
+    --primary-color-contrast: #222;
 
-        --secondary-color: #222;
-        --secondary-color-contrast: #fff;
+    --secondary-color: #222;
+    --secondary-color-contrast: #fff;
 
-        --accent-color: #df744a;
-        --accent-color-contrast: #fff;
-    }
-
-    .dark-theme {
-        --primary-color: #222;
-        --primary-color-darker: #000;
-        --primary-color-contrast: #fff;
-
-        --secondary-color: #fff;
-        --secondary-color-contrast: #222;
-
-        --accent-color: #df744a;
-        --accent-color-contrast: #fff;
-    }
+    --accent-color: #df744a;
+    --accent-color-contrast: #fff;
 }

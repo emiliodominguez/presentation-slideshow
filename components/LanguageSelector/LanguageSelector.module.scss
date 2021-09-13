@@ -1,0 +1,35 @@
+@import "@app/styles/variables/z-index";
+@import "@app/styles/variables/font-weights";
+
+.languageSelector {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    background-color: var(--primary-color-darker);
+    border-radius: 10px;
+    transform: translateX(-50%);
+    z-index: z-index(language-selector);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        background-color: transparent;
+        border: none;
+        padding: 15px;
+        font-weight: font-weight(bold);
+        text-transform: uppercase;
+        transition: color ease 250ms;
+        cursor: pointer;
+
+        &.current,
+        &:hover {
+            color: var(--accent-color);
+        }
+
+        + button {
+            margin-left: 25px;
+        }
+    }
+}

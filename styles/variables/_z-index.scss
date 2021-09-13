@@ -1,3 +1,13 @@
-$zIndexes: (
-    "important": 100
+$z-index: (
+    navigation: 50,
+    language-selector: 50,
+    important: 100
 );
+
+@function z-index($key) {
+    @if (map-has-key($z-index, $key)) {
+        @return map-get($z-index, $key);
+    } @else {
+        @error "Key #{$key} doesn't exist";
+    }
+}

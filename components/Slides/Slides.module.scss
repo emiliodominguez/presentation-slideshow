@@ -1,0 +1,35 @@
+.slide {
+    height: var(--fullVH);
+    padding: 50px;
+
+    h2,
+    a {
+        color: var(--accent-color);
+    }
+
+    ol,
+    ul,
+    p {
+        font-size: 18px;
+        color: var(--slideBgContrastColor, var(--secondary-color-contrast));
+        line-height: 1.75;
+    }
+
+    ol,
+    ul {
+        padding-left: 25px;
+    }
+
+    h2 {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
