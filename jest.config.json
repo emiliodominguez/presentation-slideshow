@@ -2,9 +2,11 @@
     "roots": ["<rootDir>"],
     "verbose": true,
     "testEnvironment": "jsdom",
+    "setupFiles": ["<rootDir>/__tests__/jestSetup.ts"],
     "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
     "testPathIgnorePatterns": ["<rootDir>/.next/", "<rootDir>/node_modules/"],
     "moduleFileExtensions": ["js", "ts", "tsx", "json"],
+    "testRegex": "__tests__/.+\\.(test|spec)\\.(ts|tsx|js)$",
     "moduleNameMapper": {
         "\\.(scss|sass|css)$": "identity-obj-proxy",
         "^@components(.*)$": "<rootDir>/components$1",
