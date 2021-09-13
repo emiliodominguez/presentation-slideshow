@@ -18,7 +18,8 @@ export default function LanguageSelector(): JSX.Element {
                     onClick={() => setLocale(x.id)}
                     {...className({
                         [styles.current]: locale === x.id
-                    })}>
+                    })}
+                >
                     <span>{x.text}</span>
                 </button>
             ))}

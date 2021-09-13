@@ -1,2 +1,2 @@
 // Shared icons
-export { }
+export {};

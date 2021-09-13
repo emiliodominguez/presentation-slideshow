@@ -19,7 +19,8 @@ export default function Navigation(props: NavigationProps): JSX.Element {
                     onClick={() => props.setCurrentSlide(i)}
                     {...className({
                         [styles.current]: props.currentSlide === i
-                    })}>
+                    })}
+                >
                     {x}
                 </button>
             ))}

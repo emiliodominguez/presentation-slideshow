@@ -38,7 +38,9 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             case "text_slide":
                 return <Slides.TextSlide content={slide.primary as any} />;
             case "text_and_meme_slide":
-                return <Slides.TextAndMemeSlide content={slide.primary as any} />;
+                return (
+                    <Slides.TextAndMemeSlide content={slide.primary as any} />
+                );
             default:
                 return <Slides.ErrorSlide />;
         }

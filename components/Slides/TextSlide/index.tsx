@@ -35,7 +35,8 @@ export default function TextSlide(props: TextSlideProps): JSX.Element {
                 ["--slideBgImage" as string]:
                     !!props.content.text_slide_bg_image.length &&
                     `url(${props.content.text_slide_bg_image[0].url})`
-            }}>
+            }}
+        >
             <div className={styles.content}>
                 <h2>{props.content.text_slide_title[0].text}</h2>
                 <div dangerouslySetInnerHTML={{ __html: richTextContent }} />

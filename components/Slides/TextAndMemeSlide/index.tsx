@@ -45,7 +45,8 @@ export default function TextAndMemeSlide(
                 ["--slideBgImage" as string]:
                     !!props.content.meme_slide_bg_image.length &&
                     `url(${props.content.meme_slide_bg_image[0].url})`
-            }}>
+            }}
+        >
             <div className={styles.content}>
                 <section className={styles.leftSide}>
                     <h2>{props.content.meme_slide_title[0].text}</h2>
