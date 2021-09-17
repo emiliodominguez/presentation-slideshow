@@ -1,6 +1,7 @@
 import React from "react";
 import { AppProps } from "next/app";
 import LocalizationContextProvider from "@app/contexts/localization";
+import NavigationContextProvider from "@app/contexts/navigation";
 import useRealViewportHeight from "@app/hooks/useRealViewportHeight";
 import "@app/styles/main.scss";
 
@@ -12,7 +13,9 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
     return (
         <LocalizationContextProvider>
-            <Component {...pageProps} />
+            <NavigationContextProvider>
+                <Component {...pageProps} />
+            </NavigationContextProvider>
         </LocalizationContextProvider>
     );
 }

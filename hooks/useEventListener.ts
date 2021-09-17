@@ -11,11 +11,11 @@ import { isBrowser } from "@app/shared/helpers/common";
  */
 export default function useEventListener(
     event: string,
-    callback: EventListenerOrEventListenerObject,
+    callback: (e: any) => void,
     target?: HTMLElement,
     options?: boolean | AddEventListenerOptions
 ): void {
-    const savedCallback = useRef<EventListenerOrEventListenerObject>(callback);
+    const savedCallback = useRef<(e: Event) => void>(callback);
     const savedTarget = useRef<HTMLElement | Window>(
         target ?? ((isBrowser() && window) as Window)
     );

@@ -6,23 +6,21 @@ import {
     ColorField
 } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
-import { className } from "@app/shared/helpers/classname";
-import { getContrastColor } from "@app/shared/helpers/colors";
-import { BaseSlide } from "..";
-import sharedStyles from "../Slides.module.scss";
+import Image from "next/image";
+import BaseSlide, { IBaseSlide } from "..";
 import styles from "./TextAndMemeSlide.module.scss";
 
-interface TextAndMemeSlide extends BaseSlide {
-    meme_slide_title: TitleField;
-    meme_slide_content: RTNode;
-    meme_slide_meme: ImageField;
-    meme_slide_left_aligned: BooleanField;
-    meme_slide_bg_color: ColorField;
-    meme_slide_bg_image: ImageField;
+export interface ITextAndMemeSlide extends IBaseSlide {
+    slide_title: TitleField;
+    slide_content: RTNode;
+    slide_meme: ImageField;
+    slide_left_aligned: BooleanField;
+    slide_bg_color: ColorField;
+    slide_bg_image: ImageField;
 }
 
 interface TextAndMemeSlideProps {
-    content: TextAndMemeSlide;
+    content: ITextAndMemeSlide;
 }
 
 /**
@@ -31,25 +29,15 @@ interface TextAndMemeSlideProps {
 export default function TextAndMemeSlide(
     props: TextAndMemeSlideProps
 ): JSX.Element {
-    const content = props.content.meme_slide_content;
-    const richTextContent = PrismicDOM.RichText.asHtml(content);
+    const richTextContent = PrismicDOM.RichText.asHtml(
+        props.content.slide_content
+    );
 
     return (
-        <div
-            {...className(sharedStyles.slide, styles.textAndMemeSlide)}
-            style={{
-                ["--slideBgColor" as string]: props.content.meme_slide_bg_color,
-                ["--slideBgContrastColor" as string]:
-                    props.content.meme_slide_bg_color &&
-                    getContrastColor(props.content.meme_slide_bg_color),
-                ["--slideBgImage" as string]:
-                    !!props.content.meme_slide_bg_image.length &&
-                    `url(${props.content.meme_slide_bg_image[0].url})`
-            }}
-        >
+        <BaseSlide content={props.content} className={styles.textAndMemeSlide}>
             <div className={styles.content}>
                 <section className={styles.leftSide}>
-                    <h2>{props.content.meme_slide_title[0].text}</h2>
+                    <h2>{props.content.slide_title[0].text}</h2>
 
                     <div
                         dangerouslySetInnerHTML={{ __html: richTextContent }}
@@ -57,12 +45,16 @@ export default function TextAndMemeSlide(
                 </section>
 
                 <section className={styles.rightSide}>
-                    <img
-                        src={props.content.meme_slide_meme.url as string}
-                        alt={props.content.meme_slide_meme.alt as string}
-                    />
+                    {props.content.slide_meme && (
+                        <Image
+                            width={640}
+                            height={480}
+                            src={props.content.slide_meme.url!}
+                            alt={props.content.slide_meme.alt!}
+                        />
+                    )}
                 </section>
             </div>
-        </div>
+        </BaseSlide>
     );
 }

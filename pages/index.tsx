@@ -1,13 +1,17 @@
-import { useContext, useState } from "react";
-import Prismic from "@prismicio/client";
+import React, { useContext, useRef, useEffect } from "react";
+import Head from "next/head";
 import { TitleField, RTNode, SliceZone } from "@prismicio/types";
-import { Document } from "@prismicio/client/types/documents";
+import Prismic from "@prismicio/client";
 import { client } from "@app/config/prismic";
+import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";
+import { NavigationContext } from "@app/contexts/navigation";
 import Layout from "@app/components/Layout";
 import LanguageSelector from "@app/components/LanguageSelector";
 import Navigation from "@app/components/Navigation";
-import * as Slides from "@app/components/Slides/";
+import TextSlide from "@app/components/Slides/TextSlide";
+import TextAndMemeSlide from "@app/components/Slides/TextAndMemeSlide";
+import ErrorSlide from "@app/components/Slides/ErrorSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -24,7 +28,8 @@ interface PresentationContent {
  */
 export default function IndexPage(props: IndexPageProps): JSX.Element {
     const { locale } = useContext(LocalizationContext);
-    const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const { currentIndex, setCount } = useContext(NavigationContext);
+    const setCountRef = useRef<(x: number) => void>(setCount);
     const localeContent = props.content.find(x => x.lang === locale);
     const content = localeContent!.data as PresentationContent;
 
@@ -32,17 +37,17 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
      * Gets the current slide by it's type
      */
     function getCurrentSlide(): JSX.Element {
-        const slide = content.body[currentSlide];
+        const slide = content.body[currentIndex];
+
+        if (!slide) return <ErrorSlide />;
 
         switch (slide.slice_type) {
             case "text_slide":
-                return <Slides.TextSlide content={slide.primary as any} />;
+                return <TextSlide content={slide.primary as any} />;
             case "text_and_meme_slide":
-                return (
-                    <Slides.TextAndMemeSlide content={slide.primary as any} />
-                );
+                return <TextAndMemeSlide content={slide.primary as any} />;
             default:
-                return <Slides.ErrorSlide />;
+                return <ErrorSlide />;
         }
     }
 
@@ -55,21 +60,30 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
         );
     }
 
+    useEffect(() => {
+        if (content.body.length > 0) setCountRef.current(content.body.length);
+    }, [content.body.length]);
+
     return (
         <Layout>
+            <Head>
+                <title>{content.project_title[0].text}</title>
+                <meta
+                    name="description"
+                    content={(content.project_description as any)[0].text}
+                />
+            </Head>
+
             {getCurrentSlide()}
-
             <LanguageSelector />
-
-            <Navigation
-                items={getNavigationItems()}
-                currentSlide={currentSlide}
-                setCurrentSlide={setCurrentSlide}
-            />
+            <Navigation items={getNavigationItems()} />
         </Layout>
     );
 }
 
+/**
+ * Get static props function
+ */
 export async function getStaticProps() {
     const { results: content } = await client.query(
         Prismic.Predicates.at("document.type", "presentation"),

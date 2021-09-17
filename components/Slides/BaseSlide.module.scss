@@ -1,6 +1,11 @@
 .slide {
     height: var(--fullVH);
-    padding: 50px;
+    padding: 5%;
+    background-color: var(--slideBgColor, var(--secondary-color));
+    background-image: var(--slideBgImage);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     h2,
     a {
@@ -21,8 +26,12 @@
     }
 
     h2 {
-        font-size: 50px;
+        font-size: clamp(32px, 5vw, 45px);
         margin-bottom: 15px;
+    }
+
+    p {
+        font-size: clamp(16px, 5vw, 18px);
     }
 
     a {

@@ -1,14 +1,27 @@
-.textAndMemeSlide {
-    background-color: var(--slideBgColor, var(--secondary-color));
-    background-image: var(--slideBgImage);
+@import "../../../styles/variables/media-queries";
 
+.textAndMemeSlide {
     display: flex;
     justify-content: center;
     align-items: center;
 
     .content {
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         grid-gap: 50px;
+
+        @media #{$max-width-md} {
+            grid-template-columns: 1fr;
+            grid-gap: 25px;
+        }
+
+        img {
+            object-fit: contain;
+
+            @media #{$max-width-sm} {
+                max-width: 300px !important;
+            }
+        }
     }
 }

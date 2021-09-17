@@ -1,5 +1,4 @@
-import { className } from "@app/shared/helpers/classname";
-import sharedStyles from "../Slides.module.scss";
+import BaseSlide from "..";
 import styles from "./ErrorSlide.module.scss";
 
 interface ErrorSlideProps {
@@ -11,8 +10,8 @@ interface ErrorSlideProps {
  */
 export default function ErrorSlide(props: ErrorSlideProps): JSX.Element {
     return (
-        <div {...className(sharedStyles.slide, styles.errorSlide)}>
+        <BaseSlide content={{} as any} className={styles.errorSlide}>
             <h3>{props.message ?? "There was an error setting the slide"}</h3>
-        </div>
+        </BaseSlide>
     );
 }

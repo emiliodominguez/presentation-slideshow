@@ -1,2 +1,13 @@
+@import "../../../styles/variables/font-weights";
+
 .errorSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        color: var(--medium-gray);
+        font-weight: font-weight(thin);
+        font-size: 28px;
+    }
 }
