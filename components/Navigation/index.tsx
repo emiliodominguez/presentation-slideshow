@@ -34,14 +34,14 @@ export default function Navigation(props: NavigationProps): JSX.Element {
      * @param e - The keyboard event
      */
     function navigate(e: KeyboardEvent): void {
-        // const rightKey = e.key === "ArrowRight";
-        // const leftKey = e.key === "ArrowLeft";
+        const rightKey = e.key === "ArrowRight";
+        const leftKey = e.key === "ArrowLeft";
 
-        // if (leftKey || rightKey) {
-        //     e.preventDefault();
-        //     if (rightKey) goToNext();
-        //     if (leftKey) goToPrevious();
-        // }
+        if (leftKey || rightKey) {
+            e.preventDefault();
+            if (rightKey) goToNext();
+            if (leftKey) goToPrevious();
+        }
     }
 
     /**
@@ -50,7 +50,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
      */
     function handleKeyDown(e: KeyboardEvent): void {
         toggleVisibility(e);
-        navigate(e);
+        // navigate(e);
     }
 
     useEventListener("keydown", handleKeyDown);

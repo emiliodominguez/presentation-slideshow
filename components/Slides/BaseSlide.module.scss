@@ -15,7 +15,7 @@
     ol,
     ul,
     p {
-        font-size: 18px;
+        font-size: clamp(16px, 5vw, 18px);
         color: var(--slideBgContrastColor, var(--secondary-color-contrast));
         line-height: 1.75;
     }
@@ -28,10 +28,6 @@
     h2 {
         font-size: clamp(32px, 5vw, 45px);
         margin-bottom: 15px;
-    }
-
-    p {
-        font-size: clamp(16px, 5vw, 18px);
     }
 
     a {

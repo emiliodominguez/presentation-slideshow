@@ -28,7 +28,9 @@ export default function LanguageSelector(): JSX.Element {
 
     return (
         <div
-            {...className(styles.languageSelector, { [styles.hidden]: hidden })}
+            {...className(styles.languageSelector, {
+                [styles.hidden]: hidden
+            })}
         >
             {locales.map(x => (
                 <button
