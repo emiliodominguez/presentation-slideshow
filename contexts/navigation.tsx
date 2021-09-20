@@ -1,8 +1,8 @@
-import { createContext, PropsWithChildren, useState } from "react";
+import { createContext, PropsWithChildren, useRef, useState } from "react";
 
 interface DisabledNavigation {
-    next: boolean;
     previous: boolean;
+    next: boolean;
 }
 
 interface INavigationContext {
@@ -24,9 +24,17 @@ export const NavigationContext = createContext<INavigationContext>({} as any);
 export default function NavigationContextProvider(
     props: PropsWithChildren<{}>
 ): JSX.Element {
+    const countRef = useRef<number>(0);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [count, setCount] = useState<number>(0);
     const [infinite, setInfinite] = useState<boolean>(false);
+
+    /**
+     * Sets the slides count
+     * @param count - The slides amount
+     */
+    function setCount(count: number): void {
+        countRef.current = count;
+    }
 
     /**
      * Goes to an specific index
@@ -40,33 +48,36 @@ export default function NavigationContextProvider(
      * Goes to next index
      */
     function goToNext(): void {
-        const infiniteNext = (currentIndex + 1) % count;
-        const regularNext =
-            currentIndex < count - 1 ? currentIndex + 1 : currentIndex;
-        const index = infinite ? infiniteNext : regularNext;
-        setCurrentIndex(index);
+        setCurrentIndex((current: number) => {
+            const infiniteNext = (current + 1) % countRef.current;
+            const regularNext =
+                current < countRef.current - 1 ? current + 1 : current;
+            return infinite ? infiniteNext : regularNext;
+        });
     }
 
     /**
      * Goes to previous index
      */
     function goToPrevious(): void {
-        const infinitePrevious =
-            currentIndex === 0 ? count - 1 : currentIndex - 1;
-        const regularPrevious =
-            currentIndex > 0 ? currentIndex - 1 : currentIndex;
-        const index = infinite ? infinitePrevious : regularPrevious;
-        setCurrentIndex(index);
+        setCurrentIndex((current: number) => {
+            const infinitePrevious =
+                current === 0 ? countRef.current - 1 : current - 1;
+            const regularPrevious = current > 0 ? current - 1 : current;
+            return infinite ? infinitePrevious : regularPrevious;
+        });
     }
 
     return (
         <NavigationContext.Provider
             value={{
                 currentIndex,
-                count,
+                count: countRef.current,
                 disabledNav: {
-                    next: infinite ? false : count - 1 === currentIndex,
-                    previous: infinite ? false : currentIndex === 0
+                    previous: infinite ? false : currentIndex === 0,
+                    next: infinite
+                        ? false
+                        : countRef.current - 1 === currentIndex
                 },
                 goTo,
                 goToNext,

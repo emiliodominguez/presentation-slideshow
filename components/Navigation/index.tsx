@@ -26,11 +26,11 @@ export default function Navigation(props: NavigationProps): JSX.Element {
         const rightKey = e.key === "ArrowRight";
         const leftKey = e.key === "ArrowLeft";
 
-        // if (leftKey || rightKey) {
-        //     e.preventDefault();
-        //     if (rightKey) goToNext();
-        //     if (leftKey) goToPrevious();
-        // }
+        if (leftKey || rightKey) {
+            e.preventDefault();
+            if (rightKey) goToNext();
+            if (leftKey) goToPrevious();
+        }
     }
 
     useEventListener("keydown", navigate);
