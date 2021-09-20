@@ -1,40 +1,17 @@
+:global(.dark-theme) {
+    .slide {
+        background-color: rgb(var(--primary-black));
+    }
+}
+
 .slide {
+    width: 100%;
     height: var(--fullVH);
     padding: 5%;
-    background-color: var(--slideBgColor, var(--secondary-color));
-    background-image: var(--slideBgImage);
+    background-image: var(--slide-bg-pattern);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    h2,
-    a {
-        color: var(--accent-color);
-    }
-
-    ol,
-    ul,
-    p {
-        font-size: clamp(16px, 5vw, 18px);
-        color: var(--slideBgContrastColor, var(--secondary-color-contrast));
-        line-height: 1.75;
-    }
-
-    ol,
-    ul {
-        padding-left: 25px;
-    }
-
-    h2 {
-        font-size: clamp(32px, 5vw, 45px);
-        margin-bottom: 15px;
-    }
-
-    a {
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+    overflow-y: auto;
+    overflow-x: hidden;
 }

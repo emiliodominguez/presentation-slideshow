@@ -1,19 +1,16 @@
-import { PropsWithChildren } from "react";
-import { TitleField } from "@prismicio/types";
+import { PropsWithChildren, useRef, useEffect } from "react";
 import { className } from "@app/shared/helpers/classname";
-import { getContrastColor } from "@app/shared/helpers/colors";
-import { ITextSlde } from "./TextSlide";
-import { ITextAndMemeSlide } from "./TextAndMemeSlide";
+import { IIntroductionSlide } from "./IntroductionSlide";
+import { IAgendaSlide } from "./AgendaSlide";
+import { ITextSlide } from "./TextSlide";
 import styles from "./BaseSlide.module.scss";
 
-export interface IBaseSlide {
-    slide_navigation_id: TitleField;
-}
-
 interface BaseSlideProps {
-    content: ITextSlde | ITextAndMemeSlide;
+    content: IIntroductionSlide | IAgendaSlide | ITextSlide;
     className?: string;
 }
+
+type CustomPropertiesSetup = { [key: string]: string };
 
 /**
  * Base slide container
@@ -21,18 +18,33 @@ interface BaseSlideProps {
 export default function BaseSlide(
     props: PropsWithChildren<BaseSlideProps>
 ): JSX.Element {
+    const slideRef = useRef<HTMLDivElement | null>(null);
+
+    /**
+     * Sets the custom properties values if there's any
+     * @returns The custom properties setup
+     */
+    function setCustomProperties(): CustomPropertiesSetup {
+        return {
+            ["--slide-bg-pattern"]: props.content.slide_bg_pattern?.url
+                ? `url(${props.content.slide_bg_pattern.url})`
+                : ""
+        };
+    }
+
+    useEffect(() => {
+        if (!!props.content.dark_theme_enabled) {
+            document.body.classList.add("dark-theme");
+        } else {
+            document.body.classList.remove("dark-theme");
+        }
+    }, [props.content]);
+
     return (
         <div
+            ref={slideRef}
+            style={setCustomProperties()}
             {...className(styles.slide, props.className)}
-            style={{
-                ["--slideBgColor" as string]: props.content.slide_bg_color,
-                ["--slideBgContrastColor" as string]:
-                    props.content.slide_bg_color &&
-                    getContrastColor(props.content.slide_bg_color ?? ""),
-                ["--slideBgImage" as string]:
-                    props.content.slide_bg_image?.url &&
-                    `url(${props.content.slide_bg_image.url})`
-            }}
         >
             {props.children}
         </div>

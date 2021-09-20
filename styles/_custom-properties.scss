@@ -2,20 +2,31 @@
     // Common
     --fullVH: calc(var(--vh, 1vh) * 100);
 
-    // Theme variables
-    --primary-color: #fff;
-    --primary-color-darker: #f9f9f9;
-    --primary-color-contrast: #222;
+    // Fonts
+    --primary-font: Arial, Helvetica, sans-serif;
 
-    --secondary-color: #222;
-    --secondary-color-contrast: #fff;
+    // Theme primary colors
+    --primary-orange: 222, 65, 27; // #DE411B
+    --primary-dark-gray: 72, 84, 91; // #48545B
+    --primary-black: 0, 0, 0; // #000000
+    --primary-white: 255, 255, 255; // #FFFFFF
 
-    --accent-color: #df744a;
-    --accent-color-contrast: #fff;
+    // Theme secondary colors
+    --secondary-dark-gray: 35, 50, 55; // #233237
+    --secondary-medium-gray: 155 180 190; // #9BB4BE
+    --secondary-light-gray: 240, 243, 243; // #F0F3F3
 
-    --danger-color: #ff0000;
+    --secondary-dark-blue: 40, 80, 120; // #285078
+    --secondary-medium-blue: 55, 155, 215; // #379BD7
+    --secondary-light-blue: 10, 195, 230; // #0AC3E6
 
-    --light-gray: #c9c9c9;
-    --medium-gray: #999;
-    --dark-gray: #444;
+    --secondary-dark-red: 105, 5, 5; // #690505
+    --secondary-medium-red: 195, 25, 0; // #C31900
+    --secondary-light-red: 235, 105, 97; // #EC6861
+
+    // Theme tertiary colors
+    --tertiary-green: 140, 181, 90; // #8CB55A
+    --tertiary-purple: 114, 82, 108; // #72526C
+    --tertiary-blue: 88, 141, 138; // #588D8A
+    --tertiary-red: 132, 77, 69; // #844D45
 }

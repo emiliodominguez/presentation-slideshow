@@ -1,35 +1,15 @@
-@import "@app/styles/variables/z-index";
 @import "@app/styles/variables/font-weights";
 
 .languageSelector {
-    $bottom-offset: 25px;
-
-    position: fixed;
-    top: $bottom-offset;
-    left: 50%;
-    background-color: var(--primary-color-darker);
-    border-radius: 10px;
-    transform: translateX(-50%);
-    transition: transform ease 500ms;
-    z-index: z-index(language-selector);
-
     display: flex;
     justify-content: center;
     align-items: center;
 
-    &.hidden {
-        transform: translate(-50%, calc(-100% - #{$bottom-offset}));
-
-        .toggler {
-            transform: translateX(-50%) rotateX(180deg);
-        }
-    }
-
     button {
-        background-color: transparent;
         border: none;
         padding: 15px;
         font-weight: font-weight(bold);
+        background-color: transparent;
         text-transform: uppercase;
         transition: color ease 250ms;
         cursor: pointer;
@@ -40,25 +20,7 @@
 
         &.current,
         &:hover {
-            color: var(--accent-color);
-        }
-
-        &.toggler {
-            position: absolute;
-            top: calc(100%);
-            left: 50%;
-            margin: 0;
-            transform: translateX(-50%);
-            transition: transform ease 500ms;
-
-            svg {
-                height: 15px;
-                opacity: 0.75;
-
-                path {
-                    fill: var(--accent-color);
-                }
-            }
+            color: rgb(var(--primary-orange));
         }
     }
 }

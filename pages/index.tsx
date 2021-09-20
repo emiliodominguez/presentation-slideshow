@@ -10,8 +10,9 @@ import Layout from "@app/components/Layout";
 import LanguageSelector from "@app/components/LanguageSelector";
 import Navigation from "@app/components/Navigation";
 import TextSlide from "@app/components/Slides/TextSlide";
-import TextAndMemeSlide from "@app/components/Slides/TextAndMemeSlide";
 import ErrorSlide from "@app/components/Slides/ErrorSlide";
+import IntroductionSlide from "@app/components/Slides/IntroductionSlide";
+import AgendaSlide from "@app/components/Slides/AgendaSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -42,10 +43,12 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
         if (!slide) return <ErrorSlide />;
 
         switch (slide.slice_type) {
+            case "introduction_slide":
+                return <IntroductionSlide content={slide.primary as any} />;
+            case "agenda_slide":
+                return <AgendaSlide content={slide.primary as any} />;
             case "text_slide":
                 return <TextSlide content={slide.primary as any} />;
-            case "text_and_meme_slide":
-                return <TextAndMemeSlide content={slide.primary as any} />;
             default:
                 return <ErrorSlide />;
         }

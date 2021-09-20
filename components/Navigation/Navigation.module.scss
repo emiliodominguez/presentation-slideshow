@@ -1,33 +1,20 @@
-@import "@app/styles/variables/z-index";
-@import "@app/styles/variables/font-weights";
+@import "../../styles/variables/font-weights";
+@import "../../styles/shared/mixins";
 
 .navigation {
-    $bottom-offset: 25px;
-
-    position: fixed;
-    bottom: $bottom-offset;
-    left: 50%;
-    background-color: var(--primary-color-darker);
-    border-radius: 10px;
-    transform: translateX(-50%);
-    transition: transform ease 500ms;
-    z-index: z-index(navigation);
-
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    &.hidden {
-        transform: translate(-50%, calc(100% - #{$bottom-offset} * -1));
-
-        .toggler {
-            transform: translateX(-50%) rotateX(180deg);
-        }
-    }
+    max-width: 90vw;
+    overflow-x: auto;
+    @include custom-scrollbar(
+        rgb(var(--primary-black)),
+        rgb(var(--primary-orange))
+    );
 
     button {
         background-color: transparent;
         border: none;
+        white-space: nowrap;
         padding: 15px;
         font-weight: font-weight(bold);
         transition: color ease 250ms;
@@ -42,10 +29,10 @@
 
             &.current,
             &:hover {
-                color: var(--accent-color);
+                color: rgb(var(--primary-orange));
 
                 svg path {
-                    fill: var(--accent-color);
+                    fill: rgb(var(--primary-orange));
                 }
             }
         }
@@ -54,25 +41,7 @@
             cursor: default;
 
             svg path {
-                fill: var(--light-gray);
-            }
-        }
-
-        &.toggler {
-            position: absolute;
-            bottom: calc(100%);
-            left: 50%;
-            margin: 0;
-            transform: translateX(-50%);
-            transition: transform ease 500ms;
-
-            svg {
-                height: 15px;
-                opacity: 0.75;
-
-                path {
-                    fill: var(--accent-color);
-                }
+                fill: rgb(var(--secondary-light-gray));
             }
         }
 

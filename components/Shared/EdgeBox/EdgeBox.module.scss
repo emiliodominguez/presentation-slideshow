@@ -1,0 +1,119 @@
+@import "../../../styles/variables/z-index";
+
+.edgeBox {
+    $offset: 15px;
+
+    position: fixed;
+    border-radius: 15px;
+    background-color: rgb(var(--secondary-light-gray));
+    transition: transform ease 500ms;
+    z-index: z-index(hideable-box);
+
+    // Shared styles top and bottom
+    &.toTop,
+    &.toBottom {
+        left: 50%;
+        transform: translateX(-50%);
+
+        &.hidden {
+            .toggler {
+                transform: translateX(-50%) rotateX(180deg);
+            }
+        }
+
+        .toggler {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    // To top
+    &.toTop {
+        top: $offset;
+
+        &.hidden {
+            transform: translate(-50%, calc(-100% - #{$offset}));
+        }
+
+        .toggler {
+            top: calc(100%);
+        }
+    }
+
+    // To bottom
+    &.toBottom {
+        bottom: $offset;
+
+        &.hidden {
+            transform: translate(-50%, calc(100% + #{$offset}));
+        }
+
+        .toggler {
+            bottom: calc(100%);
+        }
+    }
+
+    // Shared styles left and right
+    &.toLeft,
+    &.toRight {
+        top: 50%;
+        transform: translateY(-50%);
+
+        &.hidden {
+            .toggler {
+                transform: translateY(-50%) rotateY(180deg);
+            }
+        }
+
+        .toggler {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    // To left
+    &.toLeft {
+        left: $offset;
+
+        &.hidden {
+            transform: translate(calc(-100% - #{$offset}), -50%);
+        }
+
+        .toggler {
+            left: calc(100%);
+        }
+    }
+
+    // To right
+    &.toRight {
+        right: $offset;
+
+        &.hidden {
+            transform: translate(calc(100% + #{$offset}), -50%);
+        }
+
+        .toggler {
+            right: calc(100%);
+        }
+    }
+
+    .toggler {
+        position: absolute;
+        margin: 0;
+        padding: 10px;
+        transition: transform ease 500ms;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            display: block;
+            height: 13px;
+            opacity: 0.75;
+
+            path {
+                fill: rgb(var(--primary-orange));
+            }
+        }
+    }
+}

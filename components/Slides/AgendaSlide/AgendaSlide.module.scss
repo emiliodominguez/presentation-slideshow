@@ -1,0 +1,63 @@
+@import "../../../styles/variables/media-queries";
+@import "../../../styles/variables/font-weights";
+
+.agendaSlide {
+    display: flex;
+    align-items: center;
+
+    :global(.title-medium) {
+        margin-top: 15px;
+    }
+
+    :global(.body-text-small) {
+        margin-top: 200px;
+
+        @media #{$max-width-md} {
+            margin-top: 100px;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+            text-transform: uppercase;
+            font-weight: font-weight(semi-bold);
+
+            li {
+                $counter-size: 18px;
+
+                &::before {
+                    display: inline-block;
+                    color: rgb(var(--primary-orange));
+                    width: $counter-size;
+                    margin-left: -$counter-size;
+                    margin-right: 20px;
+
+                    @media #{$max-width-md} {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+
+        ul {
+            li {
+                &::before {
+                    content: "•";
+                    color: rgb(var(--primary-orange));
+                }
+            }
+        }
+
+        ol {
+            counter-reset: li;
+
+            li {
+                counter-increment: li;
+
+                &::before {
+                    content: counter(li);
+                }
+            }
+        }
+    }
+}

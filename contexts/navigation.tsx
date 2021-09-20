@@ -26,7 +26,7 @@ export default function NavigationContextProvider(
 ): JSX.Element {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [count, setCount] = useState<number>(0);
-    const [infinite, setInfinite] = useState<boolean>(true);
+    const [infinite, setInfinite] = useState<boolean>(false);
 
     /**
      * Goes to an specific index
