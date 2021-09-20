@@ -2,11 +2,16 @@ import { PropsWithChildren, useRef, useEffect } from "react";
 import { className } from "@app/shared/helpers/classname";
 import { IIntroductionSlide } from "./IntroductionSlide";
 import { IAgendaSlide } from "./AgendaSlide";
+import { IChapterIntroSlide } from "./ChapterIntroSlide";
 import { ITextSlide } from "./TextSlide";
 import styles from "./BaseSlide.module.scss";
 
 interface BaseSlideProps {
-    content: IIntroductionSlide | IAgendaSlide | ITextSlide;
+    content:
+        | IIntroductionSlide
+        | IAgendaSlide
+        | IChapterIntroSlide
+        | ITextSlide;
     className?: string;
 }
 

@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect } from "react";
 import Head from "next/head";
-import { TitleField, RTNode, SliceZone } from "@prismicio/types";
 import Prismic from "@prismicio/client";
+import { TitleField, RTNode, SliceZone } from "@prismicio/types";
 import { client } from "@app/config/prismic";
 import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";
@@ -9,10 +9,11 @@ import { NavigationContext } from "@app/contexts/navigation";
 import Layout from "@app/components/Layout";
 import LanguageSelector from "@app/components/LanguageSelector";
 import Navigation from "@app/components/Navigation";
-import TextSlide from "@app/components/Slides/TextSlide";
 import ErrorSlide from "@app/components/Slides/ErrorSlide";
 import IntroductionSlide from "@app/components/Slides/IntroductionSlide";
 import AgendaSlide from "@app/components/Slides/AgendaSlide";
+import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
+import TextSlide from "@app/components/Slides/TextSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -43,10 +44,12 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
         if (!slide) return <ErrorSlide />;
 
         switch (slide.slice_type) {
-            case "introduction_slide":
+            case "title_slide":
                 return <IntroductionSlide content={slide.primary as any} />;
             case "agenda_slide":
                 return <AgendaSlide content={slide.primary as any} />;
+            case "chapter_intro_slide":
+                return <ChapterIntroSlide content={slide.primary as any} />;
             case "text_slide":
                 return <TextSlide content={slide.primary as any} />;
             default:

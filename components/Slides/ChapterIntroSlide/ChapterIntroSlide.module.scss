@@ -1,0 +1,51 @@
+@import "../../../styles/variables/media-queries";
+@import "../../../styles/variables/font-weights";
+
+:global(.dark-theme) {
+    .content {
+        .chapterNumber {
+            border-color: rgb(var(--primary-white));
+        }
+
+        :global(.subtitle-small) {
+            color: rgb(var(--primary-white));
+        }
+    }
+}
+
+.chapterIntroSlide {
+    display: flex;
+    align-items: center;
+
+    .content {
+        @media #{$min-width-lg} {
+            max-width: 50vw;
+        }
+    }
+
+    .chapterNumber {
+        $box-size: 90px;
+        $box-size-mobile: 75px;
+
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: $box-size;
+        height: $box-size;
+        border: 4px solid rgb(var(--primary-black));
+        color: rgb(var(--primary-orange));
+        font-weight: font-weight(bold);
+        font-size: 25px;
+        margin: 75px 0 40px;
+
+        @media #{$max-width-md} {
+            width: $box-size-mobile;
+            height: $box-size-mobile;
+        }
+    }
+
+    :global(.subtitle-small) {
+        color: rgb(var(--primary-black));
+        margin-bottom: 15px;
+    }
+}
