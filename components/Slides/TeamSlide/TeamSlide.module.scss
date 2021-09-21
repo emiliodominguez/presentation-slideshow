@@ -15,6 +15,10 @@
     display: flex;
     align-items: center;
 
+    @media #{$max-width-lg} {
+        align-items: flex-start;
+    }
+
     .content {
         width: 100%;
     }
@@ -32,6 +36,7 @@
 
         @media #{$max-width-md} {
             grid-template-columns: 1fr;
+            margin-top: 50px;
         }
     }
 
