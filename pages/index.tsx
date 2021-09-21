@@ -1,7 +1,8 @@
 import React, { useContext, useRef, useEffect } from "react";
 import Head from "next/head";
 import Prismic from "@prismicio/client";
-import { TitleField, RTNode, SliceZone } from "@prismicio/types";
+import { TitleField, RichTextField, SliceZone } from "@prismicio/types";
+import PrismicDOM from "prismic-dom";
 import { client } from "@app/config/prismic";
 import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";
@@ -21,7 +22,7 @@ interface IndexPageProps {
 
 interface PresentationContent {
     project_title: TitleField;
-    project_description: RTNode;
+    project_description: RichTextField;
     body: SliceZone;
 }
 
@@ -32,8 +33,10 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     const { locale } = useContext(LocalizationContext);
     const { currentIndex, setCount } = useContext(NavigationContext);
     const setCountRef = useRef<(x: number) => void>(setCount);
-    const localeContent = props.content.find(x => x.lang === locale);
-    const content = localeContent!.data as PresentationContent;
+    const localeContent = props.content?.find(x => x.lang === locale);
+    const content: PresentationContent = localeContent
+        ? localeContent.data
+        : { project_title: [], project_description: [], body: [] };
 
     /**
      * Gets the current slide by it's type
@@ -73,10 +76,15 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     return (
         <Layout>
             <Head>
-                <title>{content.project_title[0].text}</title>
+                {content.project_title.length > 0 && (
+                    <title>{content.project_title[0].text}</title>
+                )}
+
                 <meta
                     name="description"
-                    content={(content.project_description as any)[0].text}
+                    content={PrismicDOM.RichText.asText(
+                        content.project_description
+                    )}
                 />
             </Head>
 
@@ -91,10 +99,18 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
  * Get static props function
  */
 export async function getStaticProps() {
-    const { results: content } = await client.query(
-        Prismic.Predicates.at("document.type", "presentation"),
-        { lang: "*" }
-    );
+    let content: Document[] = [];
 
-    return { props: { content } };
+    try {
+        const { results } = await client.query(
+            Prismic.Predicates.at("document.type", "presentation"),
+            { lang: "*" }
+        );
+
+        content = results;
+    } catch (error) {
+        console.error("There was an error loading the initial content");
+    } finally {
+        return { props: { content } };
+    }
 }

@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { TitleField, RTNode, ImageField, BooleanField } from "@prismicio/types";
+import {
+    TitleField,
+    RichTextField,
+    ImageField,
+    BooleanField
+} from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
 import BaseSlide from "..";
 import styles from "./IntroductionSlide.module.scss";
@@ -9,7 +14,7 @@ export interface IIntroductionSlide {
     slide_navigation_id: TitleField;
     slide_logo: ImageField;
     slide_title: TitleField;
-    slide_description: RTNode;
+    slide_description: RichTextField;
     slide_bg_pattern: ImageField;
 }
 
@@ -31,13 +36,15 @@ export default function IntroductionSlide(
     return (
         <BaseSlide content={props.content} className={styles.introductionSlide}>
             <div className={styles.content}>
-                <Image
-                    width={300}
-                    height={150}
-                    objectFit="contain"
-                    src={props.content.slide_logo.url!}
-                    alt={props.content.slide_logo.alt!}
-                />
+                <div className={styles.mainLogo}>
+                    <Image
+                        width={275}
+                        height={150}
+                        objectFit="contain"
+                        src={props.content.slide_logo.url!}
+                        alt={props.content.slide_logo.alt!}
+                    />
+                </div>
 
                 <div className={styles.textContainer}>
                     <h2 className="title-medium">

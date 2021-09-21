@@ -18,6 +18,14 @@
         width: 100%;
     }
 
+    .mainLogo {
+        @media #{$max-width-md} {
+            > div {
+                width: 200px;
+            }
+        }
+    }
+
     .textContainer {
         @media #{$min-width-lg} {
             max-width: 50vw;
@@ -43,6 +51,12 @@
 
     .companyLogo {
         margin-top: 50px;
+
+        @media #{$max-width-md} {
+            > div {
+                width: 100px;
+            }
+        }
 
         @media #{$min-width-lg} {
             position: absolute;

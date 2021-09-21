@@ -4,8 +4,6 @@
     $offset: 15px;
 
     position: fixed;
-    border-radius: 15px;
-    background-color: rgb(var(--secondary-light-gray));
     transition: transform ease 500ms;
     z-index: z-index(hideable-box);
 

@@ -1,10 +1,25 @@
 @import "../../styles/variables/font-weights";
 @import "../../styles/shared/mixins";
 
+:global(.dark-theme) {
+    .navigation {
+        background-color: rgb(var(--secondary-light-gray));
+
+        button {
+            color: rgb(var(--primary-black));
+
+            svg path {
+                fill: rgb(var(--primary-black));
+            }
+        }
+    }
+}
+
 .navigation {
-    display: flex;
-    align-items: center;
     max-width: 90vw;
+    border-radius: 15px;
+    background-color: rgb(var(--primary-black));
+    transition: background-color ease 250ms;
     overflow-x: auto;
     @include custom-scrollbar(
         rgb(var(--primary-black)),
@@ -16,6 +31,7 @@
         border: none;
         white-space: nowrap;
         padding: 15px;
+        color: rgb(var(--primary-white));
         font-weight: font-weight(bold);
         transition: color ease 250ms;
         text-transform: uppercase;
@@ -50,6 +66,7 @@
             height: 12px;
 
             path {
+                fill: rgb(var(--primary-white));
                 transition: fill ease 250ms;
             }
         }

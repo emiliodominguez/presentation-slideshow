@@ -1,9 +1,19 @@
 @import "@app/styles/variables/font-weights";
 
+:global(.dark-theme) {
+    .languageSelector {
+        background-color: rgb(var(--secondary-light-gray));
+
+        button {
+            color: rgb(var(--primary-black));
+        }
+    }
+}
+
 .languageSelector {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 15px;
+    background-color: rgb(var(--primary-black));
+    transition: background-color ease 250ms;
 
     button {
         border: none;
@@ -11,6 +21,7 @@
         font-weight: font-weight(bold);
         background-color: transparent;
         text-transform: uppercase;
+        color: rgb(var(--primary-white));
         transition: color ease 250ms;
         cursor: pointer;
 

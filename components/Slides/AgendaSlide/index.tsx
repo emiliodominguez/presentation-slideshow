@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { TitleField, RTNode, ImageField, BooleanField } from "@prismicio/types";
+import {
+    TitleField,
+    RichTextField,
+    ImageField,
+    BooleanField
+} from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
 import BaseSlide from "..";
 import styles from "./AgendaSlide.module.scss";
@@ -8,7 +13,7 @@ export interface IAgendaSlide {
     dark_theme_enabled: BooleanField;
     slide_navigation_id: TitleField;
     slide_title: TitleField;
-    slide_content: RTNode;
+    slide_content: RichTextField;
     slide_bg_pattern: ImageField;
 }
 
