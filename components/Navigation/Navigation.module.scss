@@ -16,6 +16,7 @@
 }
 
 .navigation {
+    display: flex;
     max-width: 90vw;
     border-radius: 15px;
     background-color: rgb(var(--primary-black));
