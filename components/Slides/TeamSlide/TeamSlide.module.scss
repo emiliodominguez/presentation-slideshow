@@ -3,7 +3,9 @@
 
 :global(.dark-theme) {
     .teamSlide {
-        .info {
+        .member .info {
+            h3,
+            span,
             :global(.subtitle-small) {
                 color: rgb(var(--primary-white));
             }
