@@ -13,8 +13,8 @@ import Navigation from "@app/components/Navigation";
 import ErrorSlide from "@app/components/Slides/ErrorSlide";
 import IntroductionSlide from "@app/components/Slides/IntroductionSlide";
 import AgendaSlide from "@app/components/Slides/AgendaSlide";
+import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
-import TextSlide from "@app/components/Slides/TextSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -53,8 +53,12 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return <AgendaSlide content={slide.primary as any} />;
             case "chapter_intro_slide":
                 return <ChapterIntroSlide content={slide.primary as any} />;
-            case "text_slide":
-                return <TextSlide content={slide.primary as any} />;
+            case "team_slide":
+                return (
+                    <TeamSlide
+                        content={{ ...slide.primary, team: slide.items } as any}
+                    />
+                );
             default:
                 return <ErrorSlide />;
         }

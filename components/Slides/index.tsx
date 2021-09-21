@@ -3,7 +3,7 @@ import { className } from "@app/shared/helpers/classname";
 import { IIntroductionSlide } from "./IntroductionSlide";
 import { IAgendaSlide } from "./AgendaSlide";
 import { IChapterIntroSlide } from "./ChapterIntroSlide";
-import { ITextSlide } from "./TextSlide";
+import { ITeamSlide } from "./TeamSlide";
 import styles from "./BaseSlide.module.scss";
 
 interface BaseSlideProps {
@@ -11,7 +11,7 @@ interface BaseSlideProps {
         | IIntroductionSlide
         | IAgendaSlide
         | IChapterIntroSlide
-        | ITextSlide;
+        | ITeamSlide;
     className?: string;
 }
 

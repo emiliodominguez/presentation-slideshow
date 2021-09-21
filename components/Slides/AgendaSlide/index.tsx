@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
     TitleField,
     RichTextField,
@@ -7,6 +6,7 @@ import {
 } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
 import BaseSlide from "..";
+import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./AgendaSlide.module.scss";
 
 export interface IAgendaSlide {
@@ -32,17 +32,7 @@ export default function AgendaSlide(props: AgendaSlideProps): JSX.Element {
     return (
         <BaseSlide content={props.content} className={styles.agendaSlide}>
             <div className={styles.content}>
-                <Image
-                    width={50}
-                    height={50}
-                    objectFit="contain"
-                    src="/images/logo/isologo_orange.png"
-                    alt="Endava isologo"
-                />
-
-                <h2 className="title-medium">
-                    {props.content.slide_title[0].text}
-                </h2>
+                <LogoAndTitle title={props.content.slide_title[0].text} />
 
                 <div
                     className="body-text-small"
