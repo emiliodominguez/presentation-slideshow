@@ -62,7 +62,7 @@ export default function IntroductionSlide(
                         width={150}
                         height={50}
                         objectFit="contain"
-                        src={`/images/logo/logo_${
+                        src={`/assets/logos/logo_${
                             darkTheme ? "dark" : "light"
                         }.png`}
                         alt="Endava logo"
