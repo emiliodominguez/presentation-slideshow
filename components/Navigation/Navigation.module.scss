@@ -22,10 +22,7 @@
     background-color: rgb(var(--primary-black));
     transition: background-color ease 250ms;
     overflow-x: auto;
-    @include custom-scrollbar(
-        rgb(var(--primary-black)),
-        rgb(var(--primary-orange))
-    );
+    @include custom-scrollbar(rgb(var(--primary-black)), rgb(var(--primary-orange)));
 
     button {
         background-color: transparent;

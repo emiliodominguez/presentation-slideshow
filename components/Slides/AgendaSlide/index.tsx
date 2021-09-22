@@ -1,20 +1,12 @@
-import {
-    TitleField,
-    RichTextField,
-    ImageField,
-    BooleanField
-} from "@prismicio/types";
+import { TitleField, RichTextField } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
-import BaseSlide from "..";
+import BaseSlide, { IBaseSlide } from "..";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./AgendaSlide.module.scss";
 
-export interface IAgendaSlide {
-    dark_theme_enabled: BooleanField;
-    slide_navigation_id: TitleField;
+export interface IAgendaSlide extends IBaseSlide {
     slide_title: TitleField;
     slide_content: RichTextField;
-    slide_bg_pattern: ImageField;
 }
 
 interface AgendaSlideProps {
@@ -25,9 +17,7 @@ interface AgendaSlideProps {
  * The agenda slide component
  */
 export default function AgendaSlide(props: AgendaSlideProps): JSX.Element {
-    const richTextContent = PrismicDOM.RichText.asHtml(
-        props.content.slide_content
-    );
+    const richTextContent = PrismicDOM.RichText.asHtml(props.content.slide_content);
 
     return (
         <BaseSlide content={props.content} className={styles.agendaSlide}>

@@ -63,11 +63,7 @@ describe("getContrastColor", () => {
             lightColorContrast,
             darkColorContrast
         );
-        const darkColorResult = getContrastColor(
-            darkColor,
-            lightColorContrast,
-            darkColorContrast
-        );
+        const darkColorResult = getContrastColor(darkColor, lightColorContrast, darkColorContrast);
 
         // Then
         expect(lightColorResult).toEqual(darkColorContrast);

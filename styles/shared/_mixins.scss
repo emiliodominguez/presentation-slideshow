@@ -2,17 +2,33 @@
 
 @mixin custom-scrollbar($bg-color: #eee, $thumb-color: #999, $size: 5px) {
     // @media #{$min-width-md} {
-        &::-webkit-scrollbar {
-            width: $size;
-            height: $size;
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
 
-            &-track {
-                background-color: $bg-color;
-            }
+        &-track {
+            background-color: $bg-color;
+        }
 
-            &-thumb {
-                background-color: $thumb-color;
-            }
-        // }
+        &-thumb {
+            background-color: $thumb-color;
+        }
+    }
+    // }
+}
+
+@mixin separator($color: var(--primary-black), $onTop: true) {
+    $pseudo-element: "before";
+
+    @if $onTop == false {
+        $pseudo-element: "after";
+    }
+
+    &::#{$pseudo-element} {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background-color: rgb(#{$color});
     }
 }

@@ -36,9 +36,7 @@ export const LocalizationContext = createContext<ILocalizationContext>({
 /**
  * Localization context provider
  */
-export default function LocalizationContextProvider(
-    props: PropsWithChildren<{}>
-): JSX.Element {
+export default function LocalizationContextProvider(props: PropsWithChildren<{}>): JSX.Element {
     const [locale, setLocale] = useState<string>(defaultLocale);
 
     return (

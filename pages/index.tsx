@@ -15,6 +15,7 @@ import IntroductionSlide from "@app/components/Slides/IntroductionSlide";
 import AgendaSlide from "@app/components/Slides/AgendaSlide";
 import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
+import ElementsSlide from "@app/components/Slides/ElementsSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -54,10 +55,10 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             case "chapter_intro_slide":
                 return <ChapterIntroSlide content={slide.primary as any} />;
             case "team_slide":
+                return <TeamSlide content={{ ...slide.primary, team: slide.items } as any} />;
+            case "elements_slide":
                 return (
-                    <TeamSlide
-                        content={{ ...slide.primary, team: slide.items } as any}
-                    />
+                    <ElementsSlide content={{ ...slide.primary, elements: slide.items } as any} />
                 );
             default:
                 return <ErrorSlide />;
@@ -68,9 +69,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
      * Gets the navigation items labels
      */
     function getNavigationItems(): any[] {
-        return content.body.map(
-            x => (x.primary.slide_navigation_id as TitleField)[0].text
-        );
+        return content.body.map(x => (x.primary.slide_navigation_id as TitleField)[0].text);
     }
 
     useEffect(() => {
@@ -80,15 +79,11 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     return (
         <Layout>
             <Head>
-                {content.project_title.length > 0 && (
-                    <title>{content.project_title[0].text}</title>
-                )}
+                {content.project_title.length > 0 && <title>{content.project_title[0].text}</title>}
 
                 <meta
                     name="description"
-                    content={PrismicDOM.RichText.asText(
-                        content.project_description
-                    )}
+                    content={PrismicDOM.RichText.asText(content.project_description)}
                 />
             </Head>
 

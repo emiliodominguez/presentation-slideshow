@@ -1,10 +1,11 @@
 @import "../../../styles/variables/media-queries";
 @import "../../../styles/variables/font-weights";
+@import "../../../styles/shared/mixins";
 
 :global(.dark-theme) {
     .content {
-        :global(.subtitle-small) {
-            color: rgb(var(--primary-white));
+        :global(.title-medium) {
+            @include separator(var(--primary-white));
         }
     }
 }
@@ -34,19 +35,11 @@
 
     :global(.title-medium) {
         margin-bottom: 10px;
+        @include separator();
 
         &::before {
-            content: "";
-            display: block;
-            width: 50px;
-            height: 4px;
             margin: 50px 0 15px;
-            background-color: rgb(var(--primary-white));
         }
-    }
-
-    :global(.subtitle-small) {
-        color: rgb(var(--primary-black));
     }
 
     .companyLogo {

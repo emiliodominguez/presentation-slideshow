@@ -30,11 +30,7 @@ export function hexToRgb(hex: string): RGB {
  * @param darkColor - An optional dark color return value
  * @returns The initial hex contrast color
  */
-export function getContrastColor(
-    hex: string,
-    lightColor?: string,
-    darkColor?: string
-): string {
+export function getContrastColor(hex: string, lightColor?: string, darkColor?: string): string {
     const { r, g, b } = hexToRgb(hex);
     const yiq = (r * 299 + g * 587 + b * 114) / 1000; // https://en.wikipedia.org/wiki/YIQ
     const contrastColors = {

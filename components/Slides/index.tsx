@@ -1,17 +1,21 @@
 import { PropsWithChildren, useRef, useEffect } from "react";
+import { BooleanField, ImageField, TitleField } from "@prismicio/types";
 import { className } from "@app/shared/helpers/classname";
 import { IIntroductionSlide } from "./IntroductionSlide";
 import { IAgendaSlide } from "./AgendaSlide";
 import { IChapterIntroSlide } from "./ChapterIntroSlide";
 import { ITeamSlide } from "./TeamSlide";
+import { IElementsSlide } from "./ElementsSlide";
 import styles from "./BaseSlide.module.scss";
 
+export interface IBaseSlide {
+    dark_theme_enabled: BooleanField;
+    slide_navigation_id: TitleField;
+    slide_bg_pattern: ImageField;
+}
+
 interface BaseSlideProps {
-    content:
-        | IIntroductionSlide
-        | IAgendaSlide
-        | IChapterIntroSlide
-        | ITeamSlide;
+    content: IIntroductionSlide | IAgendaSlide | IChapterIntroSlide | ITeamSlide | IElementsSlide;
     className?: string;
 }
 
@@ -20,9 +24,7 @@ type CustomPropertiesSetup = { [key: string]: string };
 /**
  * Base slide container
  */
-export default function BaseSlide(
-    props: PropsWithChildren<BaseSlideProps>
-): JSX.Element {
+export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX.Element {
     const slideRef = useRef<HTMLDivElement | null>(null);
 
     /**

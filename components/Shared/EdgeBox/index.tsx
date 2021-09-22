@@ -20,9 +20,7 @@ interface EdgeBoxProps {
 /**
  * A hideable box component
  */
-export default function EdgeBox(
-    props: PropsWithChildren<EdgeBoxProps>
-): JSX.Element {
+export default function EdgeBox(props: PropsWithChildren<EdgeBoxProps>): JSX.Element {
     const [hidden, setHidden] = useState<boolean>(props.startHidden ?? false);
 
     /**
@@ -78,10 +76,7 @@ export default function EdgeBox(
                 [styles.hidden]: hidden
             })}
         >
-            <button
-                className={styles.toggler}
-                onClick={() => setHidden(!hidden)}
-            >
+            <button className={styles.toggler} onClick={() => setHidden(!hidden)}>
                 {setTogglerIcon()}
             </button>
 

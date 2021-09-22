@@ -1,3 +1,5 @@
+@import "../../styles/variables/media-queries";
+
 :global(.dark-theme) {
     .slide {
         background-color: rgb(var(--primary-black));
@@ -5,13 +7,23 @@
 }
 
 .slide {
+    --verticalPadding: 50px;
+
     width: 100%;
     height: var(--fullVH);
-    padding: 50px 5%;
+    padding: var(--verticalPadding) 5%;
     background-image: var(--slide-bg-pattern);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow-y: auto;
     overflow-x: hidden;
+
+    @media #{$max-width-lg} {
+        --verticalPadding: 75px;
+    }
+
+    @media #{$max-width-sm} {
+        --verticalPadding: 100px;
+    }
 }

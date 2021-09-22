@@ -1,21 +1,13 @@
 import Image from "next/image";
-import {
-    TitleField,
-    RichTextField,
-    ImageField,
-    BooleanField
-} from "@prismicio/types";
+import { TitleField, RichTextField, ImageField } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
-import BaseSlide from "..";
+import BaseSlide, { IBaseSlide } from "..";
 import styles from "./IntroductionSlide.module.scss";
 
-export interface IIntroductionSlide {
-    dark_theme_enabled: BooleanField;
-    slide_navigation_id: TitleField;
+export interface IIntroductionSlide extends IBaseSlide {
     slide_logo: ImageField;
     slide_title: TitleField;
     slide_description: RichTextField;
-    slide_bg_pattern: ImageField;
 }
 
 interface IntroductionSlideProps {
@@ -25,13 +17,9 @@ interface IntroductionSlideProps {
 /**
  * The introduction slide component
  */
-export default function IntroductionSlide(
-    props: IntroductionSlideProps
-): JSX.Element {
+export default function IntroductionSlide(props: IntroductionSlideProps): JSX.Element {
     const darkTheme = props.content.dark_theme_enabled;
-    const slideDescription = PrismicDOM.RichText.asHtml(
-        props.content.slide_description
-    );
+    const slideDescription = PrismicDOM.RichText.asHtml(props.content.slide_description);
 
     return (
         <BaseSlide content={props.content} className={styles.introductionSlide}>
@@ -47,9 +35,7 @@ export default function IntroductionSlide(
                 </div>
 
                 <div className={styles.textContainer}>
-                    <h2 className="title-medium">
-                        {props.content.slide_title[0].text}
-                    </h2>
+                    <h2 className="title-medium">{props.content.slide_title[0].text}</h2>
 
                     <div
                         className="subtitle-small"
@@ -62,9 +48,7 @@ export default function IntroductionSlide(
                         width={150}
                         height={50}
                         objectFit="contain"
-                        src={`/assets/logos/logo_${
-                            darkTheme ? "dark" : "light"
-                        }.png`}
+                        src={`/assets/logos/logo_${darkTheme ? "dark" : "light"}.png`}
                         alt="Endava logo"
                     />
                 </div>

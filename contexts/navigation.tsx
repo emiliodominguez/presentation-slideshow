@@ -21,9 +21,7 @@ export const NavigationContext = createContext<INavigationContext>({} as any);
 /**
  * Navigation context provider
  */
-export default function NavigationContextProvider(
-    props: PropsWithChildren<{}>
-): JSX.Element {
+export default function NavigationContextProvider(props: PropsWithChildren<{}>): JSX.Element {
     const countRef = useRef<number>(0);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [infinite, setInfinite] = useState<boolean>(false);
@@ -50,8 +48,7 @@ export default function NavigationContextProvider(
     function goToNext(): void {
         setCurrentIndex((current: number) => {
             const infiniteNext = (current + 1) % countRef.current;
-            const regularNext =
-                current < countRef.current - 1 ? current + 1 : current;
+            const regularNext = current < countRef.current - 1 ? current + 1 : current;
             return infinite ? infiniteNext : regularNext;
         });
     }
@@ -61,8 +58,7 @@ export default function NavigationContextProvider(
      */
     function goToPrevious(): void {
         setCurrentIndex((current: number) => {
-            const infinitePrevious =
-                current === 0 ? countRef.current - 1 : current - 1;
+            const infinitePrevious = current === 0 ? countRef.current - 1 : current - 1;
             const regularPrevious = current > 0 ? current - 1 : current;
             return infinite ? infinitePrevious : regularPrevious;
         });
@@ -75,9 +71,7 @@ export default function NavigationContextProvider(
                 count: countRef.current,
                 disabledNav: {
                     previous: infinite ? false : currentIndex === 0,
-                    next: infinite
-                        ? false
-                        : countRef.current - 1 === currentIndex
+                    next: infinite ? false : countRef.current - 1 === currentIndex
                 },
                 goTo,
                 goToNext,

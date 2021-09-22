@@ -6,19 +6,13 @@ import LocalizationContextProvider, {
 } from "@app/contexts/localization";
 
 function MockedProvider(props: PropsWithChildren<{}>): JSX.Element {
-    return (
-        <LocalizationContextProvider>
-            {props.children}
-        </LocalizationContextProvider>
-    );
+    return <LocalizationContextProvider>{props.children}</LocalizationContextProvider>;
 }
 
 function DummyComponent(props: { customLocale?: string }): JSX.Element {
     const { locale, setLocale } = useContext(LocalizationContext);
 
-    return (
-        <button onClick={() => setLocale(props.customLocale!)}>{locale}</button>
-    );
+    return <button onClick={() => setLocale(props.customLocale!)}>{locale}</button>;
 }
 
 afterEach(cleanup);
@@ -30,9 +24,7 @@ test("should return a default language", () => {
     render(<DummyComponent />, { wrapper: MockedProvider });
 
     // Then
-    expect(
-        screen.getByText(locales.find(x => x.default)!.id)
-    ).toBeInTheDocument();
+    expect(screen.getByText(locales.find(x => x.default)!.id)).toBeInTheDocument();
 });
 
 test("should change the locale", () => {

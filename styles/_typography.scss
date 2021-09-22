@@ -1,0 +1,57 @@
+@import "./variables/font-weights";
+
+.title {
+    $normal: 70px;
+    $medium: 50px;
+
+    font-size: clamp(#{$normal * 0.5}, 5vw, #{$normal});
+    margin-bottom: 15px;
+
+    &,
+    &-medium {
+        letter-spacing: 0.7px;
+        line-height: 1.25;
+    }
+
+    &-medium {
+        font-size: clamp(#{$medium * 0.75}, 5vw, #{$medium});
+    }
+}
+
+.subtitle {
+    $normal: 18px;
+    $medium: 16px;
+    $small: 14px;
+
+    font-size: clamp(#{$medium}, 5vw, #{$normal});
+
+    &,
+    &-small {
+        text-transform: uppercase;
+        color: rgb(var(--primary-orange));
+        letter-spacing: 0.7px;
+        font-weight: font-weight(semi-bold);
+        line-height: 1.5;
+    }
+
+    &-small {
+        font-size: $small;
+    }
+}
+
+.body-text {
+    $normal: 20px;
+    $medium: 16px;
+    $small: 14px;
+
+    font-size: clamp(#{$medium}, 5vw, #{$normal});
+
+    &,
+    &-small {
+        line-height: 1.75;
+    }
+
+    &-small {
+        font-size: $small;
+    }
+}

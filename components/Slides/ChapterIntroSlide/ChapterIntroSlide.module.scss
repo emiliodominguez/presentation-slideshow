@@ -6,10 +6,6 @@
         .chapterNumber {
             border-color: rgb(var(--primary-white));
         }
-
-        :global(.subtitle-small) {
-            color: rgb(var(--primary-white));
-        }
     }
 }
 
@@ -45,7 +41,6 @@
     }
 
     :global(.subtitle-small) {
-        color: rgb(var(--primary-black));
         margin-bottom: 15px;
     }
 }

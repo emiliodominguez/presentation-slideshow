@@ -1,12 +1,7 @@
 import Image from "next/image";
-import {
-    TitleField,
-    ImageField,
-    BooleanField,
-    RichTextField
-} from "@prismicio/types";
+import { TitleField, ImageField, RichTextField } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
-import BaseSlide from "..";
+import BaseSlide, { IBaseSlide } from "..";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./TeamSlide.module.scss";
 
@@ -18,11 +13,8 @@ interface TeamMember {
     team_member_email: RichTextField;
 }
 
-export interface ITeamSlide {
-    dark_theme_enabled: BooleanField;
-    slide_navigation_id: TitleField;
+export interface ITeamSlide extends IBaseSlide {
     slide_title: TitleField;
-    slide_bg_pattern: ImageField;
     team: TeamMember[];
 }
 
@@ -51,10 +43,7 @@ export default function TeamSlide(props: TeamSlideProps): JSX.Element {
                 <section className={styles.team}>
                     {props.content.team.length > 0 &&
                         props.content.team.map(x => (
-                            <div
-                                className={styles.member}
-                                key={x.team_member_name[0].text}
-                            >
+                            <div className={styles.member} key={x.team_member_name[0].text}>
                                 <div className={styles.thumbnail}>
                                     <Image
                                         width={75}
@@ -67,15 +56,9 @@ export default function TeamSlide(props: TeamSlideProps): JSX.Element {
                                 <div className={styles.info}>
                                     <h3>{toText(x.team_member_name)}</h3>
 
-                                    <p className="subtitle-small">
-                                        {toText(x.team_member_title)}
-                                    </p>
+                                    <p className="subtitle-small">{toText(x.team_member_title)}</p>
 
-                                    <a
-                                        href={`mailto:${toText(
-                                            x.team_member_email
-                                        )}`}
-                                    >
+                                    <a href={`mailto:${toText(x.team_member_email)}`}>
                                         {toText(x.team_member_email)}
                                     </a>
 

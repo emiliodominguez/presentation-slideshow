@@ -1,21 +1,12 @@
-import {
-    TitleField,
-    ImageField,
-    BooleanField,
-    RichTextField,
-    NumberField
-} from "@prismicio/types";
+import { TitleField, RichTextField, NumberField } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
-import BaseSlide from "..";
+import BaseSlide, { IBaseSlide } from "..";
 import styles from "./ChapterIntroSlide.module.scss";
 
-export interface IChapterIntroSlide {
-    dark_theme_enabled: BooleanField;
-    slide_navigation_id: TitleField;
+export interface IChapterIntroSlide extends IBaseSlide {
     slide_chapter_number: NumberField;
     slide_subtitle: RichTextField;
     slide_title: TitleField;
-    slide_bg_pattern: ImageField;
 }
 
 interface ChapterIntroSlideProps {
@@ -25,12 +16,8 @@ interface ChapterIntroSlideProps {
 /**
  * The text slide component
  */
-export default function ChapterIntroSlide(
-    props: ChapterIntroSlideProps
-): JSX.Element {
-    const richTextContent = PrismicDOM.RichText.asHtml(
-        props.content.slide_subtitle
-    );
+export default function ChapterIntroSlide(props: ChapterIntroSlideProps): JSX.Element {
+    const richTextContent = PrismicDOM.RichText.asHtml(props.content.slide_subtitle);
 
     return (
         <BaseSlide content={props.content} className={styles.chapterIntroSlide}>

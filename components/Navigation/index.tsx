@@ -36,10 +36,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
     useEventListener("keydown", navigate);
 
     return (
-        <EdgeBox
-            keyShortcut={keyShortcuts.toggleNavigation}
-            boxPosition={EdgeBoxPosition.Bottom}
-        >
+        <EdgeBox keyShortcut={keyShortcuts.toggleNavigation} boxPosition={EdgeBoxPosition.Bottom}>
             <nav className={styles.navigation}>
                 {/* Go to previous item */}
                 <button onClick={goToPrevious} disabled={disabledNav.previous}>

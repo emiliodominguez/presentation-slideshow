@@ -16,16 +16,13 @@ export default function useEventListener(
     options?: boolean | AddEventListenerOptions
 ): void {
     const savedCallback = useRef<(e: Event) => void>(callback);
-    const savedTarget = useRef<HTMLElement | Window>(
-        target ?? ((isBrowser() && window) as Window)
-    );
+    const savedTarget = useRef<HTMLElement | Window>(target ?? ((isBrowser() && window) as Window));
 
     useEffect(() => {
         const targetRef = savedTarget.current;
         const supportsEventListener = targetRef && targetRef.addEventListener;
 
-        if (!isBrowser() && !supportsEventListener && !savedCallback?.current)
-            return;
+        if (!isBrowser() && !supportsEventListener && !savedCallback?.current) return;
 
         const eventListener = savedCallback.current;
         targetRef.addEventListener(event, eventListener, options);

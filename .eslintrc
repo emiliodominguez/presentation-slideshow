@@ -13,7 +13,7 @@
         }
     },
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": ["error", { "printWidth": 100 }],
         "require-jsdoc": [
             "error",
             {
