@@ -3,9 +3,13 @@
 @import "../../../styles/shared/mixins";
 
 :global(.dark-theme) {
-    .content {
+    .content .textContainer {
         :global(.title-medium) {
             @include separator(var(--primary-white));
+        }
+
+        :global(.subtitle-small) {
+            color: rgb(var(--primary-white));
         }
     }
 }
@@ -31,14 +35,18 @@
         @media #{$min-width-lg} {
             max-width: 50vw;
         }
-    }
 
-    :global(.title-medium) {
-        margin-bottom: 10px;
-        @include separator();
+        :global(.title-medium) {
+            margin-bottom: 10px;
+            @include separator();
 
-        &::before {
-            margin: 50px 0 15px;
+            &::before {
+                margin: 50px 0 15px;
+            }
+        }
+
+        :global(.subtitle-small) {
+            color: rgb(var(--primary-black));
         }
     }
 
