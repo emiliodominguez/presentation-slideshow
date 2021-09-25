@@ -1,5 +1,6 @@
-import { PropsWithChildren, useRef, useEffect } from "react";
+import { PropsWithChildren, useRef, useEffect, useContext } from "react";
 import { BooleanField, ImageField, TitleField } from "@prismicio/types";
+import { NavigationContext } from "@app/contexts/navigation";
 import { className } from "@app/shared/helpers/classname";
 import { IIntroductionSlide } from "./IntroductionSlide";
 import { IAgendaSlide } from "./AgendaSlide";
@@ -25,6 +26,7 @@ type CustomPropertiesSetup = { [key: string]: string };
  * Base slide container
  */
 export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX.Element {
+    const { currentIndex } = useContext(NavigationContext);
     const slideRef = useRef<HTMLDivElement | null>(null);
 
     /**
@@ -40,7 +42,7 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
     }
 
     useEffect(() => {
-        if (!!props.content.dark_theme_enabled) {
+        if (props.content.dark_theme_enabled) {
             document.body.classList.add("dark-theme");
         } else {
             document.body.classList.remove("dark-theme");
@@ -49,6 +51,7 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
 
     return (
         <div
+            key={`slide_${currentIndex}`}
             ref={slideRef}
             style={setCustomProperties()}
             {...className(styles.slide, props.className)}

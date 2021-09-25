@@ -16,6 +16,11 @@ interface INavigationContext {
     toggleInfinite: () => void;
 }
 
+enum AnimationDirection {
+    Next = 1,
+    Previous = -1
+}
+
 export const NavigationContext = createContext<INavigationContext>({} as any);
 
 /**
@@ -35,10 +40,22 @@ export default function NavigationContextProvider(props: PropsWithChildren<{}>):
     }
 
     /**
+     * Sets a custom property for the slides animation offset
+     * @param nextIndex The navigation index
+     */
+    function setAnimationOffset(direction: AnimationDirection): void {
+        const defaultOffset = 125;
+        const offset = direction === AnimationDirection.Next ? defaultOffset : -defaultOffset;
+        document.documentElement.style.setProperty("--nav-animation-offset", `${offset}px`);
+    }
+
+    /**
      * Goes to an specific index
      * @param index - The index
      */
     function goTo(index: number): void {
+        const { Next, Previous } = AnimationDirection;
+        setAnimationOffset(index > currentIndex ? Next : Previous);
         setCurrentIndex(index);
     }
 
@@ -49,7 +66,9 @@ export default function NavigationContextProvider(props: PropsWithChildren<{}>):
         setCurrentIndex((current: number) => {
             const infiniteNext = (current + 1) % countRef.current;
             const regularNext = current < countRef.current - 1 ? current + 1 : current;
-            return infinite ? infiniteNext : regularNext;
+            const index = infinite ? infiniteNext : regularNext;
+            setAnimationOffset(AnimationDirection.Next);
+            return index;
         });
     }
 
@@ -60,7 +79,9 @@ export default function NavigationContextProvider(props: PropsWithChildren<{}>):
         setCurrentIndex((current: number) => {
             const infinitePrevious = current === 0 ? countRef.current - 1 : current - 1;
             const regularPrevious = current > 0 ? current - 1 : current;
-            return infinite ? infinitePrevious : regularPrevious;
+            const index = infinite ? infinitePrevious : regularPrevious;
+            setAnimationOffset(AnimationDirection.Previous);
+            return index;
         });
     }
 

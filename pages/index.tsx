@@ -69,7 +69,11 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
      * Gets the navigation items labels
      */
     function getNavigationItems(): any[] {
-        return content.body.map(x => (x.primary.slide_navigation_id as TitleField)[0].text);
+        return content.body.map((x, i) =>
+            x.primary.slide_navigation_id
+                ? (x.primary.slide_navigation_id as TitleField)[0].text
+                : `Slide ${i + 1}`
+        );
     }
 
     useEffect(() => {

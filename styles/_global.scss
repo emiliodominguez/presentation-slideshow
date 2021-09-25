@@ -15,10 +15,13 @@ body {
 
 body {
     font-family: var(--primary-font);
+    background-color: rgb(var(--primary-white));
     color: rgb(var(--primary-black));
+    transition: background-color ease 250ms;
     overflow: hidden;
 
     &.dark-theme {
+        background-color: rgb(var(--primary-black));
         color: rgb(var(--primary-white));
     }
 }

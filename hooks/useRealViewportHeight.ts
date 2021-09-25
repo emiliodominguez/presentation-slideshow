@@ -7,6 +7,9 @@ import useEventListener from "./useEventListener";
 function useRealViewportHeight(): void {
     const vhUnitTimeout = useRef<number>(0);
 
+    /**
+     * Gets the viewport height unit in pixels
+     */
     function getViewportHeightUnit(): void {
         clearTimeout(vhUnitTimeout.current);
 
