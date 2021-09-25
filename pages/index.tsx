@@ -16,6 +16,7 @@ import AgendaSlide from "@app/components/Slides/AgendaSlide";
 import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
 import ElementsSlide from "@app/components/Slides/ElementsSlide";
+import QuoteSlide from "@app/components/Slides/QuoteSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -60,6 +61,8 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return (
                     <ElementsSlide content={{ ...slide.primary, elements: slide.items } as any} />
                 );
+            case "quote_slide":
+                return <QuoteSlide content={slide.primary as any} />;
             default:
                 return <ErrorSlide />;
         }

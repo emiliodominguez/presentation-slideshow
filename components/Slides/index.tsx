@@ -7,6 +7,7 @@ import { IAgendaSlide } from "./AgendaSlide";
 import { IChapterIntroSlide } from "./ChapterIntroSlide";
 import { ITeamSlide } from "./TeamSlide";
 import { IElementsSlide } from "./ElementsSlide";
+import { IQuoteSlide } from "./QuoteSlide";
 import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
@@ -16,7 +17,13 @@ export interface IBaseSlide {
 }
 
 interface BaseSlideProps {
-    content: IIntroductionSlide | IAgendaSlide | IChapterIntroSlide | ITeamSlide | IElementsSlide;
+    content:
+        | IIntroductionSlide
+        | IAgendaSlide
+        | IChapterIntroSlide
+        | ITeamSlide
+        | IElementsSlide
+        | IQuoteSlide;
     className?: string;
 }
 
