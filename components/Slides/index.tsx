@@ -33,11 +33,11 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
      * Sets the custom properties values if there's any
      * @returns The custom properties setup
      */
-    function setCustomProperties(): CustomPropertiesSetup {
+    function setBackgroundPattern(): CustomPropertiesSetup | undefined {
+        if (!props.content.slide_bg_pattern?.url) return undefined;
+
         return {
-            ["--slide-bg-pattern"]: props.content.slide_bg_pattern?.url
-                ? `url(${props.content.slide_bg_pattern.url})`
-                : ""
+            ["--slide-bg-pattern"]: `url(${props.content.slide_bg_pattern.url})`
         };
     }
 
@@ -53,7 +53,7 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
         <div
             key={`slide_${currentIndex}`}
             ref={slideRef}
-            style={setCustomProperties()}
+            style={setBackgroundPattern()}
             {...className(styles.slide, props.className)}
         >
             {props.children}
