@@ -3,6 +3,9 @@ import useRealViewportHeight from "@app/hooks/useRealViewportHeight";
 
 const registeredEvents = new Map<string, EventListenerOrEventListenerObject>();
 
+/**
+ * A dummy component using the useRealViewportHeight hook
+ */
 function DummyComponent(): JSX.Element {
     useRealViewportHeight();
     return <></>;

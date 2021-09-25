@@ -5,6 +5,9 @@ const testTarget = document.body;
 const testEvent = "click";
 const registeredEvents = new Map<string, EventListenerOrEventListenerObject>();
 
+/**
+ * A dummy component using the useEventListener hook
+ */
 function DummyComponent(): JSX.Element {
     // Registers a click event on the body
     useEventListener(testEvent, jest.fn, testTarget);

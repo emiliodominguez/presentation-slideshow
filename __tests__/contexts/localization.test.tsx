@@ -5,13 +5,18 @@ import LocalizationContextProvider, {
     locales
 } from "@app/contexts/localization";
 
+/**
+ * A mocked provider component
+ */
 function MockedProvider(props: PropsWithChildren<{}>): JSX.Element {
     return <LocalizationContextProvider>{props.children}</LocalizationContextProvider>;
 }
 
+/**
+ * A dummy component using the Localization context
+ */
 function DummyComponent(props: { customLocale?: string }): JSX.Element {
     const { locale, setLocale } = useContext(LocalizationContext);
-
     return <button onClick={() => setLocale(props.customLocale!)}>{locale}</button>;
 }
 
