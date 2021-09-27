@@ -15,6 +15,10 @@
     justify-content: center;
     align-items: center;
 
+    @media #{$max-width-md} {
+        align-items: flex-start;
+    }
+
     .content {
         --grid-middle: 200px;
 
