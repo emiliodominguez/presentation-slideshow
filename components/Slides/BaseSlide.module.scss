@@ -22,6 +22,9 @@ $slide-animation-offset: 150px;
     overflow-x: hidden;
     // animation: slide-enter ease-out forwards 500ms;
 
+    display: flex;
+    align-items: var(--slide-alignment);
+
     @media #{$max-width-lg} {
         --vertical-padding: 75px;
     }

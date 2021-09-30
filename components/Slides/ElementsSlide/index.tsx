@@ -25,7 +25,7 @@ export default function ElementsSlide(props: ElementsSlideProps): JSX.Element {
     const iconsSize = Object.freeze({ width: 50, height: 50 });
 
     return (
-        <BaseSlide content={props.content} className={styles.elementsSlide}>
+        <BaseSlide content={props.content}>
             <div className={styles.content}>
                 <section className={styles.elements}>
                     {props.content.elements.length > 0 &&

@@ -14,56 +14,51 @@
     }
 }
 
-.introductionSlide {
-    display: flex;
-    align-items: center;
+.content {
+    position: relative;
+    width: 100%;
+}
 
-    .content {
-        position: relative;
-        width: 100%;
-    }
-
-    .mainLogo {
-        @media #{$max-width-md} {
-            > div {
-                width: 200px;
-            }
+.mainLogo {
+    @media #{$max-width-md} {
+        > div {
+            width: 200px;
         }
     }
+}
 
-    .textContainer {
-        @media #{$min-width-lg} {
-            max-width: 50vw;
-        }
+.textContainer {
+    @media #{$min-width-lg} {
+        max-width: 50vw;
+    }
 
-        :global(.title-medium) {
-            margin-bottom: 10px;
-            @include separator();
+    :global(.title-medium) {
+        margin-bottom: 10px;
+        @include separator();
 
-            &::before {
-                margin: 50px 0 15px;
-            }
-        }
-
-        :global(.subtitle-small) {
-            color: rgb(var(--primary-black));
+        &::before {
+            margin: 50px 0 15px;
         }
     }
 
-    .companyLogo {
-        margin-top: 50px;
+    :global(.subtitle-small) {
+        color: rgb(var(--primary-black));
+    }
+}
 
-        @media #{$max-width-md} {
-            > div {
-                width: 100px;
-            }
-        }
+.companyLogo {
+    margin-top: 50px;
 
-        @media #{$min-width-lg} {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            margin-top: 0;
+    @media #{$max-width-md} {
+        > div {
+            width: 100px;
         }
+    }
+
+    @media #{$min-width-lg} {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin-top: 0;
     }
 }

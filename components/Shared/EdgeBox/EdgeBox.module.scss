@@ -94,24 +94,24 @@
             right: calc(100%);
         }
     }
+}
 
-    .toggler {
-        position: absolute;
-        margin: 0;
-        padding: 10px;
-        transition: transform ease 500ms;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
+.toggler {
+    position: absolute;
+    margin: 0;
+    padding: 10px;
+    transition: transform ease 500ms;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 
-        svg {
-            display: block;
-            height: 13px;
-            opacity: 0.75;
+    svg {
+        display: block;
+        height: 13px;
+        opacity: 0.75;
 
-            path {
-                fill: rgb(var(--primary-orange));
-            }
+        path {
+            fill: rgb(var(--primary-orange));
         }
     }
 }

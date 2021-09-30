@@ -9,14 +9,9 @@
     }
 }
 
-.chapterIntroSlide {
-    display: flex;
-    align-items: center;
-
-    .content {
-        @media #{$min-width-lg} {
-            max-width: 50vw;
-        }
+.content {
+    @media #{$min-width-lg} {
+        max-width: 50vw;
     }
 
     .chapterNumber {

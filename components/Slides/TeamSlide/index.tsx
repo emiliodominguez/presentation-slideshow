@@ -36,7 +36,7 @@ export default function TeamSlide(props: TeamSlideProps): JSX.Element {
     }
 
     return (
-        <BaseSlide content={props.content} className={styles.teamSlide}>
+        <BaseSlide content={props.content}>
             <div className={styles.content}>
                 <LogoAndTitle title={props.content.slide_title[0].text} />
 

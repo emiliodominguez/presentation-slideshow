@@ -22,7 +22,7 @@ export default function IntroductionSlide(props: IntroductionSlideProps): JSX.El
     const slideDescription = PrismicDOM.RichText.asHtml(props.content.slide_description);
 
     return (
-        <BaseSlide content={props.content} className={styles.introductionSlide}>
+        <BaseSlide content={props.content}>
             <div className={styles.content}>
                 <div className={styles.mainLogo}>
                     <Image

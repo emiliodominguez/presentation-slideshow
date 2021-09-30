@@ -1,10 +1,7 @@
 @import "../../../styles/variables/media-queries";
 @import "../../../styles/variables/font-weights";
 
-.agendaSlide {
-    display: flex;
-    align-items: center;
-
+.content {
     :global(.title-medium) {
         margin-top: 15px;
     }

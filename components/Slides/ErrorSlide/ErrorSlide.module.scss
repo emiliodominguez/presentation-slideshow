@@ -1,9 +1,7 @@
 @import "../../../styles/variables/font-weights";
 
 .errorSlide {
-    display: flex;
     justify-content: center;
-    align-items: center;
     background-color: rgb(var(--primary-black));
 
     h3 {

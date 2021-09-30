@@ -20,7 +20,7 @@ export default function ChapterIntroSlide(props: ChapterIntroSlideProps): JSX.El
     const richTextContent = PrismicDOM.RichText.asHtml(props.content.slide_subtitle);
 
     return (
-        <BaseSlide content={props.content} className={styles.chapterIntroSlide}>
+        <BaseSlide content={props.content}>
             <div className={styles.content}>
                 <div className={styles.chapterNumber}>
                     <span>{props.content.slide_chapter_number}</span>

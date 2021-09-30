@@ -2,79 +2,68 @@
 @import "../../../styles/variables/font-weights";
 
 :global(.dark-theme) {
-    .teamSlide {
-        .member .info {
-            :global(.subtitle-small) {
-                color: rgb(var(--primary-white));
-            }
+    .member .info {
+        :global(.subtitle-small) {
+            color: rgb(var(--primary-white));
         }
     }
 }
 
-.teamSlide {
+.content {
+    width: 100%;
+}
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 100px 50px;
+    margin-top: 125px;
+
+    @media #{$max-width-xl} {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 50px;
+    }
+
+    @media #{$max-width-md} {
+        grid-template-columns: 1fr;
+        margin-top: 50px;
+    }
+}
+
+.member {
     display: flex;
-    align-items: center;
 
-    @media #{$max-width-lg} {
-        align-items: flex-start;
+    .thumbnail {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: -10px;
+        margin-left: 0;
     }
 
-    .content {
-        width: 100%;
-    }
+    .info {
+        margin-left: 25px;
 
-    .team {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 100px 50px;
-        margin-top: 125px;
-
-        @media #{$max-width-xl} {
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 50px;
+        h3 {
+            font-size: clamp(20px, 5vw, 25px);
+            font-weight: font-weight(bold);
+            margin-bottom: 5px;
         }
 
-        @media #{$max-width-md} {
-            grid-template-columns: 1fr;
-            margin-top: 50px;
-        }
-    }
-
-    .member {
-        display: flex;
-
-        .thumbnail {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-top: -10px;
-            margin-left: 0;
+        :global(.subtitle-small) {
+            color: rgb(var(--primary-dark-gray));
+            font-size: 13px;
         }
 
-        .info {
-            margin-left: 25px;
+        a,
+        span {
+            display: block;
+            font-size: 12px;
+        }
 
-            h3 {
-                font-size: clamp(20px, 5vw, 25px);
-                font-weight: font-weight(bold);
-                margin-bottom: 5px;
-            }
-
-            :global(.subtitle-small) {
-                color: rgb(var(--primary-dark-gray));
-                font-size: 13px;
-            }
-
-            a,
-            span {
-                display: block;
-                font-size: 12px;
-            }
-
-            a {
-                margin-bottom: 5px;
-            }
+        a {
+            margin-bottom: 5px;
         }
     }
 }
