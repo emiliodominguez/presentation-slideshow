@@ -11,7 +11,7 @@ interface Element {
 }
 
 export interface IElementsSlide extends IBaseSlide {
-    elements: Element[];
+    items: Element[];
 }
 
 interface ElementsSlideProps {
@@ -28,8 +28,8 @@ export default function ElementsSlide(props: ElementsSlideProps): JSX.Element {
         <BaseSlide content={props.content}>
             <div className={styles.content}>
                 <section className={styles.elements}>
-                    {props.content.elements.length > 0 &&
-                        props.content.elements.map(x => (
+                    {props.content.items.length > 0 &&
+                        props.content.items.map(x => (
                             <div className={styles.element} key={x.grid_item_title[0].text}>
                                 <div
                                     className={styles.icon}

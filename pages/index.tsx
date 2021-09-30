@@ -58,9 +58,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             case "team_slide":
                 return <TeamSlide content={{ ...slide.primary, team: slide.items } as any} />;
             case "elements_slide":
-                return (
-                    <ElementsSlide content={{ ...slide.primary, elements: slide.items } as any} />
-                );
+                return <ElementsSlide content={{ ...slide.primary, items: slide.items } as any} />;
             case "quote_slide":
                 return <QuoteSlide content={slide.primary as any} />;
             default:
