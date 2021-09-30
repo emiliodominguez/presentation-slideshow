@@ -12,7 +12,7 @@ $slide-animation-offset: 150px;
     --vertical-padding: 50px;
 
     width: 100%;
-    height: var(--full-vh);
+    height: var(--full-vh, 100vh);
     padding: var(--vertical-padding) 5%;
     background-image: var(--slide-bg-pattern);
     background-size: cover;
@@ -20,9 +20,7 @@ $slide-animation-offset: 150px;
     background-repeat: no-repeat;
     overflow-y: auto;
     overflow-x: hidden;
-    opacity: 0;
-    transform: translateX(calc(#{$slide-animation-offset} * var(--animation-direction)));
-    animation: slide-enter ease-out forwards 500ms;
+    // animation: slide-enter ease-out forwards 500ms;
 
     @media #{$max-width-lg} {
         --vertical-padding: 75px;
@@ -33,14 +31,14 @@ $slide-animation-offset: 150px;
     }
 }
 
-@keyframes slide-enter {
-    from {
-        opacity: 0;
-        transform: translateX(calc(#{$slide-animation-offset} * var(--animation-direction)));
-    }
+// @keyframes slide-enter {
+//     from {
+//         opacity: 0;
+//         transform: translateX(calc(#{$slide-animation-offset} * var(--animation-direction)));
+//     }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+//     to {
+//         opacity: 1;
+//         transform: translateX(0);
+//     }
+// }

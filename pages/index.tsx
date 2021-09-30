@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useEffect } from "react";
 import Head from "next/head";
 import Prismic from "@prismicio/client";
-import { TitleField, RichTextField, SliceZone } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
+import { TitleField, RichTextField, SliceZone } from "@prismicio/types";
 import { client } from "@app/config/prismic";
 import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";

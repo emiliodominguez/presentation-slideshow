@@ -31,7 +31,7 @@
         padding: 15px;
         color: rgb(var(--primary-white));
         font-weight: font-weight(bold);
-        transition: color ease 250ms;
+        transition: color ease 250ms, opacity ease 250ms;
         text-transform: uppercase;
 
         &:focus {
@@ -52,6 +52,7 @@
         }
 
         &:disabled {
+            opacity: .5;
             cursor: default;
 
             svg path {

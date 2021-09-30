@@ -1,5 +1,5 @@
-import { TitleField, RichTextField, NumberField } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
+import { TitleField, RichTextField, NumberField } from "@prismicio/types";
 import BaseSlide, { IBaseSlide } from "..";
 import styles from "./ChapterIntroSlide.module.scss";
 

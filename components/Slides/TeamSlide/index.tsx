@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { TitleField, ImageField, RichTextField } from "@prismicio/types";
 import PrismicDOM from "prismic-dom";
+import { TitleField, ImageField, RichTextField } from "@prismicio/types";
 import BaseSlide, { IBaseSlide } from "..";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./TeamSlide.module.scss";
