@@ -42,6 +42,10 @@
     grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
     grid-gap: 100px 50px;
 
+    @media #{$max-width-xl} {
+        grid-gap: 50px;
+    }
+
     @media #{$max-width-sm} {
         grid-template-columns: 1fr;
     }
