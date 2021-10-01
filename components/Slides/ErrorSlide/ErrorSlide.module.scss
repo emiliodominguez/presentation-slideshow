@@ -1,11 +1,8 @@
-@import "../../../styles/variables/font-weights";
+.content {
+    width: 100%;
+    text-align: center;
 
-.errorSlide {
-    justify-content: center;
-    background-color: rgb(var(--primary-black));
-
-    h3 {
-        font-weight: font-weight(thin);
-        color: rgb(var(--primary-orange));
+    :global(.title) {
+        font-size: 70px;
     }
 }
