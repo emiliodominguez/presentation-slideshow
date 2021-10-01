@@ -17,6 +17,7 @@ import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
 import ElementsSlide from "@app/components/Slides/ElementsSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
+import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -48,19 +49,23 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
 
         if (!slide) return <ErrorSlide />;
 
-        switch (slide.slice_type) {
+        const { slice_type, primary, items } = slide;
+
+        switch (slice_type) {
             case "title_slide":
-                return <IntroductionSlide content={slide.primary as any} />;
+                return <IntroductionSlide content={primary as any} />;
             case "agenda_slide":
-                return <AgendaSlide content={slide.primary as any} />;
+                return <AgendaSlide content={primary as any} />;
             case "chapter_intro_slide":
-                return <ChapterIntroSlide content={slide.primary as any} />;
+                return <ChapterIntroSlide content={primary as any} />;
             case "team_slide":
-                return <TeamSlide content={{ ...slide.primary, team: slide.items } as any} />;
+                return <TeamSlide content={{ ...primary, team: items } as any} />;
             case "elements_slide":
-                return <ElementsSlide content={{ ...slide.primary, items: slide.items } as any} />;
+                return <ElementsSlide content={{ ...primary, elements: items } as any} />;
             case "quote_slide":
-                return <QuoteSlide content={slide.primary as any} />;
+                return <QuoteSlide content={primary as any} />;
+            case "key_figures_slide":
+                return <KeyFiguresSlide content={{ ...primary, keyFigures: items } as any} />;
             default:
                 return <ErrorSlide />;
         }

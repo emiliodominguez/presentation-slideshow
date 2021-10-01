@@ -9,6 +9,7 @@ import { IChapterIntroSlide } from "./ChapterIntroSlide";
 import { ITeamSlide } from "./TeamSlide";
 import { IElementsSlide } from "./ElementsSlide";
 import { IQuoteSlide } from "./QuoteSlide";
+import { IKeyFiguresSlide } from "./KeyFiguresSlide";
 import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
@@ -23,7 +24,8 @@ type SlideContent =
     | IChapterIntroSlide
     | ITeamSlide
     | IElementsSlide
-    | IQuoteSlide;
+    | IQuoteSlide
+    | IKeyFiguresSlide;
 
 interface BaseSlideProps {
     content: SlideContent;
@@ -72,7 +74,7 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
             {...className(styles.slide, props.className)}
             style={{
                 ["--slide-alignment" as string]: hasOverflow ? "flex-start" : "center",
-                ["--slide-bg-pattern" as string]: props.content.slide_bg_pattern.url
+                ["--slide-bg-pattern" as string]: props.content.slide_bg_pattern?.url
                     ? `url(${props.content.slide_bg_pattern.url})`
                     : undefined
             }}

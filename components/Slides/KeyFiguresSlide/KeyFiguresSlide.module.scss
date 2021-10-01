@@ -1,12 +1,10 @@
 @import "../../../styles/variables/media-queries";
 @import "../../../styles/variables/font-weights";
-@import "../../../styles/shared/mixins";
 
 :global(.dark-theme) {
-    .element {
+    .keyFigure {
         h3 {
             color: var(--primary-white);
-            @include separator(var(--primary-white));
         }
 
         .icon {
@@ -25,25 +23,32 @@
     width: 100%;
 }
 
-.elements {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 100px 50px;
+.intro {
+    text-align: center;
 
-    @media #{$max-width-xl} {
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 50px;
+    :global(.title-medium) {
+        margin-bottom: 20px;
     }
 
-    @media #{$max-width-md} {
+    :global(.body-text) {
+        max-width: 800px;
+        margin: 0 auto 85px;
+        font-size: 16px;
+    }
+}
+
+.keyFigures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    grid-gap: 100px 50px;
+
+    @media #{$max-width-sm} {
         grid-template-columns: 1fr;
     }
 }
 
-.element {
-    @media #{$min-width-sm} {
-        max-width: 75%;
-    }
+.keyFigure {
+    text-align: center;
 
     .icon {
         position: relative;
@@ -60,18 +65,22 @@
         }
     }
 
+    :global(.title) {
+        font-weight: font-weight(semi-bold);
+        margin: 0;
+    }
+
     :global(.subtitle) {
         color: var(--primary-black);
-        margin-bottom: 15px;
-        @include separator();
-
-        &::before {
-            margin: 35px 0 15px;
-        }
+        margin-bottom: 25px;
 
         + div {
             font-size: 16px;
             line-height: 1.5;
         }
+    }
+
+    :global(.body-text) {
+        font-size: 16px;
     }
 }

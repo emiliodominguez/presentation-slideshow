@@ -11,7 +11,7 @@ interface Element {
 }
 
 export interface IElementsSlide extends IBaseSlide {
-    items: Element[];
+    elements: Element[];
 }
 
 interface ElementsSlideProps {
@@ -22,24 +22,17 @@ interface ElementsSlideProps {
  * The text slide component
  */
 export default function ElementsSlide(props: ElementsSlideProps): JSX.Element {
-    const iconsSize = Object.freeze({ width: 50, height: 50 });
-
     return (
         <BaseSlide content={props.content}>
             <div className={styles.content}>
                 <section className={styles.elements}>
-                    {props.content.items.length > 0 &&
-                        props.content.items.map(x => (
+                    {props.content.elements.length > 0 &&
+                        props.content.elements.map(x => (
                             <div className={styles.element} key={x.grid_item_title[0].text}>
-                                <div
-                                    className={styles.icon}
-                                    style={{
-                                        ["--icon-width" as string]: `${iconsSize.width}px`,
-                                        ["--icon-height" as string]: `${iconsSize.height}px`
-                                    }}
-                                >
+                                <div className={styles.icon}>
                                     <Image
-                                        {...iconsSize}
+                                        width={50}
+                                        height={50}
                                         objectFit="contain"
                                         src={x.grid_item_thumbnail.url!}
                                         alt={x.grid_item_thumbnail.alt!}
