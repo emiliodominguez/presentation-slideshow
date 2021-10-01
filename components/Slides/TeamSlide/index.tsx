@@ -27,7 +27,7 @@ interface TeamSlideProps {
  */
 export default function TeamSlide(props: TeamSlideProps): JSX.Element {
     /**
-     *
+     * Transforms a rich text field to a plain string
      * @param field
      * @returns
      */

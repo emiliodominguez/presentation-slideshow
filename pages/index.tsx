@@ -107,7 +107,7 @@ export async function getStaticProps() {
 
     try {
         const { results } = await client.query(
-            Prismic.Predicates.at("document.type", "presentation"),
+            Prismic.Predicates.at("document.type", String(process.env.PRISMIC_DOCUMENT_TYPE)),
             { lang: "*" }
         );
 

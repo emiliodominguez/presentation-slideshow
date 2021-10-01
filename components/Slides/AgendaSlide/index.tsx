@@ -17,8 +17,6 @@ interface AgendaSlideProps {
  * The agenda slide component
  */
 export default function AgendaSlide(props: AgendaSlideProps): JSX.Element {
-    const richTextContent = PrismicDOM.RichText.asHtml(props.content.slide_content);
-
     return (
         <BaseSlide content={props.content}>
             <div className={styles.content}>
@@ -26,7 +24,9 @@ export default function AgendaSlide(props: AgendaSlideProps): JSX.Element {
 
                 <div
                     className="body-text-small"
-                    dangerouslySetInnerHTML={{ __html: richTextContent }}
+                    dangerouslySetInnerHTML={{
+                        __html: PrismicDOM.RichText.asHtml(props.content.slide_content)
+                    }}
                 />
             </div>
         </BaseSlide>

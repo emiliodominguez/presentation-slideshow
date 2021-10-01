@@ -17,8 +17,6 @@ interface ChapterIntroSlideProps {
  * The text slide component
  */
 export default function ChapterIntroSlide(props: ChapterIntroSlideProps): JSX.Element {
-    const richTextContent = PrismicDOM.RichText.asHtml(props.content.slide_subtitle);
-
     return (
         <BaseSlide content={props.content}>
             <div className={styles.content}>
@@ -28,7 +26,9 @@ export default function ChapterIntroSlide(props: ChapterIntroSlideProps): JSX.El
 
                 <div
                     className="subtitle-small"
-                    dangerouslySetInnerHTML={{ __html: richTextContent }}
+                    dangerouslySetInnerHTML={{
+                        __html: PrismicDOM.RichText.asHtml(props.content.slide_subtitle)
+                    }}
                 />
 
                 <h2 className="title">{props.content.slide_title[0].text}</h2>

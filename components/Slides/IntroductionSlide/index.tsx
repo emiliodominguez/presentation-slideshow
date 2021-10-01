@@ -19,7 +19,6 @@ interface IntroductionSlideProps {
  */
 export default function IntroductionSlide(props: IntroductionSlideProps): JSX.Element {
     const darkTheme = props.content.dark_theme_enabled;
-    const slideDescription = PrismicDOM.RichText.asHtml(props.content.slide_description);
 
     return (
         <BaseSlide content={props.content}>
@@ -39,7 +38,9 @@ export default function IntroductionSlide(props: IntroductionSlideProps): JSX.El
 
                     <div
                         className="subtitle-small"
-                        dangerouslySetInnerHTML={{ __html: slideDescription }}
+                        dangerouslySetInnerHTML={{
+                            __html: PrismicDOM.RichText.asHtml(props.content.slide_description)
+                        }}
                     />
                 </div>
 
