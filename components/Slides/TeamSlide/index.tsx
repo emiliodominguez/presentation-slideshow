@@ -23,7 +23,7 @@ interface TeamSlideProps {
 }
 
 /**
- * The text slide component
+ * The team slide component
  */
 export default function TeamSlide(props: TeamSlideProps): JSX.Element {
     /**

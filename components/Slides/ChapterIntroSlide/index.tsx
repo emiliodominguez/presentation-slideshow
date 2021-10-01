@@ -14,7 +14,7 @@ interface ChapterIntroSlideProps {
 }
 
 /**
- * The text slide component
+ * The chapter intro slide component
  */
 export default function ChapterIntroSlide(props: ChapterIntroSlideProps): JSX.Element {
     return (

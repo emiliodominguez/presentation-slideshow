@@ -19,7 +19,7 @@ interface ElementsSlideProps {
 }
 
 /**
- * The text slide component
+ * The elements slide component
  */
 export default function ElementsSlide(props: ElementsSlideProps): JSX.Element {
     return (
