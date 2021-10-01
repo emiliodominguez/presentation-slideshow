@@ -1,12 +1,10 @@
 @import "../../../styles/variables/media-queries";
-@import "../../../styles/variables/font-weights";
-@import "../../../styles/shared/mixins";
 
 :global(.dark-theme) {
     .element {
         :global(.subtitle) {
-            color: rgb(var(--primary-white));
-            @include separator(var(--primary-white));
+            color: rgb(var(--primary-black));
+            background-color: rgb(var(--primary-white));
         }
 
         .icon {
@@ -23,29 +21,31 @@
 
 .content {
     width: 100%;
+
+    @media #{$min-width-xxl} {
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
 .elements {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-    grid-gap: 100px 50px;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    grid-gap: 100px;
 
     @media #{$max-width-xl} {
         grid-gap: 50px;
     }
 
-    @media #{$max-width-sm} {
+    @media #{$max-width-md} {
         grid-template-columns: 1fr;
     }
 }
 
 .element {
-    @media #{$min-width-sm} {
-        max-width: 75%;
-    }
-
     .icon {
         position: relative;
+        text-align: center;
 
         &::after {
             content: "";
@@ -60,13 +60,11 @@
     }
 
     :global(.subtitle) {
-        color: rgb(var(--primary-black));
-        margin-bottom: 15px;
-        @include separator();
-
-        &::before {
-            margin: 35px 0 15px;
-        }
+        color: rgb(var(--primary-white));
+        background-color: rgb(var(--primary-black));
+        padding: 25px;
+        margin: 35px auto;
+        text-align: center;
 
         + div {
             font-size: 16px;

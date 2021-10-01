@@ -3,8 +3,8 @@
 
 :global(.dark-theme) {
     .keyFigure {
-        h3 {
-            color: var(--primary-white);
+        :global(.subtitle) {
+            color: rgb(var(--primary-white));
         }
 
         .icon {
@@ -75,7 +75,7 @@
     }
 
     :global(.subtitle) {
-        color: var(--primary-black);
+        color: rgb(var(--primary-black));
         margin-bottom: 25px;
 
         + div {

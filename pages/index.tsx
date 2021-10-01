@@ -16,6 +16,7 @@ import AgendaSlide from "@app/components/Slides/AgendaSlide";
 import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
 import ElementsSlide from "@app/components/Slides/ElementsSlide";
+import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 
@@ -62,6 +63,8 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return <TeamSlide content={{ ...primary, team: items } as any} />;
             case "elements_slide":
                 return <ElementsSlide content={{ ...primary, elements: items } as any} />;
+            case "elements_alt_slide":
+                return <ElementsAltSlide content={{ ...primary, elements: items } as any} />;
             case "quote_slide":
                 return <QuoteSlide content={primary as any} />;
             case "key_figures_slide":
