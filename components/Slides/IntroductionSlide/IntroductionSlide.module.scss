@@ -5,7 +5,7 @@
 :global(.dark-theme) {
     .content .textContainer {
         :global(.title-medium) {
-            @include separator(var(--primary-white));
+            @include separator(rgb(var(--primary-white)));
         }
 
         :global(.subtitle-small) {

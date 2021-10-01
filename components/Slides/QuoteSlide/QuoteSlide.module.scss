@@ -1,6 +1,10 @@
 @import "../../../styles/variables/media-queries";
 
 :global(.dark-theme) {
+    .separator {
+        border-color: rgb(var(--primary-white));
+    }
+
     .leftSide {
         :global(.subtitle-small) {
             color: rgb(var(--primary-white));

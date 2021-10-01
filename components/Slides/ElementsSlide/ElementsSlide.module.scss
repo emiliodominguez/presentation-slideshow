@@ -6,7 +6,7 @@
     .element {
         :global(.subtitle) {
             color: rgb(var(--primary-white));
-            @include separator(var(--primary-white));
+            @include separator(rgb(var(--primary-white)));
         }
 
         .icon {

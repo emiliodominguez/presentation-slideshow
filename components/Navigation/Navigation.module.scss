@@ -18,7 +18,7 @@
 .navigation {
     display: flex;
     max-width: 90vw;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: rgb(var(--primary-black));
     transition: background-color ease 250ms;
     overflow-x: auto;
@@ -52,7 +52,7 @@
         }
 
         &:disabled {
-            opacity: .5;
+            opacity: 0.5;
             cursor: default;
 
             svg path {
