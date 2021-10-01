@@ -1,0 +1,36 @@
+@import "../../../styles/variables/media-queries";
+
+:global(.dark-theme) {
+}
+
+.content {
+    :global(.title-medium) {
+        margin-bottom: 60px;
+    }
+}
+
+.textBlocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    grid-gap: 100px;
+
+    @media #{$max-width-lg} {
+        grid-template-columns: 1fr;
+    }
+
+    @media #{$max-width-md} {
+        grid-gap: 50px;
+    }
+
+    @for $i from 1 through 6 {
+        h#{$i} {
+            margin: 25px 0 5px;
+            text-transform: uppercase;
+        }
+    }
+
+    ol,
+    ul {
+        margin: 10px 0;
+    }
+}

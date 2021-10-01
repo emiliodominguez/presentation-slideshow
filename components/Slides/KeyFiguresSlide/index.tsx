@@ -14,7 +14,7 @@ interface KeyFigure {
 export interface IKeyFiguresSlide extends IBaseSlide {
     slide_title: TitleField;
     slide_subtitle: RichTextField;
-    keyFigures: KeyFigure[];
+    key_figures: KeyFigure[];
 }
 
 interface KeyFiguresSlideProps {
@@ -40,8 +40,8 @@ export default function KeyFiguresSlide(props: KeyFiguresSlideProps): JSX.Elemen
                 </div>
 
                 <section className={styles.keyFigures}>
-                    {props.content.keyFigures.length > 0 &&
-                        props.content.keyFigures.map(x => (
+                    {props.content.key_figures.length > 0 &&
+                        props.content.key_figures.map(x => (
                             <div className={styles.keyFigure} key={x.key_figure_title[0].text}>
                                 <div className={styles.icon}>
                                     <Image

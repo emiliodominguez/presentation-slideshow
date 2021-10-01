@@ -19,6 +19,7 @@ import ElementsSlide from "@app/components/Slides/ElementsSlide";
 import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
+import TextSlide from "@app/components/Slides/TextSlide";
 
 interface IndexPageProps {
     content: Document[];
@@ -68,7 +69,9 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             case "quote_slide":
                 return <QuoteSlide content={primary as any} />;
             case "key_figures_slide":
-                return <KeyFiguresSlide content={{ ...primary, keyFigures: items } as any} />;
+                return <KeyFiguresSlide content={{ ...primary, key_figures: items } as any} />;
+            case "text_slide":
+                return <TextSlide content={{ ...primary, text_blocks: items } as any} />;
             default:
                 return <ErrorSlide />;
         }

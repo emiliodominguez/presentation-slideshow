@@ -9,11 +9,9 @@ $slide-animation-offset: 150px;
 }
 
 .slide {
-    --vertical-padding: 50px;
-
     width: 100%;
     height: var(--full-vh, 100vh);
-    padding: var(--vertical-padding) 5%;
+    padding: 100px 5%;
     background-image: var(--slide-bg-pattern);
     background-size: cover;
     background-position: center;
@@ -24,14 +22,6 @@ $slide-animation-offset: 150px;
 
     display: flex;
     align-items: var(--slide-alignment);
-
-    @media #{$max-width-lg} {
-        --vertical-padding: 75px;
-    }
-
-    @media #{$max-width-sm} {
-        --vertical-padding: 100px;
-    }
 }
 
 // @keyframes slide-enter {

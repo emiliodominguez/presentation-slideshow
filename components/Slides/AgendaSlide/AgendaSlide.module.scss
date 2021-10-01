@@ -15,7 +15,6 @@
 
         ul,
         ol {
-            list-style: none;
             text-transform: uppercase;
             font-weight: font-weight(semi-bold);
 
@@ -23,8 +22,6 @@
                 $counter-size: 18px;
 
                 &::before {
-                    display: inline-block;
-                    color: rgb(var(--primary-orange));
                     width: $counter-size;
                     margin-left: -$counter-size;
                     margin-right: 20px;
@@ -36,24 +33,9 @@
             }
         }
 
-        ul {
-            li {
-                &::before {
-                    content: "•";
-                    color: rgb(var(--primary-orange));
-                }
-            }
-        }
-
-        ol {
-            counter-reset: li;
-
-            li {
-                counter-increment: li;
-
-                &::before {
-                    content: counter(li);
-                }
+        ul li {
+            &::before {
+                content: "•";
             }
         }
     }

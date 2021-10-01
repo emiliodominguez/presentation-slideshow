@@ -28,7 +28,40 @@ body {
 
 ol,
 ul {
-    padding-left: 25px;
+    list-style: none;
+    line-height: 2;
+    padding-left: 10px;
+
+    li {
+        &::before {
+            margin-right: 15px;
+            color: rgb(var(--primary-orange));
+        }
+    }
+}
+
+ol {
+    counter-reset: li;
+
+    li {
+        counter-increment: li;
+
+        &::before {
+            content: counter(li)"."
+        }
+    }
+}
+
+ul {
+    li {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "▶";
+            font-size: 10px;
+        }
+    }
 }
 
 a {

@@ -10,6 +10,7 @@ import { ITeamSlide } from "./TeamSlide";
 import { IElementsSlide } from "./ElementsSlide";
 import { IQuoteSlide } from "./QuoteSlide";
 import { IKeyFiguresSlide } from "./KeyFiguresSlide";
+import { ITextSlide } from "./TextSlide";
 import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
@@ -25,7 +26,8 @@ type SlideContent =
     | ITeamSlide
     | IElementsSlide
     | IQuoteSlide
-    | IKeyFiguresSlide;
+    | IKeyFiguresSlide
+    | ITextSlide;
 
 interface BaseSlideProps {
     content: SlideContent;
