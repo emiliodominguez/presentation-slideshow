@@ -40,18 +40,6 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
     const [hasOverflow, setHasOverflow] = useState<boolean>(false);
 
     /**
-     * Sets the custom properties values if there's any
-     * @returns The custom properties setup
-     */
-    function setBackgroundPattern(): { [key: string]: string } | undefined {
-        if (!props.content.slide_bg_pattern?.url) return undefined;
-
-        return {
-            ["--slide-bg-pattern"]: `url(${props.content.slide_bg_pattern.url})`
-        };
-    }
-
-    /**
      * Checks if the slide is overflowing
      */
     function checkOverflow(): void {
@@ -68,11 +56,9 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
     useEffect(() => {
         checkOverflow();
 
-        if (props.content.dark_theme_enabled) {
-            document.body.classList.add("dark-theme");
-        } else {
-            document.body.classList.remove("dark-theme");
-        }
+        // Sets the dark theme modifier based on the slide configuration
+        const action = props.content.dark_theme_enabled ? "add" : "remove";
+        document.body.classList[action]("dark-theme");
 
         return () => clearTimeout(resizeTimeoutRef.current);
     }, [props.content]);
@@ -85,8 +71,10 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
             ref={slideRef}
             {...className(styles.slide, props.className)}
             style={{
-                ...setBackgroundPattern(),
-                ["--slide-alignment" as string]: hasOverflow ? "flex-start" : "center"
+                ["--slide-alignment" as string]: hasOverflow ? "flex-start" : "center",
+                ["--slide-bg-pattern" as string]: props.content.slide_bg_pattern.url
+                    ? `url(${props.content.slide_bg_pattern.url})`
+                    : undefined
             }}
         >
             {props.children}
