@@ -1,4 +1,5 @@
 @import "../../../styles/variables/media-queries";
+@import "../../../styles/shared/placeholders";
 
 :global(.dark-theme) {
     .element {
@@ -8,13 +9,7 @@
         }
 
         .icon {
-            &::after {
-                mix-blend-mode: multiply;
-            }
-
-            img {
-                filter: brightness(100%) invert(1);
-            }
+            @extend %colored-icon-dark-mod;
         }
     }
 }
@@ -44,19 +39,8 @@
 
 .element {
     .icon {
-        position: relative;
+        @extend %colored-icon-light;
         text-align: center;
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(var(--primary-orange));
-            mix-blend-mode: lighten;
-        }
     }
 
     :global(.subtitle) {

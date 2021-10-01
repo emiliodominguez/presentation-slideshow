@@ -22,6 +22,11 @@ $slide-animation-offset: 150px;
 
     display: flex;
     align-items: var(--slide-alignment);
+
+    @media #{$max-width-md} {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
 }
 
 // @keyframes slide-enter {
