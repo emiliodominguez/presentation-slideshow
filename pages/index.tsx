@@ -2,12 +2,11 @@ import React, { useContext, useRef, useEffect } from "react";
 import Head from "next/head";
 import Prismic from "@prismicio/client";
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, SliceZone } from "@prismicio/types";
 import { client } from "@app/config/prismic";
+import { TitleField, RichTextField, SliceZone } from "@prismicio/types";
 import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";
 import { NavigationContext } from "@app/contexts/navigation";
-import Layout from "@app/components/Layout";
 import LanguageSelector from "@app/components/LanguageSelector";
 import Navigation from "@app/components/Navigation";
 import ErrorSlide from "@app/components/Slides/ErrorSlide";
@@ -21,7 +20,7 @@ import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 import TextSlide from "@app/components/Slides/TextSlide";
 
-interface IndexPageProps {
+export interface IndexPageProps {
     content: Document[];
 }
 
@@ -93,7 +92,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     }, [content.body.length]);
 
     return (
-        <Layout>
+        <>
             <Head>
                 {content.project_title.length > 0 && <title>{content.project_title[0].text}</title>}
 
@@ -106,7 +105,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             {getCurrentSlide()}
             <LanguageSelector />
             <Navigation items={getNavigationItems()} />
-        </Layout>
+        </>
     );
 }
 

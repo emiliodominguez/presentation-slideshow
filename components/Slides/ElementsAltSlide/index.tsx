@@ -14,7 +14,7 @@ export interface IElementsAltSlide extends IBaseSlide {
     elements: Element[];
 }
 
-interface ElementsAltSlideProps {
+export interface ElementsAltSlideProps {
     content: IElementsAltSlide;
 }
 

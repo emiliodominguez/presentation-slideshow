@@ -12,9 +12,9 @@ export enum EdgeBoxPosition {
 }
 
 interface EdgeBoxProps {
-    keyShortcut: (e: KeyboardEvent) => boolean;
     boxPosition: EdgeBoxPosition;
     startHidden?: boolean;
+    keyShortcut?: (e: KeyboardEvent) => boolean;
 }
 
 /**
@@ -28,7 +28,7 @@ export default function EdgeBox(props: PropsWithChildren<EdgeBoxProps>): JSX.Ele
      * @param e - The keyboard event
      */
     function toggleVisibility(e: KeyboardEvent): void {
-        if (props.keyShortcut(e)) {
+        if (props.keyShortcut && props.keyShortcut(e)) {
             e.preventDefault();
             setHidden(prevState => !prevState);
         }

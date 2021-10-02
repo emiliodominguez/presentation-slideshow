@@ -26,7 +26,7 @@
 }
 
 %colored-icon-dark-mod {
-    @supports not (mix-blend-mode: lighten) {
+    @supports not (mix-blend-mode: multiply) {
         img {
             filter: brightness(100%);
         }

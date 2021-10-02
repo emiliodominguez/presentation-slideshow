@@ -12,7 +12,7 @@ export interface ITextSlide extends IBaseSlide {
     text_blocks: TextBlock[];
 }
 
-interface TextSlideProps {
+export interface TextSlideProps {
     content: ITextSlide;
 }
 

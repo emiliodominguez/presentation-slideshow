@@ -17,7 +17,7 @@ export interface IKeyFiguresSlide extends IBaseSlide {
     key_figures: KeyFigure[];
 }
 
-interface KeyFiguresSlideProps {
+export interface KeyFiguresSlideProps {
     content: IKeyFiguresSlide;
 }
 

@@ -10,7 +10,7 @@ export interface IIntroductionSlide extends IBaseSlide {
     slide_description: RichTextField;
 }
 
-interface IntroductionSlideProps {
+export interface IntroductionSlideProps {
     content: IIntroductionSlide;
 }
 

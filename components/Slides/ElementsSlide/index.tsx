@@ -14,7 +14,7 @@ export interface IElementsSlide extends IBaseSlide {
     elements: Element[];
 }
 
-interface ElementsSlideProps {
+export interface ElementsSlideProps {
     content: IElementsSlide;
 }
 

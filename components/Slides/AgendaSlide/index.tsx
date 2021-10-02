@@ -9,7 +9,7 @@ export interface IAgendaSlide extends IBaseSlide {
     slide_content: RichTextField;
 }
 
-interface AgendaSlideProps {
+export interface AgendaSlideProps {
     content: IAgendaSlide;
 }
 

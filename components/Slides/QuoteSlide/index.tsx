@@ -13,7 +13,7 @@ export interface IQuoteSlide extends IBaseSlide {
     slide_phone: RichTextField;
 }
 
-interface QuoteSlideProps {
+export interface QuoteSlideProps {
     content: IQuoteSlide;
 }
 

@@ -9,7 +9,7 @@ export interface IChapterIntroSlide extends IBaseSlide {
     slide_title: TitleField;
 }
 
-interface ChapterIntroSlideProps {
+export interface ChapterIntroSlideProps {
     content: IChapterIntroSlide;
 }
 

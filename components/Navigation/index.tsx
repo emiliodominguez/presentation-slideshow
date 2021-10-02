@@ -7,7 +7,7 @@ import { icons } from "@app/shared/icons";
 import EdgeBox, { EdgeBoxPosition } from "../Shared/EdgeBox";
 import styles from "./Navigation.module.scss";
 
-interface NavigationProps {
+export interface NavigationProps {
     items: string[];
 }
 

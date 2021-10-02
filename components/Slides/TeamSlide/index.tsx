@@ -18,7 +18,7 @@ export interface ITeamSlide extends IBaseSlide {
     team: TeamMember[];
 }
 
-interface TeamSlideProps {
+export interface TeamSlideProps {
     content: ITeamSlide;
 }
 
