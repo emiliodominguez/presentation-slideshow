@@ -3,7 +3,7 @@
 .edgeBox {
     $offset: 15px;
 
-    position: fixed;
+    position: absolute;
     transition: transform ease 500ms;
     z-index: z-index(hideable-box);
 
