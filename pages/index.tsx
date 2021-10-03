@@ -52,6 +52,8 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
 
         const { slice_type, primary, items } = slide;
 
+        console.log({ ...primary, elements: items });
+
         switch (slice_type) {
             case "title_slide":
                 return <IntroductionSlide content={primary as any} />;
