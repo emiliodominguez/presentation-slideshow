@@ -55,7 +55,7 @@ const exampleData = {
     ]
 };
 
-const exampleDataDark = {
+const exampleDataLight = {
     ...exampleData,
     dark_theme_enabled: false,
     slide_thumbnail: {
@@ -68,5 +68,5 @@ export const DarkThemeStory: VFC<QuoteSlideProps> = () => (
 );
 
 export const LightThemeStory: VFC<QuoteSlideProps> = () => (
-    <QuoteSlide content={exampleDataDark as any} />
+    <QuoteSlide content={exampleDataLight as any} />
 );

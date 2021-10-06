@@ -50,12 +50,12 @@ const exampleData = {
     ]
 };
 
-const exampleDataDark = { ...exampleData, dark_theme_enabled: false };
+const exampleDataLight = { ...exampleData, dark_theme_enabled: false };
 
 export const DarkThemeStory: VFC<AgendaSlideProps> = () => (
     <AgendaSlide content={exampleData as any} />
 );
 
 export const LightThemeStory: VFC<AgendaSlideProps> = () => (
-    <AgendaSlide content={exampleDataDark as any} />
+    <AgendaSlide content={exampleDataLight as any} />
 );

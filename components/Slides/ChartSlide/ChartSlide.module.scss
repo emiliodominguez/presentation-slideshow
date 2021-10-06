@@ -1,0 +1,129 @@
+@import "../../../styles/variables/media-queries";
+@import "../../../styles/variables/font-weights";
+
+:global(.dark-theme) {
+    .pieChart .inner,
+    .reference .detail {
+        background-color: rgb(var(--primary-dark-gray));
+    }
+
+    .pieChart .inner {
+        :global(.subtitle) {
+            color: rgb(var(--primary-white));
+        }
+    }
+}
+
+.content {
+    width: 100%;
+}
+
+.pieChart {
+    --chart-size: 500px;
+    --chart-inner-radius: 1.5;
+
+    position: relative;
+    width: var(--chart-size);
+    height: var(--chart-size);
+    margin: 0 auto;
+
+    @media #{$max-width-md} {
+        --chart-size: 80vw;
+    }
+
+    &,
+    .inner {
+        border-radius: 50%;
+    }
+
+    .inner {
+        $inner-size: calc(var(--chart-size) / var(--chart-inner-radius));
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $inner-size;
+        height: $inner-size;
+        background-color: rgb(var(--primary-white));
+        box-shadow: 0 5px 7px rgba(#000, 0.2), 0 5px 7px rgba(#000, 0.25);
+        transform: translate(-50%, -50%);
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        :global(.subtitle),
+        > div {
+            max-width: $inner-size;
+        }
+
+        :global(.subtitle) {
+            color: rgb(var(--primary-dark-gray));
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.pieChartReference {
+    margin-top: 50px;
+
+    @media #{$max-width-md} {
+        flex-direction: column;
+    }
+
+    &,
+    .reference {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reference {
+        position: relative;
+        cursor: default;
+
+        + .reference {
+            margin-left: 50px;
+
+            @media #{$max-width-md} {
+                margin-left: 0;
+                margin-top: 25px;
+            }
+        }
+
+        &:hover {
+            .detail {
+                display: block;
+            }
+        }
+    }
+
+    .color {
+        $color-size: 8px;
+
+        width: $color-size;
+        height: $color-size;
+        margin-right: 5px;
+    }
+
+    .label {
+        text-transform: uppercase;
+        font-weight: font-weight(semi-bold);
+    }
+
+    .detail {
+        display: none;
+        min-width: 200px;
+        position: absolute;
+        bottom: calc(100% + 15px);
+        left: 50%;
+        background-color: rgb(var(--primary-white));
+        padding: 5px 10px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 3px 5px rgba(#000, 0.15), 0 3px 5px rgba(#000, 0.2);
+        transform: translateX(-50%);
+    }
+}

@@ -12,8 +12,8 @@ export default {
     }
 } as Meta;
 
-const exampleData = {
-    dark_theme_enabled: true,
+const exampleData = (dark: boolean) => ({
+    dark_theme_enabled: dark,
     slide_navigation_id: [
         {
             type: "heading4",
@@ -29,7 +29,7 @@ const exampleData = {
     team: [
         {
             team_member_thumbnail: {
-                url: "/assets/logos/isologo_white.png"
+                url: `/assets/logos/isologo_${dark ? "white" : "black"}.png`
             },
             team_member_name: [
                 {
@@ -58,7 +58,7 @@ const exampleData = {
         },
         {
             team_member_thumbnail: {
-                url: "/assets/logos/isologo_white.png"
+                url: `/assets/logos/isologo_${dark ? "white" : "black"}.png`
             },
             team_member_name: [
                 {
@@ -87,7 +87,7 @@ const exampleData = {
         },
         {
             team_member_thumbnail: {
-                url: "/assets/logos/isologo_white.png"
+                url: `/assets/logos/isologo_${dark ? "white" : "black"}.png`
             },
             team_member_name: [
                 {
@@ -116,7 +116,7 @@ const exampleData = {
         },
         {
             team_member_thumbnail: {
-                url: "/assets/logos/isologo_white.png"
+                url: `/assets/logos/isologo_${dark ? "white" : "black"}.png`
             },
             team_member_name: [
                 {
@@ -145,7 +145,7 @@ const exampleData = {
         },
         {
             team_member_thumbnail: {
-                url: "/assets/logos/isologo_white.png"
+                url: `/assets/logos/isologo_${dark ? "white" : "black"}.png`
             },
             team_member_name: [
                 {
@@ -174,7 +174,7 @@ const exampleData = {
         },
         {
             team_member_thumbnail: {
-                url: "/assets/logos/isologo_white.png"
+                url: `/assets/logos/isologo_${dark ? "white" : "black"}.png`
             },
             team_member_name: [
                 {
@@ -202,12 +202,12 @@ const exampleData = {
             ]
         }
     ]
-};
+});
 
-const exampleDataDark = { ...exampleData, dark_theme_enabled: false };
-
-export const DarkThemeStory: VFC<TeamSlideProps> = () => <TeamSlide content={exampleData as any} />;
+export const DarkThemeStory: VFC<TeamSlideProps> = () => (
+    <TeamSlide content={exampleData(true) as any} />
+);
 
 export const LightThemeStory: VFC<TeamSlideProps> = () => (
-    <TeamSlide content={exampleDataDark as any} />
+    <TeamSlide content={exampleData(false) as any} />
 );

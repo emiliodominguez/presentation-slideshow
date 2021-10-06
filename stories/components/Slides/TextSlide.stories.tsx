@@ -129,10 +129,10 @@ const exampleData = {
     ]
 };
 
-const exampleDataDark = { ...exampleData, dark_theme_enabled: false };
+const exampleDataLight = { ...exampleData, dark_theme_enabled: false };
 
 export const DarkThemeStory: VFC<TextSlideProps> = () => <TextSlide content={exampleData as any} />;
 
 export const LightThemeStory: VFC<TextSlideProps> = () => (
-    <TextSlide content={exampleDataDark as any} />
+    <TextSlide content={exampleDataLight as any} />
 );

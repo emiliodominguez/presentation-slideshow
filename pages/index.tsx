@@ -19,6 +19,7 @@ import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 import TextSlide from "@app/components/Slides/TextSlide";
+import ChartSlide from "@app/components/Slides/ChartSlide";
 
 export interface IndexPageProps {
     content: Document[];
@@ -52,8 +53,6 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
 
         const { slice_type, primary, items } = slide;
 
-        console.log({ ...primary, elements: items });
-
         switch (slice_type) {
             case "title_slide":
                 return <IntroductionSlide content={primary as any} />;
@@ -73,6 +72,8 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return <KeyFiguresSlide content={{ ...primary, key_figures: items } as any} />;
             case "text_slide":
                 return <TextSlide content={{ ...primary, text_blocks: items } as any} />;
+            case "chart_slide":
+                return <ChartSlide content={{ ...primary, chart_items: items } as any} />;
             default:
                 return <ErrorSlide />;
         }

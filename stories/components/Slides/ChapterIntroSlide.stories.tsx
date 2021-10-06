@@ -37,12 +37,12 @@ const exampleData = {
     ]
 };
 
-const exampleDataDark = { ...exampleData, dark_theme_enabled: false };
+const exampleDataLight = { ...exampleData, dark_theme_enabled: false };
 
 export const DarkThemeStory: VFC<ChapterIntroSlideProps> = () => (
     <ChapterIntroSlide content={exampleData as any} />
 );
 
 export const LightThemeStory: VFC<ChapterIntroSlideProps> = () => (
-    <ChapterIntroSlide content={exampleDataDark as any} />
+    <ChapterIntroSlide content={exampleDataLight as any} />
 );

@@ -39,7 +39,7 @@ const exampleData = {
     ]
 };
 
-const exampleDataDark = {
+const exampleDataLight = {
     ...exampleData,
     dark_theme_enabled: false,
     slide_logo: {
@@ -52,5 +52,5 @@ export const DarkThemeStory: VFC<IntroductionSlideProps> = () => (
 );
 
 export const LightThemeStory: VFC<IntroductionSlideProps> = () => (
-    <IntroductionSlide content={exampleDataDark as any} />
+    <IntroductionSlide content={exampleDataLight as any} />
 );
