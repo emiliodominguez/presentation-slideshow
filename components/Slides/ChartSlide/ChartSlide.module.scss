@@ -1,5 +1,6 @@
 @import "../../../styles/variables/media-queries";
 @import "../../../styles/variables/font-weights";
+@import "../../../styles/shared/animations";
 
 :global(.dark-theme) {
     .pieChart .inner,
@@ -125,5 +126,6 @@
         text-align: center;
         box-shadow: 0 3px 5px rgba(#000, 0.15), 0 3px 5px rgba(#000, 0.2);
         transform: translateX(-50%);
+        @include reveal();
     }
 }
