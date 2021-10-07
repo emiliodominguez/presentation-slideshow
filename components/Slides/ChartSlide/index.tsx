@@ -22,7 +22,7 @@ export interface ChartSlideProps {
 }
 
 /**
- * The text slide component
+ * The chart slide component
  */
 export default function ChartSlide(props: ChartSlideProps): JSX.Element {
     /**
