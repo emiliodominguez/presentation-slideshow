@@ -72,6 +72,7 @@ export default function ChartSlide(props: ChartSlideProps): JSX.Element {
                             />
 
                             <span className={styles.label}>{x.item_label[0].text}</span>
+                            <span className={styles.percentage}>{x.item_percentage}%</span>
 
                             {x.item_description.length > 0 && (
                                 <span
