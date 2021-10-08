@@ -17,7 +17,7 @@ import styles from "./BaseSlide.module.scss";
 export interface IBaseSlide {
     dark_theme_enabled: BooleanField;
     slide_navigation_id: TitleField;
-    slide_bg_pattern: ImageField;
+    slide_bg_pattern?: ImageField;
 }
 
 type SlideContent =

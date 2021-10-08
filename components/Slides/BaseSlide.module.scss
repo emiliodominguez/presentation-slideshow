@@ -9,8 +9,11 @@ $slide-animation-offset: 150px;
 }
 
 .slide {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: var(--full-vh, 100vh);
+    min-height: var(--full-vh, 100vh);
     padding: 100px 5%;
     background-image: var(--slide-bg-pattern);
     background-size: cover;
@@ -18,7 +21,7 @@ $slide-animation-offset: 150px;
     background-repeat: no-repeat;
     overflow-y: auto;
     overflow-x: hidden;
-    // animation: slide-enter ease-out forwards 500ms;
+    animation: slide-enter ease-out forwards 500ms;
 
     display: flex;
     align-items: var(--slide-alignment);
@@ -29,14 +32,14 @@ $slide-animation-offset: 150px;
     }
 }
 
-// @keyframes slide-enter {
-//     from {
-//         opacity: 0;
-//         transform: translateX(calc(#{$slide-animation-offset} * var(--animation-direction)));
-//     }
+@keyframes slide-enter {
+    from {
+        opacity: 0;
+        transform: translateX(calc(#{$slide-animation-offset} * var(--animation-direction)));
+    }
 
-//     to {
-//         opacity: 1;
-//         transform: translateX(0);
-//     }
-// }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

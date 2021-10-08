@@ -1,4 +1,4 @@
-import { slugify, capitalize } from "@app/shared/helpers/strings";
+import { slugify, capitalize, camelCase } from "@app/shared/helpers/strings";
 
 describe("slugify", () => {
     test("should return a slug like string", () => {
@@ -23,5 +23,18 @@ describe("capitalize", () => {
 
         // Then
         expect(result).toEqual("Test sentence");
+    });
+});
+
+describe("camelCase", () => {
+    test("should return a camel cased string", () => {
+        // Given
+        const sentence = "test sentence";
+
+        // When
+        const result = camelCase(sentence);
+
+        // Then
+        expect(result).toEqual("testSentence");
     });
 });

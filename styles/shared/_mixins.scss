@@ -1,6 +1,6 @@
 @import "../variables/media-queries";
 
-@mixin custom-scrollbar($bg-color: #eee, $thumb-color: #999, $size: 8px) {
+@mixin custom-scrollbar($size: 8px, $bg-color: #eee, $thumb-color: #999) {
     // @media #{$min-width-md} {
     &::-webkit-scrollbar {
         width: $size;
