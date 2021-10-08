@@ -19,6 +19,7 @@ $slide-animation-offset: 150px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: rgb(var(--primary-white));
     overflow-y: auto;
     overflow-x: hidden;
     animation: slide-enter ease-out forwards 500ms;

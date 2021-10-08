@@ -3,13 +3,13 @@
 
     @supports not (mix-blend-mode: lighten) {
         img {
-            filter: brightness(100%) invert(1);
+            filter: grayscale(1) brightness(100%) invert(1);
         }
     }
 
     @supports (mix-blend-mode: lighten) {
         img {
-            filter: brightness(100%);
+            filter: grayscale(1) brightness(100%);
         }
 
         &::after {
@@ -28,13 +28,13 @@
 %colored-icon-dark-mod {
     @supports not (mix-blend-mode: multiply) {
         img {
-            filter: brightness(100%);
+            filter: grayscale(1) brightness(100%);
         }
     }
 
     @supports (mix-blend-mode: multiply) {
         img {
-            filter: brightness(100%) invert(1);
+            filter: grayscale(1) brightness(100%) invert(1);
         }
 
         &::after {
