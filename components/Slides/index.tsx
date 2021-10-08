@@ -12,6 +12,7 @@ import { IQuoteSlide } from "./QuoteSlide";
 import { IKeyFiguresSlide } from "./KeyFiguresSlide";
 import { ITextSlide } from "./TextSlide";
 import { IChartSlide } from "./ChartSlide";
+import { IMapSlide } from "./MapSlide";
 import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
@@ -29,7 +30,8 @@ type SlideContent =
     | IQuoteSlide
     | IKeyFiguresSlide
     | ITextSlide
-    | IChartSlide;
+    | IChartSlide
+    | IMapSlide;
 
 interface BaseSlideProps {
     content: SlideContent;
