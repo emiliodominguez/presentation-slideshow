@@ -14,6 +14,7 @@ $slide-animation-offset: 150px;
     left: 0;
     width: 100%;
     min-height: var(--full-vh, 100vh);
+    max-height: var(--full-vh, 100vh);
     padding: 100px 5%;
     background-image: var(--slide-bg-pattern);
     background-size: cover;

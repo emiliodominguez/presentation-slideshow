@@ -38,9 +38,10 @@
 }
 
 .element {
+    text-align: center;
+
     .icon {
         @extend %colored-icon-light;
-        text-align: center;
     }
 
     :global(.subtitle) {
@@ -53,6 +54,7 @@
         + div {
             font-size: 16px;
             line-height: 1.5;
+            text-align: left;
         }
     }
 }

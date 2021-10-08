@@ -2,13 +2,18 @@
 @import "../../../styles/variables/font-weights";
 @import "../../../styles/shared/mixins";
 
+$detail-content-blur: blur(10px);
+
 :global(.dark-theme) {
     .locationDetail {
         .detailContent {
-            background-color: rgba(var(--primary-dark-gray), 0.25);
+            @supports not (backdrop-filter: $detail-content-blur) {
+                background-color: rgba(var(--primary-dark-gray));
+            }
 
-            @media #{$max-width-md} {
-                background-color: rgba(var(--primary-dark-gray), 0.5);
+            @supports (backdrop-filter: $detail-content-blur) {
+                background-color: rgba(var(--primary-dark-gray), 0.25);
+                backdrop-filter: $detail-content-blur;
             }
 
             @include custom-scrollbar(
@@ -26,6 +31,7 @@
 
 .mapSlide {
     padding: 0;
+    overflow: hidden;
 
     :global(.mapboxgl-canvas-container) {
         height: 100vh;
@@ -123,9 +129,11 @@
 }
 
 .locationDetail {
+    $border-radius: 10px;
+
     max-width: 400px;
     height: 550px;
-    border-radius: 10px;
+    border-radius: $border-radius;
     text-align: right;
     overflow: hidden;
 
@@ -142,6 +150,7 @@
     .detailHeader {
         position: relative;
         height: 35%;
+        border-radius: $border-radius $border-radius 0 0;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -157,13 +166,20 @@
         height: 65%;
         padding: 20px;
         overflow-y: auto;
-        background-color: rgba(var(--primary-white), 0.25);
-        backdrop-filter: blur(10px);
+        border-radius: 0 0 $border-radius $border-radius;
         @include custom-scrollbar(5px, rgb(var(--primary-white)), rgb(var(--primary-orange)));
+
+        @supports not (backdrop-filter: $detail-content-blur) {
+            background-color: rgba(var(--primary-white));
+        }
+
+        @supports (backdrop-filter: $detail-content-blur) {
+            background-color: rgba(var(--primary-white), 0.25);
+            backdrop-filter: $detail-content-blur;
+        }
 
         @media #{$max-width-md} {
             height: 70%;
-            background-color: rgba(var(--primary-white), 0.5);
         }
 
         h3 {
