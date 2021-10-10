@@ -1,0 +1,789 @@
+{
+    "Global configuration": {
+        "project_title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1",
+                "label": "Project title",
+                "placeholder": "Add a title for the project"
+            }
+        },
+        "project_client": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading3",
+                "label": "Project client",
+                "placeholder": "Add the name of the client"
+            }
+        },
+        "project_description": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph,strong,em",
+                "label": "Project description",
+                "placeholder": "Add a project description"
+            }
+        }
+    },
+    "Slides": {
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {},
+                "choices": {
+                    "title_slide": {
+                        "type": "Slice",
+                        "fieldset": "Title slide",
+                        "description": "A presentation introduction slide",
+                        "icon": "subtitles",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_logo": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Slide logo"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide description",
+                                    "placeholder": "Add the description"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "agenda_slide": {
+                        "type": "Slice",
+                        "fieldset": "Agenda slide",
+                        "description": "A slide with a list of things",
+                        "icon": "format_list_numbered",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide content",
+                                    "placeholder": "Add the content"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "chapter_intro_slide": {
+                        "type": "Slice",
+                        "fieldset": "Chapter intro slide",
+                        "description": "A slide with the capther's title and description",
+                        "icon": "book",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_chapter_number": {
+                                "type": "Number",
+                                "config": {
+                                    "label": "Slide chapter number",
+                                    "placeholder": "Add the chapter number"
+                                }
+                            },
+                            "slide_subtitle": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide subtitle",
+                                    "placeholder": "Add the slide subtitle"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "team_slide": {
+                        "type": "Slice",
+                        "fieldset": "Team slide",
+                        "description": "A slide with team membes and their information",
+                        "icon": "person",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "team_member_thumbnail": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Team member's thumbnail"
+                                }
+                            },
+                            "team_member_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3",
+                                    "label": "Team member name",
+                                    "placeholder": "Set the team member's name"
+                                }
+                            },
+                            "team_member_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph",
+                                    "label": "Team member title",
+                                    "placeholder": "Set the team member's title"
+                                }
+                            },
+                            "team_member_email": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph",
+                                    "label": "Team member email",
+                                    "placeholder": "Set the team member's email address"
+                                }
+                            },
+                            "team_member_phone": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph",
+                                    "label": "Team member phone",
+                                    "placeholder": "Set the team member's phone number"
+                                }
+                            }
+                        }
+                    },
+                    "elements_slide": {
+                        "type": "Slice",
+                        "fieldset": "Elements slide",
+                        "description": "A slide with a grid of elements",
+                        "icon": "view_list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "grid_item_thumbnail": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Grid item icon"
+                                }
+                            },
+                            "grid_item_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3",
+                                    "label": "Grid item title",
+                                    "placeholder": "Set the team grid item's title"
+                                }
+                            },
+                            "grid_item_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                                    "label": "Grid item content",
+                                    "placeholder": "Set the team grid item's content"
+                                }
+                            }
+                        }
+                    },
+                    "elements_alt_slide": {
+                        "type": "Slice",
+                        "fieldset": "Elements alternative slide",
+                        "description": "A slide with a grid of elements",
+                        "icon": "view_list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "grid_item_thumbnail": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Grid item icon"
+                                }
+                            },
+                            "grid_item_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3",
+                                    "label": "Grid item title",
+                                    "placeholder": "Set the team grid item's title"
+                                }
+                            },
+                            "grid_item_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                                    "label": "Grid item content",
+                                    "placeholder": "Set the team grid item's content"
+                                }
+                            }
+                        }
+                    },
+                    "quote_slide": {
+                        "type": "Slice",
+                        "fieldset": "Quote slide",
+                        "description": "A slide with a quote and its author",
+                        "icon": "format_quote",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            },
+                            "slide_thumbnail": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Author's thumbnail"
+                                }
+                            },
+                            "slide_quote": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph,strong,em",
+                                    "label": "Quote content",
+                                    "placeholder": "Set the team grid item's content"
+                                }
+                            },
+                            "slide_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3",
+                                    "label": "Author name",
+                                    "placeholder": "Set the author's name"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph",
+                                    "label": "Author title",
+                                    "placeholder": "Set the author's title"
+                                }
+                            },
+                            "slide_email": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph",
+                                    "label": "Author email",
+                                    "placeholder": "Set the author's email address"
+                                }
+                            },
+                            "slide_phone": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph",
+                                    "label": "Author phone",
+                                    "placeholder": "Set the author's phone number"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "key_figures_slide": {
+                        "type": "Slice",
+                        "fieldset": "Key figures slide",
+                        "description": "A slide with a grid of key figures",
+                        "icon": "vpn_key",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_subtitle": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide subtitle",
+                                    "placeholder": "Add the slide subtitle"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "key_figure_icon": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Key figure icon"
+                                }
+                            },
+                            "key_figure_value": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Key figure value",
+                                    "placeholder": "Set the key figure value"
+                                }
+                            },
+                            "key_figure_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3",
+                                    "label": "Key figure title",
+                                    "placeholder": "Set the key figure title"
+                                }
+                            },
+                            "key_figure_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                                    "label": "Key figure content",
+                                    "placeholder": "Set the Key figure content"
+                                }
+                            }
+                        }
+                    },
+                    "text_slide": {
+                        "type": "Slice",
+                        "fieldset": "Text slide",
+                        "description": "A rich text slide",
+                        "icon": "format_color_text",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "slide_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,heading3,heading4,heading5,strong,em,hyperlink,list-item,o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide content",
+                                    "placeholder": "Add the content"
+                                }
+                            }
+                        }
+                    },
+                    "chart_slide": {
+                        "type": "Slice",
+                        "fieldset": "Chart slide",
+                        "description": "A simple chart slide",
+                        "icon": "pie_chart",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Set the title"
+                                }
+                            },
+                            "slide_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide content",
+                                    "placeholder": "Set the description"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "item_label": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading6",
+                                    "label": "Item label",
+                                    "placeholder": "Set the item label"
+                                }
+                            },
+                            "item_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "allowTargetBlank": true,
+                                    "label": "Item description",
+                                    "placeholder": "Set the item description"
+                                }
+                            },
+                            "item_percentage": {
+                                "type": "Number",
+                                "config": {
+                                    "label": "Item percentage",
+                                    "placeholder": "Set the item chart percentage"
+                                }
+                            },
+                            "item_color": {
+                                "type": "Color",
+                                "config": {
+                                    "label": "Item color"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
