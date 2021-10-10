@@ -20,7 +20,6 @@ import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 import TextSlide from "@app/components/Slides/TextSlide";
 import ChartSlide from "@app/components/Slides/ChartSlide";
-import MapSlide from "@app/components/Slides/MapSlide";
 
 export interface IndexPageProps {
     content: Document[];
@@ -75,8 +74,6 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return <TextSlide content={{ ...primary, text_blocks: items } as any} />;
             case "chart_slide":
                 return <ChartSlide content={{ ...primary, chart_items: items } as any} />;
-            case "map_slide":
-                return <MapSlide content={{ ...primary, locations: items } as any} />;
             default:
                 return <ErrorSlide />;
         }
