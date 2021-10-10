@@ -16,8 +16,11 @@ import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
     dark_theme_enabled: BooleanField;
+    chapter_name: TitleField;
     slide_navigation_id: TitleField;
     slide_bg_pattern?: ImageField;
+    client?: string;
+    presentation_title?: string;
 }
 
 type SlideContent =
@@ -83,6 +86,18 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
                     : undefined
             }}
         >
+            <div className={styles.breadcrumbs}>
+                {props.content.client && <span>{props.content.client}</span>}
+
+                {props.content.presentation_title && (
+                    <span className={styles.title}>{props.content.presentation_title}</span>
+                )}
+
+                {props.content.chapter_name.length > 0 && (
+                    <span className={styles.chapter}>{props.content.chapter_name[0].text}</span>
+                )}
+            </div>
+
             {props.children}
         </div>
     );

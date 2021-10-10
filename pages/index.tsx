@@ -26,6 +26,7 @@ export interface IndexPageProps {
 }
 
 interface PresentationContent {
+    project_client?: TitleField;
     project_title: TitleField;
     project_description: RichTextField;
     body: SliceZone;
@@ -38,10 +39,10 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     const { locale } = useContext(LocalizationContext);
     const { currentIndex, setCount } = useContext(NavigationContext);
     const setCountRef = useRef<(x: number) => void>(setCount);
-    const localeContent = props.content?.find(x => x.lang === locale);
-    const content: PresentationContent = localeContent
-        ? localeContent.data
-        : { project_title: [], project_description: [], body: [] };
+    const localizedContent = props.content?.find(x => x.lang === locale);
+    const content: PresentationContent = localizedContent
+        ? localizedContent.data
+        : { project_client: [], project_title: [], project_description: [], body: [] };
 
     /**
      * Gets the current slide by it's type
@@ -52,28 +53,35 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
         if (!slide) return <ErrorSlide />;
 
         const { slice_type, primary, items } = slide;
+        const client = content.project_client;
+        const title = content.project_title;
+        const slideContent = {
+            ...primary,
+            client: client && client.length > 0 ? client[0].text : null,
+            presentation_title: title && title.length > 0 ? title[0].text : null
+        } as any;
 
         switch (slice_type) {
             case "title_slide":
-                return <IntroductionSlide content={primary as any} />;
+                return <IntroductionSlide content={slideContent} />;
             case "agenda_slide":
-                return <AgendaSlide content={primary as any} />;
+                return <AgendaSlide content={slideContent} />;
             case "chapter_intro_slide":
-                return <ChapterIntroSlide content={primary as any} />;
+                return <ChapterIntroSlide content={slideContent} />;
             case "team_slide":
-                return <TeamSlide content={{ ...primary, team: items } as any} />;
+                return <TeamSlide content={{ ...slideContent, team: items }} />;
             case "elements_slide":
-                return <ElementsSlide content={{ ...primary, elements: items } as any} />;
+                return <ElementsSlide content={{ ...slideContent, elements: items }} />;
             case "elements_alt_slide":
-                return <ElementsAltSlide content={{ ...primary, elements: items } as any} />;
+                return <ElementsAltSlide content={{ ...slideContent, elements: items }} />;
             case "quote_slide":
-                return <QuoteSlide content={primary as any} />;
+                return <QuoteSlide content={slideContent} />;
             case "key_figures_slide":
-                return <KeyFiguresSlide content={{ ...primary, key_figures: items } as any} />;
+                return <KeyFiguresSlide content={{ ...slideContent, key_figures: items }} />;
             case "text_slide":
-                return <TextSlide content={{ ...primary, text_blocks: items } as any} />;
+                return <TextSlide content={{ ...slideContent, text_blocks: items }} />;
             case "chart_slide":
-                return <ChartSlide content={{ ...primary, chart_items: items } as any} />;
+                return <ChartSlide content={{ ...slideContent, chart_items: items }} />;
             default:
                 return <ErrorSlide />;
         }
