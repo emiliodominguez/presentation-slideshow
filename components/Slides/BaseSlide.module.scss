@@ -1,5 +1,6 @@
 @import "../../styles/variables/media-queries";
 @import "../../styles/variables/font-weights";
+@import "../../styles/variables/z-index";
 
 $slide-animation-offset: 150px;
 
@@ -34,53 +35,54 @@ $slide-animation-offset: 150px;
     @media #{$max-width-md} {
         --horizontal-padding: 25px;
     }
-}
 
-.breadcrumbs {
-    position: fixed;
-    top: 0;
-    left: var(--horizontal-padding);
-    padding-top: 20px;
-    font-size: 14px;
-
-    &::before {
-        content: "";
-        position: absolute;
+    > .breadcrumbs {
+        position: fixed;
         top: 0;
-        left: 0;
-        width: 35px;
-        height: 4px;
-        background-color: rgb(var(--primary-orange));
-    }
+        left: var(--horizontal-padding);
+        padding-top: 20px;
+        font-size: 14px;
+        z-index: z-index(important);
 
-    $span-separation: 10px;
-
-    &,
-    .chapter::before {
-        color: rgb(var(--secondary-medium-gray));
-    }
-
-    span {
-        &:first-child,
-        &.chapter {
-            font-weight: font-weight(semi-bold);
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 35px;
+            height: 4px;
+            background-color: rgb(var(--primary-orange));
         }
 
-        + span {
-            margin-left: $span-separation;
+        $span-separation: 10px;
+
+        &,
+        .chapter::before {
+            color: rgb(var(--secondary-medium-gray));
         }
-    }
 
-    .chapter {
-        color: rgb(var(--primary-orange));
-    }
+        span {
+            &:first-child,
+            &.chapter {
+                font-weight: font-weight(semi-bold);
+            }
 
-    .title {
-        + .chapter {
-            &::before {
-                content: " - ";
-                display: inline-block;
-                margin-right: $span-separation;
+            + span {
+                margin-left: $span-separation;
+            }
+        }
+
+        .chapter {
+            color: rgb(var(--primary-orange));
+        }
+
+        .title {
+            + .chapter {
+                &::before {
+                    content: " - ";
+                    display: inline-block;
+                    margin-right: $span-separation;
+                }
             }
         }
     }
