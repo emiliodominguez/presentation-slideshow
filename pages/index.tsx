@@ -40,7 +40,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     const { currentIndex, setCount } = useContext(NavigationContext);
     const setCountRef = useRef<(x: number) => void>(setCount);
     const localizedContent = props.content?.find(x => x.lang === locale);
-    const content: PresentationContent = localizedContent
+    const presentationContent: PresentationContent = localizedContent
         ? localizedContent.data
         : { project_client: [], project_title: [], project_description: [], body: [] };
 
@@ -48,14 +48,14 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
      * Gets the current slide by it's type
      */
     function getCurrentSlide(): JSX.Element {
-        const slide = content.body[currentIndex];
+        const slide = presentationContent.body[currentIndex];
 
         if (!slide) return <ErrorSlide />;
 
         const { slice_type, primary, items } = slide;
-        const client = content.project_client;
-        const title = content.project_title;
-        const slideContent = {
+        const client = presentationContent.project_client;
+        const title = presentationContent.project_title;
+        const content = {
             ...primary,
             client: client && client.length > 0 ? client[0].text : null,
             presentation_title: title && title.length > 0 ? title[0].text : null
@@ -63,25 +63,25 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
 
         switch (slice_type) {
             case "title_slide":
-                return <IntroductionSlide content={slideContent} />;
+                return <IntroductionSlide content={content} />;
             case "agenda_slide":
-                return <AgendaSlide content={slideContent} />;
+                return <AgendaSlide content={content} />;
             case "chapter_intro_slide":
-                return <ChapterIntroSlide content={slideContent} />;
+                return <ChapterIntroSlide content={content} />;
             case "team_slide":
-                return <TeamSlide content={{ ...slideContent, team: items }} />;
+                return <TeamSlide content={{ ...content, team: items }} />;
             case "elements_slide":
-                return <ElementsSlide content={{ ...slideContent, elements: items }} />;
+                return <ElementsSlide content={{ ...content, elements: items }} />;
             case "elements_alt_slide":
-                return <ElementsAltSlide content={{ ...slideContent, elements: items }} />;
+                return <ElementsAltSlide content={{ ...content, elements: items }} />;
             case "quote_slide":
-                return <QuoteSlide content={slideContent} />;
+                return <QuoteSlide content={content} />;
             case "key_figures_slide":
-                return <KeyFiguresSlide content={{ ...slideContent, key_figures: items }} />;
+                return <KeyFiguresSlide content={{ ...content, key_figures: items }} />;
             case "text_slide":
-                return <TextSlide content={{ ...slideContent, text_blocks: items }} />;
+                return <TextSlide content={{ ...content, text_blocks: items }} />;
             case "chart_slide":
-                return <ChartSlide content={{ ...slideContent, chart_items: items }} />;
+                return <ChartSlide content={{ ...content, chart_items: items }} />;
             default:
                 return <ErrorSlide />;
         }
@@ -91,7 +91,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
      * Gets the navigation items labels
      */
     function getNavigationItems(): any[] {
-        return content.body.map((x, i) =>
+        return presentationContent.body.map((x, i) =>
             x.primary.slide_navigation_id
                 ? (x.primary.slide_navigation_id as TitleField)[0].text
                 : `Slide ${i + 1}`
@@ -99,17 +99,20 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     }
 
     useEffect(() => {
-        if (content.body.length > 0) setCountRef.current(content.body.length);
-    }, [content.body.length]);
+        if (presentationContent.body.length > 0)
+            setCountRef.current(presentationContent.body.length);
+    }, [presentationContent.body.length]);
 
     return (
         <>
             <Head>
-                {content.project_title.length > 0 && <title>{content.project_title[0].text}</title>}
+                {presentationContent.project_title.length > 0 && (
+                    <title>{presentationContent.project_title[0].text}</title>
+                )}
 
                 <meta
                     name="description"
-                    content={PrismicDOM.RichText.asText(content.project_description)}
+                    content={PrismicDOM.RichText.asText(presentationContent.project_description)}
                 />
             </Head>
 
