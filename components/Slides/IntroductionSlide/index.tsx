@@ -28,8 +28,11 @@ export default function IntroductionSlide(props: IntroductionSlideProps): JSX.El
                         width={275}
                         height={150}
                         objectFit="contain"
-                        src={props.content.slide_logo.url!}
-                        alt={props.content.slide_logo.alt!}
+                        alt={props.content.slide_logo.alt ?? ""}
+                        src={
+                            props.content.slide_logo.url ??
+                            `/assets/logos/logo_${darkTheme ? "dark" : "light"}.png`
+                        }
                     />
                 </div>
 
