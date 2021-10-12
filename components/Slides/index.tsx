@@ -12,6 +12,7 @@ import { IQuoteSlide } from "./QuoteSlide";
 import { IKeyFiguresSlide } from "./KeyFiguresSlide";
 import { ITextSlide } from "./TextSlide";
 import { IChartSlide } from "./ChartSlide";
+import Breadcrumbs from "../Shared/Breadcrumbs";
 import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
@@ -86,17 +87,15 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
                     : undefined
             }}
         >
-            <div className={styles.breadcrumbs}>
-                {props.content.client && <span>{props.content.client}</span>}
-
-                {props.content.presentation_title && (
-                    <span className={styles.title}>{props.content.presentation_title}</span>
-                )}
-
-                {props.content.chapter_name.length > 0 && (
-                    <span className={styles.chapter}>{props.content.chapter_name[0].text}</span>
-                )}
-            </div>
+            <Breadcrumbs
+                client={props.content.client}
+                presentationTitle={props.content.presentation_title}
+                chapterName={
+                    props.content.chapter_name?.length > 0
+                        ? props.content.chapter_name[0].text
+                        : undefined
+                }
+            />
 
             {props.children}
         </div>

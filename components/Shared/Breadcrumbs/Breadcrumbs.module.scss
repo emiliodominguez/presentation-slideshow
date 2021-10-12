@@ -1,0 +1,55 @@
+@import "../../../styles/variables/font-weights";
+@import "../../../styles/variables/z-index";
+
+.breadcrumbs {
+    position: fixed;
+    top: 0;
+    left: var(--horizontal-padding);
+    padding-top: 20px;
+    padding-right: 25px;
+    line-height: 1.5;
+    font-size: 14px;
+    z-index: z-index(important);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 35px;
+        height: 4px;
+        background-color: rgb(var(--primary-orange));
+    }
+
+    $span-separation: 10px;
+
+    &,
+    .chapter::before {
+        color: rgb(var(--secondary-medium-gray));
+    }
+
+    span {
+        &:first-child,
+        &.chapter {
+            font-weight: font-weight(semi-bold);
+        }
+
+        + span {
+            margin-left: $span-separation;
+        }
+    }
+
+    .chapter {
+        color: rgb(var(--primary-orange));
+    }
+
+    .title {
+        + .chapter {
+            &::before {
+                content: " - ";
+                display: inline-block;
+                margin-right: $span-separation;
+            }
+        }
+    }
+}
