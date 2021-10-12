@@ -90,7 +90,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     /**
      * Gets the navigation items labels
      */
-    function getNavigationItems(): (string | void)[] {
+    function getNavigationItems(): string[] {
         return presentationContent.body.map((x, i) => {
             const id = x.primary.slide_navigation_id as TitleField;
             return id.length > 0 ? id[0].text : `Slide ${i + 1}`;
