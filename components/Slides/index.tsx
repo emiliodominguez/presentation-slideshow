@@ -1,6 +1,5 @@
-import { PropsWithChildren, useRef, useEffect, useContext, useState } from "react";
+import { PropsWithChildren, useRef, useEffect, useState } from "react";
 import { BooleanField, ImageField, TitleField } from "@prismicio/types";
-import { NavigationContext } from "@app/contexts/navigation";
 import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
 import { IIntroductionSlide } from "./IntroductionSlide";
@@ -44,7 +43,6 @@ interface BaseSlideProps {
  * Base slide container
  */
 export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX.Element {
-    const { currentIndex } = useContext(NavigationContext);
     const slideRef = useRef<HTMLDivElement | null>(null);
     const resizeTimeoutRef = useRef<number | undefined>(undefined);
     const [hasOverflow, setHasOverflow] = useState<boolean>(false);
@@ -77,7 +75,6 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
 
     return (
         <div
-            key={`slide_${currentIndex}`}
             ref={slideRef}
             {...className(styles.slide, props.className)}
             style={{
