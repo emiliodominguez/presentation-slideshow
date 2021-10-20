@@ -16,12 +16,12 @@ import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
 import TextSlide from "@app/components/Slides/TextSlide";
 import TextAndImageSlide from "@app/components/Slides/TextAndImageSlide";
+import CenteredTextSlide from "@app/components/Slides/CenteredTextSlide";
 import ElementsSlide from "@app/components/Slides/ElementsSlide";
 import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 import ChartSlide from "@app/components/Slides/ChartSlide";
-import CenteredTextSlide from "@app/components/Slides/CenteredTextSlide";
 
 export interface IndexPageProps {
     content: Document[];
@@ -62,8 +62,6 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             client: client && client.length > 0 ? client[0].text : null,
             presentation_title: title && title.length > 0 ? title[0].text : null
         } as any;
-
-        console.log(slice_type)
 
         switch (slice_type) {
             case "title_slide":
