@@ -5,16 +5,16 @@ import { className } from "@app/shared/helpers/classname";
 import { IIntroductionSlide } from "./IntroductionSlide";
 import { IAgendaSlide } from "./AgendaSlide";
 import { IChapterIntroSlide } from "./ChapterIntroSlide";
+import { ITextSlide } from "./TextSlide";
+import { ITextAndImageSlide } from "./TextAndImageSlide";
+import { ICenteredTextSlide } from "./CenteredTextSlide";
 import { ITeamSlide } from "./TeamSlide";
 import { IElementsSlide } from "./ElementsSlide";
 import { IQuoteSlide } from "./QuoteSlide";
 import { IKeyFiguresSlide } from "./KeyFiguresSlide";
-import { ITextSlide } from "./TextSlide";
-import { ITextAndImageSlide } from "./TextAndImageSlide";
 import { IChartSlide } from "./ChartSlide";
 import Breadcrumbs from "../Shared/Breadcrumbs";
 import styles from "./BaseSlide.module.scss";
-import { ICenteredTextSlide } from "./CenteredTextSlide";
 
 export interface IBaseSlide {
     dark_theme_enabled: BooleanField;
