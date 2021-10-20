@@ -31,8 +31,6 @@ export default function TextAndImageSlide(props: TextAndImageSlideProps): JSX.El
         return splittedUrl[0];
     }
 
-    console.log(props.content.slide_image_right_aligned);
-
     return (
         <BaseSlide content={props.content}>
             <div className={styles.content}>
@@ -52,6 +50,7 @@ export default function TextAndImageSlide(props: TextAndImageSlideProps): JSX.El
 
                     <div className={styles.image}>
                         <Image
+                            key={props.content.slide_image.url!}
                             width={550}
                             height={250}
                             objectFit="contain"
