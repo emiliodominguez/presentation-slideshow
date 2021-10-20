@@ -108,6 +108,8 @@ Instructions to setup the Netlify deploy:
 5. Optionally a [webhook](#setup-a-webhook) can be configured in order to trigger a deploy once a document is edited on Prismic.
 6. And that's it. Enjoy! 🚀
 
+---
+
 ## Setup a webhook
 
 Instructions to setup a Prismic webhook:
