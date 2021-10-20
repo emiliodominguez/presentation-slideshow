@@ -45,7 +45,7 @@ $image-separation: 75px;
 
     > div {
         @media #{$max-width-lg} {
-            margin-bottom: $image-separation / 2;
+            margin-bottom: $image-separation * 0.5;
         }
     }
 
