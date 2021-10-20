@@ -21,6 +21,7 @@ import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
 import ChartSlide from "@app/components/Slides/ChartSlide";
+import CenteredTextSlide from "@app/components/Slides/CenteredTextSlide";
 
 export interface IndexPageProps {
     content: Document[];
@@ -62,6 +63,8 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             presentation_title: title && title.length > 0 ? title[0].text : null
         } as any;
 
+        console.log(slice_type)
+
         switch (slice_type) {
             case "title_slide":
                 return <IntroductionSlide content={content} />;
@@ -72,7 +75,9 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
             case "text_slide":
                 return <TextSlide content={{ ...content, text_blocks: items }} />;
             case "text_and_image_slide":
-                return <TextAndImageSlide content={{ ...content, text_blocks: items }} />;
+                return <TextAndImageSlide content={content} />;
+            case "centered_text_slide":
+                return <CenteredTextSlide content={content} />;
             case "team_slide":
                 return <TeamSlide content={{ ...content, team: items }} />;
             case "elements_slide":

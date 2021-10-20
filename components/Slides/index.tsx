@@ -14,6 +14,7 @@ import { ITextAndImageSlide } from "./TextAndImageSlide";
 import { IChartSlide } from "./ChartSlide";
 import Breadcrumbs from "../Shared/Breadcrumbs";
 import styles from "./BaseSlide.module.scss";
+import { ICenteredTextSlide } from "./CenteredTextSlide";
 
 export interface IBaseSlide {
     dark_theme_enabled: BooleanField;
@@ -28,12 +29,13 @@ type SlideContent =
     | IIntroductionSlide
     | IAgendaSlide
     | IChapterIntroSlide
+    | ITextSlide
+    | ITextAndImageSlide
+    | ICenteredTextSlide
     | ITeamSlide
     | IElementsSlide
     | IQuoteSlide
     | IKeyFiguresSlide
-    | ITextSlide
-    | ITextAndImageSlide
     | IChartSlide;
 
 interface BaseSlideProps {

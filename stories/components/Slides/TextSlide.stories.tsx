@@ -17,7 +17,7 @@ const exampleData = {
     slide_navigation_id: [
         {
             type: "heading4",
-            text: "Test slide"
+            text: "Text slide"
         }
     ],
     slide_title: [

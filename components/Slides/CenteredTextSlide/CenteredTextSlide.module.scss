@@ -1,0 +1,10 @@
+@import "../../../styles/variables/media-queries";
+
+.content {
+    width: 100%;
+    text-align: center;
+
+    :global(.subtitle-small) {
+        margin-bottom: 15px;
+    }
+}
