@@ -30,7 +30,7 @@
             "type": "Slices",
             "fieldset": "Slice zone",
             "config": {
-                "labels": {},
+                "labels": null,
                 "choices": {
                     "title_slide": {
                         "type": "Slice",
@@ -86,6 +86,13 @@
                                     "allowTargetBlank": true,
                                     "label": "Slide description",
                                     "placeholder": "Add the description"
+                                }
+                            },
+                            "show_small_company_logo": {
+                                "type": "Boolean",
+                                "config": {
+                                    "default_value": false,
+                                    "label": "Show small company logo"
                                 }
                             },
                             "slide_bg_pattern": {
@@ -211,6 +218,200 @@
                                     "single": "heading2",
                                     "label": "Slide title",
                                     "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "text_slide": {
+                        "type": "Slice",
+                        "fieldset": "Text slide",
+                        "description": "A rich text slide",
+                        "icon": "format_color_text",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "slide_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,heading3,heading4,heading5,strong,em,hyperlink,list-item,o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide content",
+                                    "placeholder": "Add the content"
+                                }
+                            }
+                        }
+                    },
+                    "text_and_image_slide": {
+                        "type": "Slice",
+                        "fieldset": "Text with image slide",
+                        "description": "A rich text slide with an image",
+                        "icon": "image",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_bg_pattern": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Custom background pattern"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_image_right_aligned": {
+                                "type": "Boolean",
+                                "config": {
+                                    "default_value": true,
+                                    "label": "Slide image aligned right"
+                                }
+                            },
+                            "slide_image": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "slide_image"
+                                }
+                            },
+                            "slide_content": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,heading3,heading4,heading5,strong,em,hyperlink,list-item,o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide content",
+                                    "placeholder": "Add the content"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "centered_text_slide": {
+                        "type": "Slice",
+                        "fieldset": "Centered text slide",
+                        "description": "A slide with a centered title and subtitle",
+                        "icon": "book",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Add the title"
+                                }
+                            },
+                            "slide_subtitle": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Slide subtitle",
+                                    "placeholder": "Set the subtitle"
                                 }
                             },
                             "slide_bg_pattern": {
@@ -627,67 +828,6 @@
                                     "single": "paragraph,strong,em,hyperlink,list-item,o-list-item",
                                     "label": "Key figure content",
                                     "placeholder": "Set the Key figure content"
-                                }
-                            }
-                        }
-                    },
-                    "text_slide": {
-                        "type": "Slice",
-                        "fieldset": "Text slide",
-                        "description": "A rich text slide",
-                        "icon": "format_color_text",
-                        "display": "list",
-                        "non-repeat": {
-                            "dark_theme_enabled": {
-                                "type": "Boolean",
-                                "config": {
-                                    "placeholder_false": "disabled",
-                                    "placeholder_true": "enabled",
-                                    "default_value": true,
-                                    "label": "Dark theme enabled"
-                                }
-                            },
-                            "chapter_name": {
-                                "type": "StructuredText",
-                                "config": {
-                                    "single": "heading4",
-                                    "label": "Chapter name",
-                                    "placeholder": "Set the chapter name"
-                                }
-                            },
-                            "slide_navigation_id": {
-                                "type": "StructuredText",
-                                "config": {
-                                    "single": "heading4",
-                                    "label": "Navigation ID",
-                                    "placeholder": "Set the identifier for the navigation"
-                                }
-                            },
-                            "slide_bg_pattern": {
-                                "type": "Image",
-                                "config": {
-                                    "constraint": {},
-                                    "thumbnails": [],
-                                    "label": "Custom background pattern"
-                                }
-                            },
-                            "slide_title": {
-                                "type": "StructuredText",
-                                "config": {
-                                    "single": "heading2",
-                                    "label": "Slide title",
-                                    "placeholder": "Add the title"
-                                }
-                            }
-                        },
-                        "repeat": {
-                            "slide_content": {
-                                "type": "StructuredText",
-                                "config": {
-                                    "multi": "paragraph,heading3,heading4,heading5,strong,em,hyperlink,list-item,o-list-item",
-                                    "allowTargetBlank": true,
-                                    "label": "Slide content",
-                                    "placeholder": "Add the content"
                                 }
                             }
                         }
