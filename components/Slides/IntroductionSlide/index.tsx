@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, ImageField } from "@prismicio/types";
+import { TitleField, RichTextField, ImageField, BooleanField } from "@prismicio/types";
 import BaseSlide, { IBaseSlide } from "..";
 import styles from "./IntroductionSlide.module.scss";
 
@@ -8,6 +8,7 @@ export interface IIntroductionSlide extends IBaseSlide {
     slide_logo: ImageField;
     slide_title: TitleField;
     slide_description: RichTextField;
+    show_small_company_logo: BooleanField;
 }
 
 export interface IntroductionSlideProps {
@@ -47,15 +48,17 @@ export default function IntroductionSlide(props: IntroductionSlideProps): JSX.El
                     />
                 </div>
 
-                <div className={styles.companyLogo}>
-                    <Image
-                        width={150}
-                        height={50}
-                        objectFit="contain"
-                        src={`/assets/logos/logo_${darkTheme ? "dark" : "light"}.png`}
-                        alt="Endava logo"
-                    />
-                </div>
+                {props.content.show_small_company_logo && (
+                    <div className={styles.companyLogo}>
+                        <Image
+                            width={150}
+                            height={50}
+                            objectFit="contain"
+                            src={`/assets/logos/logo_${darkTheme ? "dark" : "light"}.png`}
+                            alt="Endava logo"
+                        />
+                    </div>
+                )}
             </div>
         </BaseSlide>
     );
