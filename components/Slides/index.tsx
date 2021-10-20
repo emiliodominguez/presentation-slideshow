@@ -37,6 +37,7 @@ type SlideContent =
 interface BaseSlideProps {
     content: SlideContent;
     className?: string;
+    hideBreadcrumbs?: boolean;
 }
 
 /**
@@ -84,15 +85,17 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
                     : undefined
             }}
         >
-            <Breadcrumbs
-                client={props.content.client}
-                presentationTitle={props.content.presentation_title}
-                chapterName={
-                    props.content.chapter_name?.length > 0
-                        ? props.content.chapter_name[0].text
-                        : undefined
-                }
-            />
+            {!props.hideBreadcrumbs && (
+                <Breadcrumbs
+                    client={props.content.client}
+                    presentationTitle={props.content.presentation_title}
+                    chapterName={
+                        props.content.chapter_name?.length > 0
+                            ? props.content.chapter_name[0].text
+                            : undefined
+                    }
+                />
+            )}
 
             {props.children}
         </div>
