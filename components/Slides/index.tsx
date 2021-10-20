@@ -10,6 +10,7 @@ import { IElementsSlide } from "./ElementsSlide";
 import { IQuoteSlide } from "./QuoteSlide";
 import { IKeyFiguresSlide } from "./KeyFiguresSlide";
 import { ITextSlide } from "./TextSlide";
+import { ITextAndImageSlide } from "./TextAndImageSlide";
 import { IChartSlide } from "./ChartSlide";
 import Breadcrumbs from "../Shared/Breadcrumbs";
 import styles from "./BaseSlide.module.scss";
@@ -32,6 +33,7 @@ type SlideContent =
     | IQuoteSlide
     | IKeyFiguresSlide
     | ITextSlide
+    | ITextAndImageSlide
     | IChartSlide;
 
 interface BaseSlideProps {

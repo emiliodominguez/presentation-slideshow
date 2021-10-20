@@ -14,11 +14,12 @@ import IntroductionSlide from "@app/components/Slides/IntroductionSlide";
 import AgendaSlide from "@app/components/Slides/AgendaSlide";
 import TeamSlide from "@app/components/Slides/TeamSlide";
 import ChapterIntroSlide from "@app/components/Slides/ChapterIntroSlide";
+import TextSlide from "@app/components/Slides/TextSlide";
+import TextAndImageSlide from "@app/components/Slides/TextAndImageSlide";
 import ElementsSlide from "@app/components/Slides/ElementsSlide";
 import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
-import TextSlide from "@app/components/Slides/TextSlide";
 import ChartSlide from "@app/components/Slides/ChartSlide";
 
 export interface IndexPageProps {
@@ -68,6 +69,10 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return <AgendaSlide content={content} />;
             case "chapter_intro_slide":
                 return <ChapterIntroSlide content={content} />;
+            case "text_slide":
+                return <TextSlide content={{ ...content, text_blocks: items }} />;
+            case "text_and_image_slide":
+                return <TextAndImageSlide content={{ ...content, text_blocks: items }} />;
             case "team_slide":
                 return <TeamSlide content={{ ...content, team: items }} />;
             case "elements_slide":
@@ -78,8 +83,6 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 return <QuoteSlide content={content} />;
             case "key_figures_slide":
                 return <KeyFiguresSlide content={{ ...content, key_figures: items }} />;
-            case "text_slide":
-                return <TextSlide content={{ ...content, text_blocks: items }} />;
             case "chart_slide":
                 return <ChartSlide content={{ ...content, chart_items: items }} />;
             default:

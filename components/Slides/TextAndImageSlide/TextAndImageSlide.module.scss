@@ -1,0 +1,56 @@
+@import "../../../styles/variables/media-queries";
+
+.content {
+    width: 100%;
+
+    :global(.title-medium) {
+        margin-bottom: 60px;
+    }
+
+    :global(.body-text) {
+        @for $i from 1 through 6 {
+            h#{$i} {
+                margin: 25px 0 5px;
+                text-transform: uppercase;
+            }
+        }
+
+        ol,
+        ul {
+            margin: 10px 0;
+        }
+    }
+}
+
+$image-separation: 75px;
+
+.textAndImage {
+    display: flex;
+    align-items: center;
+
+    @media #{$max-width-lg} {
+        justify-content: flex-start;
+        flex-direction: column;
+
+        .image {
+            margin: 50px auto 0;
+        }
+    }
+
+    &.imageToLeft {
+        @media #{$min-width-lg} {
+            .image {
+                order: -1;
+                padding-left: 0;
+                padding-right: $image-separation;
+            }
+        }
+    }
+}
+
+.image {
+    @media #{$min-width-md} {
+        padding: $image-separation;
+        padding-right: 0;
+    }
+}
