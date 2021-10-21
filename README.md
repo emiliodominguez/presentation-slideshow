@@ -1,8 +1,8 @@
 # Presentation slideshow
 
----
-
 A small project to create dynamic presentations using Prismic as CMS.
+
+---
 
 ## Table of content
 
@@ -11,6 +11,8 @@ A small project to create dynamic presentations using Prismic as CMS.
 * [Set a Prismic repository](#set-a-prismic-repository)
 * [Deploy on Netlify](#deploy-on-netlify)
 * [Setup a webhook](#setup-a-webhook)
+
+---
 
 ## Available scripts
 
