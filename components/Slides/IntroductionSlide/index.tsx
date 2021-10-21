@@ -55,7 +55,7 @@ export default function IntroductionSlide(props: IntroductionSlideProps): JSX.El
                             height={50}
                             objectFit="contain"
                             src={`/assets/logos/logo_${darkTheme ? "dark" : "light"}.png`}
-                            alt="Endava logo"
+                            alt="Logo"
                         />
                     </div>
                 )}

@@ -44,7 +44,7 @@ const exampleData = {
     slide_email: [
         {
             type: "paragraph",
-            text: "lorem_ipsum@endava.com"
+            text: "lorem_ipsum@mail.com"
         }
     ],
     slide_phone: [
