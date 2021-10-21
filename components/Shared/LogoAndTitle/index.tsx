@@ -16,7 +16,7 @@ export default function LogoAndTitle(props: LogoAndTitleProps): JSX.Element {
                 height={50}
                 objectFit="contain"
                 src="/assets/logos/isologo_orange.png"
-                alt="Endava isologo"
+                alt="Isologo"
             />
 
             <h2 className="title-medium">{props.title}</h2>

@@ -46,7 +46,7 @@ const exampleData = (dark: boolean) => ({
             team_member_email: [
                 {
                     type: "paragraph",
-                    text: "team_member_1@endava.com"
+                    text: "team_member_1@mail.com"
                 }
             ],
             team_member_phone: [
@@ -75,7 +75,7 @@ const exampleData = (dark: boolean) => ({
             team_member_email: [
                 {
                     type: "paragraph",
-                    text: "team_member_2@endava.com"
+                    text: "team_member_2@mail.com"
                 }
             ],
             team_member_phone: [
@@ -104,7 +104,7 @@ const exampleData = (dark: boolean) => ({
             team_member_email: [
                 {
                     type: "paragraph",
-                    text: "team_member_3@endava.com"
+                    text: "team_member_3@mail.com"
                 }
             ],
             team_member_phone: [
@@ -133,7 +133,7 @@ const exampleData = (dark: boolean) => ({
             team_member_email: [
                 {
                     type: "paragraph",
-                    text: "team_member_4@endava.com"
+                    text: "team_member_4@mail.com"
                 }
             ],
             team_member_phone: [
@@ -162,7 +162,7 @@ const exampleData = (dark: boolean) => ({
             team_member_email: [
                 {
                     type: "paragraph",
-                    text: "team_member_5@endava.com"
+                    text: "team_member_5@mail.com"
                 }
             ],
             team_member_phone: [
@@ -191,7 +191,7 @@ const exampleData = (dark: boolean) => ({
             team_member_email: [
                 {
                     type: "paragraph",
-                    text: "team_member_5@endava.com"
+                    text: "team_member_5@mail.com"
                 }
             ],
             team_member_phone: [
