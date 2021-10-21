@@ -15,7 +15,7 @@ export default function LogoAndTitle(props: LogoAndTitleProps): JSX.Element {
                 width={50}
                 height={50}
                 objectFit="contain"
-                src="/assets/logos/isologo_orange.png"
+                src="/assets/logos/isologo_color.png"
                 alt="Isologo"
             />
 
