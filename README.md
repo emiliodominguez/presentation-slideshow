@@ -6,11 +6,11 @@ A small project to create dynamic presentations using Prismic as CMS.
 
 ## Table of content
 
-* [Available scripts](#available-scripts)
-* [Project structure](#project-structure)
-* [Set a Prismic repository](#set-a-prismic-repository)
-* [Deploy on Netlify](#deploy-on-netlify)
-* [Setup a webhook](#setup-a-webhook)
+-   [Available scripts](#available-scripts)
+-   [Project structure](#project-structure)
+-   [Set a Prismic repository](#set-a-prismic-repository)
+-   [Deploy on Netlify](#deploy-on-netlify)
+-   [Setup a webhook](#setup-a-webhook)
 
 ---
 
@@ -18,29 +18,38 @@ A small project to create dynamic presentations using Prismic as CMS.
 
 There are more scripts that you can see in the `package.json` file, but this is a list of the most used ones.
 
-### `npm run dev`
+<details style="margin-bottom: 15px">
+<summary><code>npm run dev</code></summary>
+<p style="font-size: 14px; padding: 5px 0 0 10px">
+    Runs the app in development mode.<br>
+    Open <a target="_blank" href="http://localhost:3000/">http://localhost:3000/</a> to view it in the browser.
+</p>
+</details>
 
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<details style="margin-bottom: 15px">
+<summary><code>npm run build</code></summary>
+<p style="font-size: 14px; padding: 5px 0 0 10px">Builds the app in production mode.</p>
+</details>
 
-### `npm run build`
+<details style="margin-bottom: 15px">
+<summary><code>npm test</code></summary>
+<p style="font-size: 14px; padding: 5px 0 0 10px">Launches the test runner in the interactive watch mode.</p>
+</details>
 
-Builds the application in the production mode.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run storybook`
-
-Runs Storybook.
+<details style="margin-bottom: 15px">
+<summary><code>npm run storybook</code></summary>
+<p style="font-size: 14px; padding: 5px 0 0 10px">
+    Runs Storybook.<br>
+    Open <a target="_blank" href="http://localhost:6006/">http://localhost:6006/</a> to view it in the browser.
+</p>
+</details>
 
 ---
 
 ## Project structure
 
 There are configuration files in the root of the project for Husky, Prettier, Babel, Next and Prettier.
-Besides those files this is a detailes view of  the main project structure.
+Besides those files this is a detailes view of the main project structure.
 
     .
     ├── __test__                    # Tests folder
@@ -51,7 +60,7 @@ Besides those files this is a detailes view of  the main project structure.
     └── .next                       # Next configuration files
     └── .storybook                  # Storybook configuration files
     └── components                  # Components folder
-    │   ├── LanguageSelector        # The language selector 
+    │   ├── LanguageSelector        # The language selector
     │   ├── Layout                  # The main layout wrapper
     │   ├── Navigation              # The slides navigation
     │   ├── Shared                  # Shared components
@@ -120,7 +129,7 @@ Instructions to setup a Prismic webhook:
 2. Go to the `Build hooks` card and add a new one.
 3. Once it's done copy the link that was generated.
 4. Go to the `Webhooks` section on the Prismic dashboard settings.
-5. Setup the name and the triggers you need. 
+5. Setup the name and the triggers you need.
 6. In the URL section paste the link you've copied before and click on Add.
 7. You can trigger it in order to see if it works properly.
 8. And once again you are ready to go. 🚀
