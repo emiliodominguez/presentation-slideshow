@@ -1,4 +1,5 @@
-import { createContext, PropsWithChildren, useRef, useState } from "react";
+import { createContext, PropsWithChildren, useRef, useState, KeyboardEvent } from "react";
+import useEventListener from "@app/hooks/useEventListener";
 
 interface DisabledNavigation {
     previous: boolean;
@@ -82,6 +83,23 @@ export default function NavigationContextProvider(props: PropsWithChildren<{}>):
             return index;
         });
     }
+
+    /**
+     * Handles the navigation by keyboard
+     * @param e - The keyboard event
+     */
+    function navigate(e: KeyboardEvent): void {
+        const rightKey = e.key === "ArrowRight";
+        const leftKey = e.key === "ArrowLeft";
+
+        if (leftKey || rightKey) {
+            e.preventDefault();
+            if (rightKey) goToNext();
+            if (leftKey) goToPrevious();
+        }
+    }
+
+    useEventListener("keydown", navigate);
 
     return (
         <NavigationContext.Provider

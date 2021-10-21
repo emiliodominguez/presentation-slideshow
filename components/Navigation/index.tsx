@@ -1,6 +1,5 @@
-import { useContext, KeyboardEvent } from "react";
+import { useContext } from "react";
 import { NavigationContext } from "@app/contexts/navigation";
-import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
 import { icons } from "@app/shared/icons";
@@ -17,23 +16,6 @@ export interface NavigationProps {
 export default function Navigation(props: NavigationProps): JSX.Element {
     const { currentIndex, disabledNav, goTo, goToNext, goToPrevious } =
         useContext(NavigationContext);
-
-    /**
-     * Handles the navigation by keyboard
-     * @param e - The keyboard event
-     */
-    function navigate(e: KeyboardEvent): void {
-        const rightKey = e.key === "ArrowRight";
-        const leftKey = e.key === "ArrowLeft";
-
-        if (leftKey || rightKey) {
-            e.preventDefault();
-            if (rightKey) goToNext();
-            if (leftKey) goToPrevious();
-        }
-    }
-
-    useEventListener("keydown", navigate);
 
     return (
         <EdgeBox keyShortcut={keyShortcuts.toggleNavigation} boxPosition={EdgeBoxPosition.Bottom}>
