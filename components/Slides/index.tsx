@@ -1,19 +1,20 @@
-import { PropsWithChildren, useRef, useEffect, useState } from "react";
-import { BooleanField, ImageField, TitleField } from "@prismicio/types";
+import React, { PropsWithChildren, useRef, useEffect, useState } from "react";
+import { BooleanField, ImageField, Slice, TitleField } from "@prismicio/types";
 import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
-import { IIntroductionSlide } from "./IntroductionSlide";
-import { IAgendaSlide } from "./AgendaSlide";
-import { IChapterIntroSlide } from "./ChapterIntroSlide";
-import { ITextSlide } from "./TextSlide";
-import { ITextAndImageSlide } from "./TextAndImageSlide";
-import { ICenteredTextSlide } from "./CenteredTextSlide";
-import { ITeamSlide } from "./TeamSlide";
-import { IElementsSlide } from "./ElementsSlide";
-import { IQuoteSlide } from "./QuoteSlide";
-import { IKeyFiguresSlide } from "./KeyFiguresSlide";
-import { IChartSlide } from "./ChartSlide";
-import Breadcrumbs from "../Shared/Breadcrumbs";
+import IntroductionSlide, { IIntroductionSlide } from "./IntroductionSlide";
+import AgendaSlide, { IAgendaSlide } from "./AgendaSlide";
+import ChapterIntroSlide, { IChapterIntroSlide } from "./ChapterIntroSlide";
+import TextSlide, { ITextSlide } from "./TextSlide";
+import TextAndImageSlide, { ITextAndImageSlide } from "./TextAndImageSlide";
+import CenteredTextSlide, { ICenteredTextSlide } from "./CenteredTextSlide";
+import TeamSlide, { ITeamSlide } from "./TeamSlide";
+import ElementsSlide, { IElementsSlide } from "./ElementsSlide";
+import ElementsAltSlide from "./ElementsAltSlide";
+import QuoteSlide, { IQuoteSlide } from "./QuoteSlide";
+import KeyFiguresSlide, { IKeyFiguresSlide } from "./KeyFiguresSlide";
+import ChartSlide, { IChartSlide } from "./ChartSlide";
+import ErrorSlide from "./ErrorSlide";
 import styles from "./BaseSlide.module.scss";
 
 export interface IBaseSlide {
@@ -21,27 +22,47 @@ export interface IBaseSlide {
     chapter_name: TitleField;
     slide_navigation_id: TitleField;
     slide_bg_pattern?: ImageField;
-    client?: string;
-    presentation_title?: string;
 }
 
-type SlideContent =
-    | IIntroductionSlide
-    | IAgendaSlide
-    | IChapterIntroSlide
-    | ITextSlide
-    | ITextAndImageSlide
-    | ICenteredTextSlide
-    | ITeamSlide
-    | IElementsSlide
-    | IQuoteSlide
-    | IKeyFiguresSlide
-    | IChartSlide;
-
 interface BaseSlideProps {
-    content: SlideContent;
     className?: string;
-    hideBreadcrumbs?: boolean;
+    content:
+        | IIntroductionSlide
+        | IAgendaSlide
+        | IChapterIntroSlide
+        | ITextSlide
+        | ITextAndImageSlide
+        | ICenteredTextSlide
+        | ITeamSlide
+        | IElementsSlide
+        | IQuoteSlide
+        | IKeyFiguresSlide
+        | IChartSlide;
+}
+
+/**
+ * Determines what's the type of the current slide
+ */
+export function getCurrentSlide({ slice_type, primary, items }: Slice): JSX.Element {
+    if (!slice_type) return <ErrorSlide />;
+
+    const content = primary as any;
+    const componentMap = {
+        title_slide: <IntroductionSlide {...{ content }} />,
+        agenda_slide: <AgendaSlide {...{ content }} />,
+        chapter_intro_slide: <ChapterIntroSlide {...{ content }} />,
+        text_slide: <TextSlide content={{ ...content, text_blocks: items }} />,
+        text_and_image_slide: <TextAndImageSlide {...{ content }} />,
+        centered_text_slide: <CenteredTextSlide {...{ content }} />,
+        team_slide: <TeamSlide content={{ ...content, team: items }} />,
+        elements_slide: <ElementsSlide content={{ ...content, elements: items }} />,
+        elements_alt_slide: <ElementsAltSlide content={{ ...content, elements: items }} />,
+        quote_slide: <QuoteSlide {...{ content }} />,
+        key_figures_slide: <KeyFiguresSlide content={{ ...content, key_figures: items }} />,
+        chart_slide: <ChartSlide content={{ ...content, chart_items: items }} />
+    } as { [key: string]: JSX.Element };
+
+    return componentMap[slice_type] ?? <ErrorSlide />;
 }
 
 /**
@@ -89,18 +110,6 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
                     : undefined
             }}
         >
-            {!props.hideBreadcrumbs && (
-                <Breadcrumbs
-                    client={props.content.client}
-                    presentationTitle={props.content.presentation_title}
-                    chapterName={
-                        props.content.chapter_name?.length > 0
-                            ? props.content.chapter_name[0].text
-                            : undefined
-                    }
-                />
-            )}
-
             {props.children}
         </div>
     );

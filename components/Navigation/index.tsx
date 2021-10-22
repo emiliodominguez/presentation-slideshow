@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Slice, TitleField } from "@prismicio/types";
 import { NavigationContext } from "@app/contexts/navigation";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
@@ -8,6 +9,18 @@ import styles from "./Navigation.module.scss";
 
 export interface NavigationProps {
     items: string[];
+}
+
+/**
+ * Gets the navigation items labels
+ */
+export function getNavigationItems(slides: Slice[]): string[] {
+    if (!slides || slides.length === 0) throw new Error("Couldn't load navigation items");
+
+    return slides.map((x, i) => {
+        const id = x.primary.slide_navigation_id as TitleField;
+        return id.length > 0 ? id[0].text : `Slide ${i + 1}`;
+    });
 }
 
 /**
