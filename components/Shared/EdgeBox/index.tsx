@@ -1,14 +1,14 @@
 import { KeyboardEvent, PropsWithChildren, useState } from "react";
-import { className } from "@app/shared/helpers/classname";
 import useEventListener from "@app/hooks/useEventListener";
+import { className } from "@app/shared/helpers/classname";
 import { icons } from "@app/shared/icons";
 import styles from "./EdgeBox.module.scss";
 
 export enum EdgeBoxPosition {
-    Top,
-    Bottom,
-    Left,
-    Right
+    Top = "top",
+    Bottom = "bottom",
+    Left = "left",
+    Right = "right"
 }
 
 interface EdgeBoxProps {
@@ -17,11 +17,18 @@ interface EdgeBoxProps {
     keyShortcut?: (e: KeyboardEvent) => boolean;
 }
 
+const positionsMap = Object.freeze({
+    top: { className: styles.toTop, icon: icons.chevronUp },
+    bottom: { className: styles.toBottom, icon: icons.chevronDown },
+    left: { className: styles.toLeft, icon: icons.chevronLeft },
+    right: { className: styles.toRight, icon: icons.chevronRight }
+});
+
 /**
  * A hideable box component
  */
 export default function EdgeBox(props: PropsWithChildren<EdgeBoxProps>): JSX.Element {
-    const [hidden, setHidden] = useState<boolean>(props.startHidden ?? false);
+    const [hidden, setHidden] = useState<boolean>(props.startHidden ?? true);
 
     /**
      * Toggle navigation by keyboard
@@ -34,50 +41,16 @@ export default function EdgeBox(props: PropsWithChildren<EdgeBoxProps>): JSX.Ele
         }
     }
 
-    /**
-     * Sets the box position
-     */
-    function setBoxPosition(): string {
-        switch (props.boxPosition) {
-            case EdgeBoxPosition.Bottom:
-                return styles.toBottom;
-            case EdgeBoxPosition.Left:
-                return styles.toLeft;
-            case EdgeBoxPosition.Right:
-                return styles.toRight;
-            case EdgeBoxPosition.Top:
-            default:
-                return styles.toTop;
-        }
-    }
-
-    /**
-     * Sets the toggler icon depending on the position
-     */
-    function setTogglerIcon(): JSX.Element {
-        switch (props.boxPosition) {
-            case EdgeBoxPosition.Bottom:
-                return icons.chevronDown;
-            case EdgeBoxPosition.Left:
-                return icons.chevronLeft;
-            case EdgeBoxPosition.Right:
-                return icons.chevronRight;
-            default:
-            case EdgeBoxPosition.Top:
-                return icons.chevronUp;
-        }
-    }
-
     useEventListener("keydown", toggleVisibility);
 
     return (
         <div
-            {...className(styles.edgeBox, setBoxPosition(), {
+            {...className(styles.edgeBox, positionsMap[props.boxPosition].className, {
                 [styles.hidden]: hidden
             })}
         >
             <button className={styles.toggler} onClick={() => setHidden(!hidden)}>
-                {setTogglerIcon()}
+                {positionsMap[props.boxPosition].icon}
             </button>
 
             {props.children}
