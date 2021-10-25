@@ -4,15 +4,8 @@ import { className } from "@app/shared/helpers/classname";
 import { icons } from "@app/shared/icons";
 import styles from "./EdgeBox.module.scss";
 
-export enum EdgeBoxPosition {
-    Top = "top",
-    Bottom = "bottom",
-    Left = "left",
-    Right = "right"
-}
-
 interface EdgeBoxProps {
-    boxPosition: EdgeBoxPosition;
+    boxPosition: "top" | "bottom" | "left" | "right";
     startHidden?: boolean;
     keyShortcut?: (e: KeyboardEvent) => boolean;
 }

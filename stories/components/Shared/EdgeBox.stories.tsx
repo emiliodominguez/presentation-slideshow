@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import { Meta, Story } from "@storybook/react";
-import EdgeBox, { EdgeBoxPosition } from "@app/components/Shared/EdgeBox";
+import EdgeBox from "@app/components/Shared/EdgeBox";
 
 export default {
     component: EdgeBox,
@@ -36,13 +36,13 @@ const Template: Story<ComponentProps<typeof EdgeBox>> = props => {
 };
 
 export const TopStory = Template.bind({});
-TopStory.args = { boxPosition: EdgeBoxPosition.Top };
+TopStory.args = { boxPosition: "top" };
 
 export const BottomStory = Template.bind({});
-BottomStory.args = { boxPosition: EdgeBoxPosition.Bottom };
+BottomStory.args = { boxPosition: "bottom" };
 
 export const LeftStory = Template.bind({});
-LeftStory.args = { boxPosition: EdgeBoxPosition.Left };
+LeftStory.args = { boxPosition: "left" };
 
 export const RightStory = Template.bind({});
-RightStory.args = { boxPosition: EdgeBoxPosition.Right };
+RightStory.args = { boxPosition: "right" };

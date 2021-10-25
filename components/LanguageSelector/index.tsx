@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LocalizationContext, locales } from "@app/contexts/localization";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
-import EdgeBox, { EdgeBoxPosition } from "../Shared/EdgeBox";
+import EdgeBox from "../Shared/EdgeBox";
 import styles from "./LanguageSelector.module.scss";
 
 /**
@@ -12,11 +12,7 @@ export default function LanguageSelector(): JSX.Element {
     const { locale, setLocale } = useContext(LocalizationContext);
 
     return (
-        <EdgeBox
-            keyShortcut={keyShortcuts.toggleLanguage}
-            boxPosition={EdgeBoxPosition.Top}
-            startHidden
-        >
+        <EdgeBox keyShortcut={keyShortcuts.toggleLanguage} boxPosition="top" startHidden>
             <div className={styles.languageSelector}>
                 {locales.map(x => (
                     <button
