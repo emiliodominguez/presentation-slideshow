@@ -3,7 +3,7 @@ import Image from "next/image";
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, ImageField, BooleanField } from "@prismicio/types";
 import { GlobalDataContext } from "@app/pages";
-import BaseSlide, { IBaseSlide } from "../BaseSlide";
+import BaseSlide, { IBaseSlide } from "../../Shared/BaseSlide";
 import styles from "./IntroductionSlide.module.scss";
 
 export interface IIntroductionSlide extends IBaseSlide {

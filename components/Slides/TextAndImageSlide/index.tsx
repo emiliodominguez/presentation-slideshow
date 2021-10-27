@@ -1,6 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, BooleanField, ImageField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "../BaseSlide";
+import BaseSlide, { IBaseSlide } from "../../Shared/BaseSlide";
 import { className } from "@app/shared/helpers/classname";
 import styles from "./TextAndImageSlide.module.scss";
 

@@ -1,6 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "../BaseSlide";
+import BaseSlide, { IBaseSlide } from "../../Shared/BaseSlide";
 import styles from "./TextSlide.module.scss";
 
 interface TextBlock {

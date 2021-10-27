@@ -1,4 +1,4 @@
-import BaseSlide from "../BaseSlide";
+import BaseSlide from "../../Shared/BaseSlide";
 import styles from "./ErrorSlide.module.scss";
 
 interface ErrorSlideProps {
