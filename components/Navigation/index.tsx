@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { Slice, TitleField } from "@prismicio/types";
+import { TitleField } from "@prismicio/types";
+import { GlobalDataContext } from "@app/pages";
 import { NavigationContext } from "@app/contexts/navigation";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
@@ -7,26 +8,11 @@ import { icons } from "@app/shared/icons";
 import EdgeBox from "../Shared/EdgeBox";
 import styles from "./Navigation.module.scss";
 
-export interface NavigationProps {
-    items: string[];
-}
-
-/**
- * Gets the navigation items labels
- */
-export function getNavigationItems(slides: Slice[]): string[] {
-    if (!slides || slides.length === 0) throw new Error("Couldn't load navigation items");
-
-    return slides.map((x, i) => {
-        const id = x.primary.slide_navigation_id as TitleField;
-        return id.length > 0 ? id[0].text : `Slide ${i + 1}`;
-    });
-}
-
 /**
  * The navigation component
  */
-export default function Navigation(props: NavigationProps): JSX.Element {
+export default function Navigation(): JSX.Element {
+    const { body } = useContext(GlobalDataContext);
     const { currentIndex, disabledNav, goTo, goToNext, goToPrevious } =
         useContext(NavigationContext);
 
@@ -39,17 +25,19 @@ export default function Navigation(props: NavigationProps): JSX.Element {
                 </button>
 
                 {/* Go to specific item */}
-                {props.items.map((item, i) => (
-                    <button
-                        key={`nav_${i}`}
-                        onClick={() => goTo(i)}
-                        {...className({
-                            [styles.current]: currentIndex === i
-                        })}
-                    >
-                        {item}
-                    </button>
-                ))}
+                {body.map((item, i) => {
+                    const id = item.primary.slide_navigation_id as TitleField;
+
+                    return (
+                        <button
+                            key={`nav_${i}`}
+                            onClick={() => goTo(i)}
+                            {...className({ [styles.current]: currentIndex === i })}
+                        >
+                            {id.length > 0 ? id[0].text : `Slide ${i + 1}`}
+                        </button>
+                    );
+                })}
 
                 {/* Go to Next item */}
                 <button onClick={goToNext} disabled={disabledNav.next}>

@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Image from "next/image";
+import { GlobalDataContext } from "@app/pages";
 import styles from "./LogoAndTitle.module.scss";
 
 export interface LogoAndTitleProps {
@@ -9,13 +11,15 @@ export interface LogoAndTitleProps {
  * A component with a title and a logo on top
  */
 export default function LogoAndTitle(props: LogoAndTitleProps): JSX.Element {
+    const { isologo_color } = useContext(GlobalDataContext);
+
     return (
         <div className={styles.logoAndTitle}>
             <Image
                 width={50}
                 height={50}
                 objectFit="contain"
-                src="/assets/logos/isologo_color.png"
+                src={isologo_color?.url ?? "/assets/logos/isologo_color.png"}
                 alt="Isologo"
             />
 

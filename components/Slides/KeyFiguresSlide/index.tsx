@@ -1,7 +1,7 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
 import { TitleField, NumberField, ImageField, RichTextField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "..";
+import BaseSlide, { IBaseSlide } from "../BaseSlide";
 import styles from "./KeyFiguresSlide.module.scss";
 
 interface KeyFigure {

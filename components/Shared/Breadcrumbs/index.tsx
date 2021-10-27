@@ -1,10 +1,9 @@
-import { ReactElement } from "react";
+import { ReactElement, useContext } from "react";
 import { TitleField } from "@prismicio/types";
 import styles from "./Breadcrumbs.module.scss";
+import { GlobalDataContext } from "@app/pages";
 
 export interface BreadcrumbsProps {
-    client?: TitleField;
-    presentationTitle?: TitleField;
     chapterName?: TitleField;
 }
 
@@ -12,14 +11,17 @@ export interface BreadcrumbsProps {
  * The presentation chapters breadcrumbs
  */
 export default function Breadcrumbs(props: BreadcrumbsProps): ReactElement {
-    const { client, presentationTitle, chapterName } = props;
+    const { project_client, project_title } = useContext(GlobalDataContext);
+    const { chapterName } = props;
 
     return (
         <div className={styles.breadcrumbs}>
-            {client && client.length > 0 && client[0].text && <span>{client[0].text}</span>}
+            {project_client && project_client.length > 0 && project_client[0].text && (
+                <span>{project_client[0].text}</span>
+            )}
 
-            {presentationTitle && presentationTitle.length > 0 && presentationTitle[0].text && (
-                <span className={styles.title}>{presentationTitle[0].text}</span>
+            {project_title && project_title.length > 0 && project_title[0].text && (
+                <span className={styles.title}>{project_title[0].text}</span>
             )}
 
             {chapterName && chapterName.length > 0 && chapterName[0].text && (

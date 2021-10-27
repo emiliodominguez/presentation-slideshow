@@ -1,16 +1,15 @@
-import React, { useContext, useRef, useEffect, Fragment } from "react";
+import React, { useContext, useRef, useEffect, createContext } from "react";
 import Head from "next/head";
 import Prismic from "@prismicio/client";
 import PrismicDOM from "prismic-dom";
 import { client } from "@app/config/prismic";
-import { TitleField, RichTextField, SliceZone } from "@prismicio/types";
+import { TitleField, RichTextField, ImageField, SliceZone } from "@prismicio/types";
 import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";
 import { NavigationContext } from "@app/contexts/navigation";
-import { getCurrentSlide } from "@app/components/Slides";
-import Navigation, { getNavigationItems } from "@app/components/Navigation";
-import Breadcrumbs from "@app/components/Shared/Breadcrumbs";
 import LanguageSelector from "@app/components/LanguageSelector";
+import Slide from "@app/components/Slides";
+import Navigation from "@app/components/Navigation";
 
 export interface IndexPageProps {
     content: Document[];
@@ -20,8 +19,17 @@ interface PresentationContent {
     project_client?: TitleField;
     project_title: TitleField;
     project_description: RichTextField;
+    isologo_black: ImageField;
+    isologo_white: ImageField;
+    isologo_color: ImageField;
+    logo_black: ImageField;
+    logo_white: ImageField;
+    logo_dark: ImageField;
+    logo_light: ImageField;
     body: SliceZone;
 }
+
+export const GlobalDataContext = createContext<PresentationContent>({} as PresentationContent);
 
 /**
  * The main page component
@@ -42,7 +50,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
         throw new Error("Couldn't load the main content. Check your configuration!");
 
     return (
-        <>
+        <GlobalDataContext.Provider value={presentationContent}>
             <Head>
                 {presentationContent.project_title.length > 0 && (
                     <title>{presentationContent.project_title[0].text}</title>
@@ -54,21 +62,10 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 />
             </Head>
 
-            <Breadcrumbs
-                client={presentationContent.project_client}
-                presentationTitle={presentationContent.project_title}
-                chapterName={
-                    presentationContent.body[currentIndex].primary.chapter_name as TitleField
-                }
-            />
-
-            <Fragment key={`slide_${currentIndex}`}>
-                {getCurrentSlide(presentationContent.body[currentIndex])}
-            </Fragment>
-
+            <Slide key={`slide_${currentIndex}`} />
             <LanguageSelector />
-            <Navigation items={getNavigationItems(presentationContent.body)} />
-        </>
+            <Navigation />
+        </GlobalDataContext.Provider>
     );
 }
 
