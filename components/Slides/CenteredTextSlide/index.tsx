@@ -1,5 +1,5 @@
 import { TitleField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "../../Shared/BaseSlide";
+import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
 import styles from "./CenteredTextSlide.module.scss";
 
 export interface ICenteredTextSlide extends IBaseSlide {

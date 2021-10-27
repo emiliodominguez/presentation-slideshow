@@ -1,7 +1,7 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, NumberField, ColorField } from "@prismicio/types";
 import { className } from "@app/shared/helpers/classname";
-import BaseSlide, { IBaseSlide } from "../../Shared/BaseSlide";
+import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
 import styles from "./ChartSlide.module.scss";
 
 interface ChartItem {

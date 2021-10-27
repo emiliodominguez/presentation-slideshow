@@ -1,6 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "../../Shared/BaseSlide";
+import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./AgendaSlide.module.scss";
 
