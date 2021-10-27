@@ -20,10 +20,9 @@ import ErrorSlide from "./ErrorSlide";
  * Sets the current slide based on its type
  */
 function setCurrentSlide(slice: Slice): JSX.Element {
+    if (!slice) return <ErrorSlide />;
+
     const { slice_type, primary, items } = slice;
-
-    if (!slice_type) return <ErrorSlide />;
-
     const content = primary as any;
     const componentMap = {
         title_slide: <IntroductionSlide content={content} />,
