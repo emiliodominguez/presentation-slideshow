@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import Navigation, { NavigationProps } from "@app/components/Navigation";
+import Navigation from "@app/components/Navigation";
 
 export default {
     component: Navigation,
@@ -12,6 +12,4 @@ export default {
     }
 } as Meta;
 
-export const NavigationStory: VFC<NavigationProps> = () => (
-    <Navigation items={["Slide 1", "Slide 2", "Slide 3"]} />
-);
+export const NavigationStory: VFC<{}> = () => <Navigation />;
