@@ -1,7 +1,8 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
 import { TitleField, NumberField, ImageField, RichTextField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
+import { ISlide } from "..";
+import BaseSlide from "@app/components/Shared/BaseSlide";
 import styles from "./KeyFiguresSlide.module.scss";
 
 interface KeyFigure {
@@ -11,7 +12,7 @@ interface KeyFigure {
     key_figure_content: RichTextField;
 }
 
-export interface IKeyFiguresSlide extends IBaseSlide {
+export interface IKeyFiguresSlide extends ISlide {
     slide_title: TitleField;
     slide_subtitle: RichTextField;
     key_figures: KeyFigure[];
@@ -26,7 +27,7 @@ export interface KeyFiguresSlideProps {
  */
 export default function KeyFiguresSlide(props: KeyFiguresSlideProps): JSX.Element {
     return (
-        <BaseSlide content={props.content}>
+        <BaseSlide>
             <div className={styles.content}>
                 <div className={styles.intro}>
                     <h2 className="title-medium">{props.content.slide_title[0].text}</h2>

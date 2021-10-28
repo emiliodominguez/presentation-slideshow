@@ -1,7 +1,8 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, NumberField, ColorField } from "@prismicio/types";
+import { ISlide } from "..";
 import { className } from "@app/shared/helpers/classname";
-import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
+import BaseSlide from "@app/components/Shared/BaseSlide";
 import styles from "./ChartSlide.module.scss";
 
 interface ChartItem {
@@ -11,7 +12,7 @@ interface ChartItem {
     item_color: ColorField;
 }
 
-export interface IChartSlide extends IBaseSlide {
+export interface IChartSlide extends ISlide {
     slide_title: TitleField;
     slide_description: RichTextField;
     chart_items: ChartItem[];
@@ -42,7 +43,7 @@ export default function ChartSlide(props: ChartSlideProps): JSX.Element {
     }
 
     return (
-        <BaseSlide content={props.content}>
+        <BaseSlide>
             <div className={styles.content}>
                 <div
                     className={styles.pieChart}

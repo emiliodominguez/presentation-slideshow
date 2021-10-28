@@ -1,10 +1,11 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, ImageField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
+import { ISlide } from "..";
+import BaseSlide from "@app/components/Shared/BaseSlide";
 import styles from "./QuoteSlide.module.scss";
 
-export interface IQuoteSlide extends IBaseSlide {
+export interface IQuoteSlide extends ISlide {
     slide_thumbnail: ImageField;
     slide_quote: RichTextField;
     slide_name: TitleField;
@@ -24,7 +25,7 @@ export default function QuoteSlide(props: QuoteSlideProps): JSX.Element {
     const email = PrismicDOM.RichText.asText(props.content.slide_email);
 
     return (
-        <BaseSlide content={props.content} className={styles.quoteSlide}>
+        <BaseSlide className={styles.quoteSlide}>
             <div className={styles.content}>
                 <div className={styles.leftSide}>
                     <Image

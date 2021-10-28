@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Slice } from "@prismicio/types";
+import { Slice, BooleanField, TitleField, ImageField } from "@prismicio/types";
 import { NavigationContext } from "@app/contexts/navigation";
 import { GlobalDataContext } from "@app/pages";
 import IntroductionSlide from "./IntroductionSlide";
@@ -15,6 +15,13 @@ import QuoteSlide from "./QuoteSlide";
 import KeyFiguresSlide from "./KeyFiguresSlide";
 import ChartSlide from "./ChartSlide";
 import ErrorSlide from "./ErrorSlide";
+
+export interface ISlide {
+    dark_theme_enabled: BooleanField;
+    chapter_name: TitleField;
+    slide_navigation_id: TitleField;
+    slide_bg_pattern?: ImageField;
+}
 
 /**
  * Sets the current slide based on its type

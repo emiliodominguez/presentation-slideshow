@@ -1,10 +1,11 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, BooleanField, ImageField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
+import { ISlide } from "..";
+import BaseSlide from "@app/components/Shared/BaseSlide";
 import { className } from "@app/shared/helpers/classname";
 import styles from "./TextAndImageSlide.module.scss";
 
-export interface ITextAndImageSlide extends IBaseSlide {
+export interface ITextAndImageSlide extends ISlide {
     slide_title: TitleField;
     slide_image: ImageField;
     slide_image_right_aligned: BooleanField;
@@ -20,7 +21,7 @@ export interface TextAndImageSlideProps {
  */
 export default function TextAndImageSlide(props: TextAndImageSlideProps): JSX.Element {
     return (
-        <BaseSlide content={props.content}>
+        <BaseSlide>
             <div className={styles.content}>
                 <h2 className="title-medium">{props.content.slide_title[0].text}</h2>
 

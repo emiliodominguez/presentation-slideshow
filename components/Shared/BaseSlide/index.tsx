@@ -1,52 +1,31 @@
-import React, { PropsWithChildren, useRef, useEffect, useState } from "react";
-import { BooleanField, ImageField, TitleField } from "@prismicio/types";
+import React, { PropsWithChildren, useContext, useRef, useState, useEffect, useMemo } from "react";
+import { ImageField, Slice } from "@prismicio/types";
 import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
+import { GlobalDataContext } from "@app/pages";
+import { NavigationContext } from "@app/contexts/navigation";
 import Breadcrumbs from "../Breadcrumbs";
-import { IIntroductionSlide } from "../../Slides/IntroductionSlide";
-import { IAgendaSlide } from "../../Slides/AgendaSlide";
-import { IChapterIntroSlide } from "../../Slides/ChapterIntroSlide";
-import { ITextSlide } from "../../Slides/TextSlide";
-import { ITextAndImageSlide } from "../../Slides/TextAndImageSlide";
-import { ICenteredTextSlide } from "../../Slides/CenteredTextSlide";
-import { ITeamSlide } from "../../Slides/TeamSlide";
-import { IElementsSlide } from "../../Slides/ElementsSlide";
-import { IQuoteSlide } from "../../Slides/QuoteSlide";
-import { IKeyFiguresSlide } from "../../Slides/KeyFiguresSlide";
-import { IChartSlide } from "../../Slides/ChartSlide";
 import styles from "./BaseSlide.module.scss";
-
-export interface IBaseSlide {
-    dark_theme_enabled: BooleanField;
-    chapter_name: TitleField;
-    slide_navigation_id: TitleField;
-    slide_bg_pattern?: ImageField;
-}
+import { ISlide } from "@app/components/Slides";
 
 interface BaseSlideProps {
     className?: string;
     hideBreadcrumbs?: boolean;
-    content:
-        | IIntroductionSlide
-        | IAgendaSlide
-        | IChapterIntroSlide
-        | ITextSlide
-        | ITextAndImageSlide
-        | ICenteredTextSlide
-        | ITeamSlide
-        | IElementsSlide
-        | IQuoteSlide
-        | IKeyFiguresSlide
-        | IChartSlide;
 }
 
 /**
  * Base slide container
  */
 export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX.Element {
+    const { body } = useContext(GlobalDataContext);
+    const { currentIndex } = useContext(NavigationContext);
     const slideRef = useRef<HTMLDivElement | null>(null);
     const resizeTimeoutRef = useRef<number | undefined>(undefined);
     const [hasOverflow, setHasOverflow] = useState<boolean>(false);
+    const { primary } = useMemo(
+        () => body[currentIndex] as Slice<Partial<ISlide>>,
+        [body, currentIndex]
+    );
 
     /**
      * Checks if the slide is overflowing
@@ -66,11 +45,11 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
         checkOverflow();
 
         // Sets the dark theme modifier based on the slide configuration
-        const action = props.content.dark_theme_enabled ? "add" : "remove";
+        const action = primary.dark_theme_enabled ? "add" : "remove";
         document.body.classList[action]("dark-theme");
 
         return () => clearTimeout(resizeTimeoutRef.current);
-    }, [props.content]);
+    }, [primary.dark_theme_enabled]);
 
     useEventListener("resize", checkOverflow);
 
@@ -80,12 +59,12 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
             {...className(styles.slide, props.className)}
             style={{
                 ["--slide-alignment" as string]: hasOverflow ? "flex-start" : "center",
-                ["--slide-bg-pattern" as string]: props.content.slide_bg_pattern?.url
-                    ? `url(${props.content.slide_bg_pattern.url})`
+                ["--slide-bg-pattern" as string]: (primary.slide_bg_pattern as ImageField)?.url
+                    ? `url(${(primary.slide_bg_pattern as ImageField).url})`
                     : undefined
             }}
         >
-            {!props.hideBreadcrumbs && <Breadcrumbs chapterName={props.content.chapter_name} />}
+            {!props.hideBreadcrumbs && <Breadcrumbs />}
             {props.children}
         </div>
     );

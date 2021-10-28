@@ -10,7 +10,7 @@ interface ErrorSlideProps {
  */
 export default function ErrorSlide(props: ErrorSlideProps): JSX.Element {
     return (
-        <BaseSlide content={{} as any}>
+        <BaseSlide>
             <div className={styles.content}>
                 <h2 className="title">...oops!</h2>
                 <h3 className="subtitle-small">

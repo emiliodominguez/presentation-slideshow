@@ -1,7 +1,8 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
+import { ISlide } from "..";
 import { TitleField, ImageField, RichTextField } from "@prismicio/types";
-import BaseSlide, { IBaseSlide } from "@app/components/Shared/BaseSlide";
+import BaseSlide from "@app/components/Shared/BaseSlide";
 import styles from "./ElementsAltSlide.module.scss";
 
 interface Element {
@@ -10,7 +11,7 @@ interface Element {
     grid_item_content: RichTextField;
 }
 
-export interface IElementsAltSlide extends IBaseSlide {
+export interface IElementsAltSlide extends ISlide {
     elements: Element[];
 }
 
@@ -23,7 +24,7 @@ export interface ElementsAltSlideProps {
  */
 export default function ElementsAltSlide(props: ElementsAltSlideProps): JSX.Element {
     return (
-        <BaseSlide content={props.content}>
+        <BaseSlide>
             <div className={styles.content}>
                 <section className={styles.elements}>
                     {props.content.elements.length > 0 &&

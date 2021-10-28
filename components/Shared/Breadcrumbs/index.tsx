@@ -1,18 +1,16 @@
 import { ReactElement, useContext } from "react";
-import { TitleField } from "@prismicio/types";
-import styles from "./Breadcrumbs.module.scss";
 import { GlobalDataContext } from "@app/pages";
-
-export interface BreadcrumbsProps {
-    chapterName?: TitleField;
-}
+import { NavigationContext } from "@app/contexts/navigation";
+import { ISlide } from "@app/components/Slides";
+import styles from "./Breadcrumbs.module.scss";
 
 /**
  * The presentation chapters breadcrumbs
  */
-export default function Breadcrumbs(props: BreadcrumbsProps): ReactElement {
-    const { project_client, project_title } = useContext(GlobalDataContext);
-    const { chapterName } = props;
+export default function Breadcrumbs(): ReactElement {
+    const { body, project_client, project_title } = useContext(GlobalDataContext);
+    const { currentIndex } = useContext(NavigationContext);
+    const { chapter_name } = body[currentIndex] as Partial<ISlide>;
 
     return (
         <div className={styles.breadcrumbs}>
@@ -24,8 +22,8 @@ export default function Breadcrumbs(props: BreadcrumbsProps): ReactElement {
                 <span className={styles.title}>{project_title[0].text}</span>
             )}
 
-            {chapterName && chapterName.length > 0 && chapterName[0].text && (
-                <span className={styles.chapter}>{chapterName[0].text}</span>
+            {chapter_name && chapter_name.length > 0 && chapter_name[0].text && (
+                <span className={styles.chapter}>{chapter_name[0].text}</span>
             )}
         </div>
     );
