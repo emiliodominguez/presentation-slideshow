@@ -10,7 +10,7 @@ import styles from "./Breadcrumbs.module.scss";
 export default function Breadcrumbs(): ReactElement {
     const { body, project_client, project_title } = useContext(GlobalDataContext);
     const { currentIndex } = useContext(NavigationContext);
-    const { chapter_name } = body[currentIndex] as Partial<ISlide>;
+    const { chapter_name } = body[currentIndex].primary as Partial<ISlide>;
 
     return (
         <div className={styles.breadcrumbs}>
