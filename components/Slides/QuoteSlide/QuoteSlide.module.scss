@@ -18,16 +18,13 @@
     }
 }
 
-.quoteSlide {
-    justify-content: center;
-}
-
 .content {
     --grid-middle: 200px;
 
     display: grid;
     grid-template-columns: 1fr var(--grid-middle) 1fr;
     place-items: center;
+    margin: 0 auto;
 
     @media #{$max-width-lg} {
         --grid-middle: 150px;

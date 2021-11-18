@@ -1,7 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, NumberField } from "@prismicio/types";
 import { ISlide } from "..";
-import BaseSlide from "@app/components/Shared/BaseSlide";
 import styles from "./ChapterIntroSlide.module.scss";
 
 export interface IChapterIntroSlide extends ISlide {
@@ -19,21 +18,19 @@ export interface ChapterIntroSlideProps {
  */
 export default function ChapterIntroSlide(props: ChapterIntroSlideProps): JSX.Element {
     return (
-        <BaseSlide>
-            <div className={styles.content}>
-                <div className={styles.chapterNumber}>
-                    <span>{props.content.slide_chapter_number}</span>
-                </div>
-
-                <div
-                    className="subtitle-small"
-                    dangerouslySetInnerHTML={{
-                        __html: PrismicDOM.RichText.asHtml(props.content.slide_subtitle)
-                    }}
-                />
-
-                <h2 className="title">{props.content.slide_title[0].text}</h2>
+        <div className={styles.content}>
+            <div className={styles.chapterNumber}>
+                <span>{props.content.slide_chapter_number}</span>
             </div>
-        </BaseSlide>
+
+            <div
+                className="subtitle-small"
+                dangerouslySetInnerHTML={{
+                    __html: PrismicDOM.RichText.asHtml(props.content.slide_subtitle)
+                }}
+            />
+
+            <h2 className="title">{props.content.slide_title[0].text}</h2>
+        </div>
     );
 }

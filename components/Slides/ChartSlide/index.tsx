@@ -2,7 +2,6 @@ import PrismicDOM from "prismic-dom";
 import { TitleField, RichTextField, NumberField, ColorField } from "@prismicio/types";
 import { ISlide } from "..";
 import { className } from "@app/shared/helpers/classname";
-import BaseSlide from "@app/components/Shared/BaseSlide";
 import styles from "./ChartSlide.module.scss";
 
 interface ChartItem {
@@ -43,50 +42,46 @@ export default function ChartSlide(props: ChartSlideProps): JSX.Element {
     }
 
     return (
-        <BaseSlide>
-            <div className={styles.content}>
-                <div
-                    className={styles.pieChart}
-                    style={{ backgroundImage: `conic-gradient(${setPieChart()})` }}
-                >
-                    <div className={styles.inner}>
-                        <h2 className="subtitle">{props.content.slide_title[0].text}</h2>
+        <div className={styles.content}>
+            <div
+                className={styles.pieChart}
+                style={{ backgroundImage: `conic-gradient(${setPieChart()})` }}
+            >
+                <div className={styles.inner}>
+                    <h2 className="subtitle">{props.content.slide_title[0].text}</h2>
 
-                        {props.content.slide_description.length > 0 && (
-                            <div
+                    {props.content.slide_description.length > 0 && (
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: PrismicDOM.RichText.asHtml(props.content.slide_description)
+                            }}
+                        />
+                    )}
+                </div>
+            </div>
+
+            <div className={styles.pieChartReference}>
+                {props.content.chart_items.map((x, i) => (
+                    <p key={`reference_${i}`} className={styles.reference}>
+                        <span
+                            className={styles.color}
+                            style={{ backgroundColor: x.item_color as string }}
+                        />
+
+                        <span className={styles.label}>{x.item_label[0].text}</span>
+                        <span className={styles.percentage}>{x.item_percentage}%</span>
+
+                        {x.item_description.length > 0 && (
+                            <span
+                                {...className("body-text-small", styles.detail)}
                                 dangerouslySetInnerHTML={{
-                                    __html: PrismicDOM.RichText.asHtml(
-                                        props.content.slide_description
-                                    )
+                                    __html: PrismicDOM.RichText.asHtml(x.item_description)
                                 }}
                             />
                         )}
-                    </div>
-                </div>
-
-                <div className={styles.pieChartReference}>
-                    {props.content.chart_items.map((x, i) => (
-                        <p key={`reference_${i}`} className={styles.reference}>
-                            <span
-                                className={styles.color}
-                                style={{ backgroundColor: x.item_color as string }}
-                            />
-
-                            <span className={styles.label}>{x.item_label[0].text}</span>
-                            <span className={styles.percentage}>{x.item_percentage}%</span>
-
-                            {x.item_description.length > 0 && (
-                                <span
-                                    {...className("body-text-small", styles.detail)}
-                                    dangerouslySetInnerHTML={{
-                                        __html: PrismicDOM.RichText.asHtml(x.item_description)
-                                    }}
-                                />
-                            )}
-                        </p>
-                    ))}
-                </div>
+                    </p>
+                ))}
             </div>
-        </BaseSlide>
+        </div>
     );
 }

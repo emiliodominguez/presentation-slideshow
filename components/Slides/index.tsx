@@ -15,6 +15,7 @@ import QuoteSlide from "./QuoteSlide";
 import KeyFiguresSlide from "./KeyFiguresSlide";
 import ChartSlide from "./ChartSlide";
 import ErrorSlide from "./ErrorSlide";
+import BaseSlide from "../Shared/BaseSlide";
 
 export interface ISlide {
     dark_theme_enabled: BooleanField;
@@ -55,5 +56,6 @@ function setCurrentSlide(slice: Slice): JSX.Element {
 export default function Slide(): JSX.Element {
     const { currentIndex } = useContext(NavigationContext);
     const { body } = useContext(GlobalDataContext);
-    return setCurrentSlide(body[currentIndex]);
+
+    return <BaseSlide>{setCurrentSlide(body[currentIndex])}</BaseSlide>;
 }
