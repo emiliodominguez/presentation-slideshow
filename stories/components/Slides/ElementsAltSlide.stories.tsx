@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import ElementsAltSlide, { ElementsAltSlideProps } from "@app/components/Slides/ElementsAltSlide";
+import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
+import { ElementsAltSlideProps } from "@app/components/Slides/ElementsAltSlide/interfaces";
 
 export default {
     component: ElementsAltSlide,

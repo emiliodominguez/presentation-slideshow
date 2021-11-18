@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import AgendaSlide, { AgendaSlideProps } from "@app/components/Slides/AgendaSlide";
+import AgendaSlide from "@app/components/Slides/AgendaSlide";
+import { AgendaSlideProps } from "@app/components/Slides/AgendaSlide/interfaces";
 
 export default {
     component: AgendaSlide,

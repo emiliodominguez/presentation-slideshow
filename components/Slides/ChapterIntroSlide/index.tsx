@@ -1,17 +1,6 @@
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, NumberField } from "@prismicio/types";
-import { ISlide } from "..";
+import { ChapterIntroSlideProps } from "./interfaces";
 import styles from "./ChapterIntroSlide.module.scss";
-
-export interface IChapterIntroSlide extends ISlide {
-    slide_chapter_number: NumberField;
-    slide_subtitle: RichTextField;
-    slide_title: TitleField;
-}
-
-export interface ChapterIntroSlideProps {
-    content: IChapterIntroSlide;
-}
 
 /**
  * The chapter intro slide component

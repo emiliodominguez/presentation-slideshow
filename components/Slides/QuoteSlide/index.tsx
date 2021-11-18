@@ -1,21 +1,7 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, ImageField } from "@prismicio/types";
-import { ISlide } from "..";
+import { QuoteSlideProps } from "./interfaces";
 import styles from "./QuoteSlide.module.scss";
-
-export interface IQuoteSlide extends ISlide {
-    slide_thumbnail: ImageField;
-    slide_quote: RichTextField;
-    slide_name: TitleField;
-    slide_title: RichTextField;
-    slide_email: RichTextField;
-    slide_phone: RichTextField;
-}
-
-export interface QuoteSlideProps {
-    content: IQuoteSlide;
-}
 
 /**
  * The quote slide component

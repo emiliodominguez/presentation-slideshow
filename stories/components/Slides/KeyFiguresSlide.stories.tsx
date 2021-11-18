@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import KeyFiguresSlide, { KeyFiguresSlideProps } from "@app/components/Slides/KeyFiguresSlide";
+import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
+import { KeyFiguresSlideProps } from "@app/components/Slides/KeyFiguresSlide/interfaces";
 
 export default {
     component: KeyFiguresSlide,

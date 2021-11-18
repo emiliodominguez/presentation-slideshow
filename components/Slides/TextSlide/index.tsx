@@ -1,20 +1,6 @@
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField } from "@prismicio/types";
-import { ISlide } from "..";
+import { TextSlideProps } from "./interfaces";
 import styles from "./TextSlide.module.scss";
-
-interface TextBlock {
-    slide_content: RichTextField;
-}
-
-export interface ITextSlide extends ISlide {
-    slide_title: TitleField;
-    text_blocks: TextBlock[];
-}
-
-export interface TextSlideProps {
-    content: ITextSlide;
-}
 
 /**
  * The text slide component

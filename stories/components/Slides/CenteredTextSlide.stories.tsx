@@ -1,8 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import CenteredTextSlide, {
-    CenteredTextSlideProps
-} from "@app/components/Slides/CenteredTextSlide";
+import CenteredTextSlide from "@app/components/Slides/CenteredTextSlide";
+import { CenteredTextSlideProps } from "@app/components/Slides/CenteredTextSlide/inderfaces";
 
 export default {
     component: CenteredTextSlide,

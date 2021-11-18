@@ -1,22 +1,7 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { TitleField, ImageField, RichTextField } from "@prismicio/types";
-import { ISlide } from "..";
+import { ElementsSlideProps } from "./interfaces";
 import styles from "./ElementsSlide.module.scss";
-
-interface Element {
-    grid_item_thumbnail: ImageField;
-    grid_item_title: TitleField;
-    grid_item_content: RichTextField;
-}
-
-export interface IElementsSlide extends ISlide {
-    elements: Element[];
-}
-
-export interface ElementsSlideProps {
-    content: IElementsSlide;
-}
 
 /**
  * The elements slide component

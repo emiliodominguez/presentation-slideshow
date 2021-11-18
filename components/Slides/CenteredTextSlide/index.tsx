@@ -1,15 +1,5 @@
-import { TitleField } from "@prismicio/types";
-import { ISlide } from "..";
+import { CenteredTextSlideProps } from "./inderfaces";
 import styles from "./CenteredTextSlide.module.scss";
-
-export interface ICenteredTextSlide extends ISlide {
-    slide_title: TitleField;
-    slide_subtitle: TitleField;
-}
-
-export interface CenteredTextSlideProps {
-    content: ICenteredTextSlide;
-}
 
 /**
  * The chapter intro slide component

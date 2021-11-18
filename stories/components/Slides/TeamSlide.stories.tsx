@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import TeamSlide, { TeamSlideProps } from "@app/components/Slides/TeamSlide";
+import TeamSlide from "@app/components/Slides/TeamSlide";
+import { TeamSlideProps } from "@app/components/Slides/TeamSlide/interfaces";
 
 export default {
     component: TeamSlide,

@@ -1,26 +1,9 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { TitleField, ImageField, RichTextField } from "@prismicio/types";
-import { ISlide } from "..";
+import { RichTextField } from "@prismicio/types";
+import { TeamSlideProps } from "./interfaces";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./TeamSlide.module.scss";
-
-interface TeamMember {
-    team_member_thumbnail: ImageField;
-    team_member_name: TitleField;
-    team_member_title: RichTextField;
-    team_member_phone: RichTextField;
-    team_member_email: RichTextField;
-}
-
-export interface ITeamSlide extends ISlide {
-    slide_title: TitleField;
-    team: TeamMember[];
-}
-
-export interface TeamSlideProps {
-    content: ITeamSlide;
-}
 
 /**
  * The team slide component

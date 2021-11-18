@@ -1,17 +1,7 @@
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField } from "@prismicio/types";
-import { ISlide } from "..";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
+import { AgendaSlideProps } from "./interfaces";
 import styles from "./AgendaSlide.module.scss";
-
-export interface IAgendaSlide extends ISlide {
-    slide_title: TitleField;
-    slide_content: RichTextField;
-}
-
-export interface AgendaSlideProps {
-    content: IAgendaSlide;
-}
 
 /**
  * The agenda slide component

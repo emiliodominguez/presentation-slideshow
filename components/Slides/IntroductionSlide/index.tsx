@@ -1,21 +1,9 @@
 import { useContext } from "react";
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, ImageField, BooleanField } from "@prismicio/types";
-import { ISlide } from "..";
 import { GlobalDataContext } from "@app/pages";
+import { IntroductionSlideProps } from "./interfaces";
 import styles from "./IntroductionSlide.module.scss";
-
-export interface IIntroductionSlide extends ISlide {
-    slide_logo: ImageField;
-    slide_title: TitleField;
-    slide_description: RichTextField;
-    show_small_company_logo: BooleanField;
-}
-
-export interface IntroductionSlideProps {
-    content: IIntroductionSlide;
-}
 
 /**
  * The introduction slide component

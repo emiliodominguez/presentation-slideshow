@@ -1,25 +1,7 @@
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, NumberField, ColorField } from "@prismicio/types";
-import { ISlide } from "..";
 import { className } from "@app/shared/helpers/classname";
+import { ChartSlideProps } from "./interfaces";
 import styles from "./ChartSlide.module.scss";
-
-interface ChartItem {
-    item_label: TitleField;
-    item_description: RichTextField;
-    item_percentage: NumberField;
-    item_color: ColorField;
-}
-
-export interface IChartSlide extends ISlide {
-    slide_title: TitleField;
-    slide_description: RichTextField;
-    chart_items: ChartItem[];
-}
-
-export interface ChartSlideProps {
-    content: IChartSlide;
-}
 
 /**
  * The chart slide component

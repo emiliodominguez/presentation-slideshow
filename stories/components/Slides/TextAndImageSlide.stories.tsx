@@ -1,8 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import TextAndImageSlide, {
-    TextAndImageSlideProps
-} from "@app/components/Slides/TextAndImageSlide";
+import TextAndImageSlide from "@app/components/Slides/TextAndImageSlide";
+import { TextAndImageSlideProps } from "@app/components/Slides/TextAndImageSlide/interfaces";
 
 export default {
     component: TextAndImageSlide,

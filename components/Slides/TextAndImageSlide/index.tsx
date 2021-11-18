@@ -1,19 +1,7 @@
 import PrismicDOM from "prismic-dom";
-import { TitleField, RichTextField, BooleanField, ImageField } from "@prismicio/types";
-import { ISlide } from "..";
 import { className } from "@app/shared/helpers/classname";
+import { TextAndImageSlideProps } from "./interfaces";
 import styles from "./TextAndImageSlide.module.scss";
-
-export interface ITextAndImageSlide extends ISlide {
-    slide_title: TitleField;
-    slide_image: ImageField;
-    slide_image_right_aligned: BooleanField;
-    slide_content: RichTextField;
-}
-
-export interface TextAndImageSlideProps {
-    content: ITextAndImageSlide;
-}
 
 /**
  * The text slide component

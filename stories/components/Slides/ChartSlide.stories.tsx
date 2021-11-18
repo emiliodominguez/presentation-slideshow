@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import ChartSlide, { ChartSlideProps } from "@app/components/Slides/ChartSlide";
+import ChartSlide from "@app/components/Slides/ChartSlide";
+import { ChartSlideProps } from "@app/components/Slides/ChartSlide/interfaces";
 
 export default {
     component: ChartSlide,

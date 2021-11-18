@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import QuoteSlide, { QuoteSlideProps } from "@app/components/Slides/QuoteSlide";
+import QuoteSlide from "@app/components/Slides/QuoteSlide";
+import { QuoteSlideProps } from "@app/components/Slides/QuoteSlide/interfaces";
 
 export default {
     component: QuoteSlide,

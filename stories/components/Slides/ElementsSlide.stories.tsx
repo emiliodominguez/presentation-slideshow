@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { Meta } from "@storybook/react";
-import ElementsSlide, { ElementsSlideProps } from "@app/components/Slides/ElementsSlide";
+import ElementsSlide from "@app/components/Slides/ElementsSlide";
+import { ElementsSlideProps } from "@app/components/Slides/ElementsSlide/interfaces";
 
 export default {
     component: ElementsSlide,
