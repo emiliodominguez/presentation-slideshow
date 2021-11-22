@@ -6,7 +6,7 @@ interface TextBlock {
 }
 
 export interface ITextSlide extends ISlide {
-    slide_title: TitleField;
+    slide_title: TitleField<"filled">;
     text_blocks: TextBlock[];
 }
 

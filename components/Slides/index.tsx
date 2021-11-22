@@ -19,8 +19,8 @@ import BaseSlide from "../Shared/BaseSlide";
 
 export interface ISlide {
     dark_theme_enabled: BooleanField;
-    chapter_name: TitleField;
-    slide_navigation_id: TitleField;
+    chapter_name: TitleField<"filled">;
+    slide_navigation_id: TitleField<"filled">;
     slide_bg_pattern?: ImageField;
 }
 

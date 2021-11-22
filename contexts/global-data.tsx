@@ -2,9 +2,9 @@ import { createContext, PropsWithChildren } from "react";
 import { TitleField, RichTextField, ImageField, SliceZone } from "@prismicio/types";
 
 export interface PresentationContent {
-    project_client?: TitleField;
-    project_title: TitleField;
-    project_description: RichTextField;
+    project_client?: TitleField<"filled">;
+    project_title: TitleField<"filled">;
+    project_description: RichTextField<"filled">;
     isologo_black: ImageField;
     isologo_white: ImageField;
     isologo_color: ImageField;

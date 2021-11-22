@@ -2,14 +2,14 @@ import { ColorField, NumberField, RichTextField, TitleField } from "@prismicio/t
 import { ISlide } from "..";
 
 interface ChartItem {
-    item_label: TitleField;
+    item_label: TitleField<"filled">;
     item_description: RichTextField;
     item_percentage: NumberField;
     item_color: ColorField;
 }
 
 export interface IChartSlide extends ISlide {
-    slide_title: TitleField;
+    slide_title: TitleField<"filled">;
     slide_description: RichTextField;
     chart_items: ChartItem[];
 }

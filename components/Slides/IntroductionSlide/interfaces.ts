@@ -3,7 +3,7 @@ import { ISlide } from "..";
 
 export interface IIntroductionSlide extends ISlide {
     slide_logo: ImageField;
-    slide_title: TitleField;
+    slide_title: TitleField<"filled">;
     slide_description: RichTextField;
     show_small_company_logo: BooleanField;
 }

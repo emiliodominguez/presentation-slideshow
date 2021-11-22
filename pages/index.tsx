@@ -22,7 +22,7 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     const { setCount } = useContext(NavigationContext);
     const setCountRef = useRef<(x: number) => void>(setCount);
     const localizedContent = props.content?.find(x => x.lang === locale);
-    const presentationContent: PresentationContent | undefined = localizedContent?.data;
+    const presentationContent: PresentationContent = localizedContent?.data;
 
     useEffect(() => {
         if (presentationContent && presentationContent.body.length > 0)

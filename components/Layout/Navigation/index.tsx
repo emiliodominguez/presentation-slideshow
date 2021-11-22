@@ -26,7 +26,7 @@ export default function Navigation(): JSX.Element {
 
                 {/* Go to specific item */}
                 {body.map((item, i) => {
-                    const id = item.primary.slide_navigation_id as TitleField;
+                    const id = item.primary.slide_navigation_id as TitleField<"filled">;
 
                     return (
                         <button

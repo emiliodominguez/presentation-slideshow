@@ -4,7 +4,7 @@ import { ISlide } from "..";
 export interface IChapterIntroSlide extends ISlide {
     slide_chapter_number: NumberField;
     slide_subtitle: RichTextField;
-    slide_title: TitleField;
+    slide_title: TitleField<"filled">;
 }
 
 export interface ChapterIntroSlideProps {
