@@ -60,10 +60,11 @@ Besides those files this is a detailes view of the main project structure.
     └── .next                       # Next configuration files
     └── .storybook                  # Storybook configuration files
     └── components                  # Components folder
-    │   ├── LanguageSelector        # The language selector
     │   ├── Layout                  # The main layout wrapper
-    │   ├── Navigation              # The slides navigation
+    │   │   ├── LanguageSelector    # The language selector
+    │   │   └── Navigation          # The slides navigation
     │   ├── Shared                  # Shared components
+    │   │   └── BaseSlide           # The base slide component
     │   │   └── Breadcrumbs         # The top slide breadcrumbs
     │   │   └── EdgeBox             # A floating box that sits at any edge of the screen
     │   │   └── LogoAndTitle        # The company logo and a title
@@ -79,12 +80,8 @@ Besides those files this is a detailes view of the main project structure.
     │   └── helpers                 # Helper functions for strings, colors, classnames and so on...
     │   └── ...
     └── stories                     # Contains the Storybook stories
-    │   ├── components              # Component stories
-    │   │   └── Core                # Core component stories
-    │   │   └── Shared              # Shared component stories
-    │   │   └── Slides              # Slides component stories
-    │   ├── pages                   # Pages stories
-    │   └── ...
+    │   ├── hooks                   # Stories hooks
+    │   └── slides                  # Slides component stories
     └── styles                      # Contains the global styles configuration
     │   ├── shared                  # Contains shared styles (animations, mixins and placeholders)
     │   ├── variables               # Contains variable styles (font weights, z-index and media queries)
