@@ -1,7 +1,9 @@
 import * as nextImage from "next/image";
 import LocalizationContextProvider from "@app/contexts/localization";
 import NavigationContextProvider from "@app/contexts/navigation";
+import GlobalDataContextProvider from "@app/contexts/global-data";
 import Layout from "@app/components/Layout";
+import BaseSlide from "@app/components/Shared/BaseSlide";
 import "@app/styles/main.scss";
 
 /**
@@ -9,16 +11,29 @@ import "@app/styles/main.scss";
  */
 Object.defineProperty(nextImage, "default", {
     configurable: true,
-    value: props => (
-        <img widht={props.width} height={props.height} alt={props.alt} src={props.src} />
-    )
+    value: props => <img {...props} />
 });
+
+const mockData = {
+    project_title: "Storybook demo",
+    project_description: "This is a placeholder text for Storybook",
+    body: [
+        {
+            slice_type: "text_slide",
+            primary: { slide_navigation_id: [{ text: "Demo slide" }] }
+        }
+    ]
+};
 
 export const decorators = [
     Story => (
         <LocalizationContextProvider>
             <NavigationContextProvider>
-                <Layout>{Story()}</Layout>
+                <GlobalDataContextProvider value={mockData}>
+                    <Layout>
+                        <BaseSlide>{Story()}</BaseSlide>
+                    </Layout>
+                </GlobalDataContextProvider>
             </NavigationContextProvider>
         </LocalizationContextProvider>
     )
