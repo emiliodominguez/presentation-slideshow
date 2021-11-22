@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useMemo } from "react";
 import Head from "next/head";
 import Prismic from "@prismicio/client";
 import PrismicDOM from "prismic-dom";
@@ -21,8 +21,10 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     const { locale } = useContext(LocalizationContext);
     const { setCount } = useContext(NavigationContext);
     const setCountRef = useRef<(x: number) => void>(setCount);
-    const localizedContent = props.content?.find(x => x.lang === locale);
-    const presentationContent: PresentationContent = localizedContent?.data;
+    const presentationContent: PresentationContent = useMemo(() => {
+        const localizedContent = props.content?.find(x => x.lang === locale);
+        return localizedContent?.data;
+    }, [props.content, locale]);
 
     useEffect(() => {
         if (presentationContent && presentationContent.body.length > 0)
