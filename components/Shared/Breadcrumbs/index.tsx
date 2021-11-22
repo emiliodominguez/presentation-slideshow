@@ -1,5 +1,5 @@
 import { ReactElement, useContext } from "react";
-import { GlobalDataContext } from "@app/pages";
+import { GlobalDataContext } from "@app/contexts/global-data";
 import { NavigationContext } from "@app/contexts/navigation";
 import { ISlide } from "@app/components/Slides";
 import styles from "./Breadcrumbs.module.scss";

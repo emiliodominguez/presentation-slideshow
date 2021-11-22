@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Image from "next/image";
-import { GlobalDataContext } from "@app/pages";
+import { GlobalDataContext } from "@app/contexts/global-data";
 import styles from "./LogoAndTitle.module.scss";
 
 export interface LogoAndTitleProps {

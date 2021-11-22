@@ -20,6 +20,10 @@
 }
 
 .mainLogo {
+    img {
+        object-fit: contain;
+    }
+
     @media #{$max-width-md} {
         > div {
             width: 200px;

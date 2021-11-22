@@ -26,10 +26,14 @@ $slide-animation-offset: 150px;
     animation: slide-enter ease-out forwards 500ms;
 
     display: flex;
-    align-items: var(--slide-alignment);
+    align-items: center;
 
     @media #{$max-width-md} {
         --horizontal-padding: 25px;
+    }
+
+    &.hasOverflow {
+        align-items: flex-start;
     }
 }
 

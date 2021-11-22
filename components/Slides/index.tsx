@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Slice, BooleanField, TitleField, ImageField } from "@prismicio/types";
 import { NavigationContext } from "@app/contexts/navigation";
-import { GlobalDataContext } from "@app/pages";
+import { GlobalDataContext } from "@app/contexts/global-data";
 import IntroductionSlide from "./IntroductionSlide";
 import AgendaSlide from "./AgendaSlide";
 import ChapterIntroSlide from "./ChapterIntroSlide";
@@ -57,5 +57,7 @@ export default function Slide(): JSX.Element {
     const { currentIndex } = useContext(NavigationContext);
     const { body } = useContext(GlobalDataContext);
 
-    return <BaseSlide>{setCurrentSlide(body[currentIndex])}</BaseSlide>;
+    return (
+        <BaseSlide key={`slide_${currentIndex}`}>{setCurrentSlide(body[currentIndex])}</BaseSlide>
+    );
 }

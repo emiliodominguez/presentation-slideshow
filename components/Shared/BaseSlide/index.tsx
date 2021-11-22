@@ -1,8 +1,8 @@
-import React, { PropsWithChildren, useContext, useRef, useState, useEffect, useMemo } from "react";
+import React, { PropsWithChildren, useContext, useRef, useEffect, useMemo } from "react";
 import { ImageField, Slice } from "@prismicio/types";
 import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
-import { GlobalDataContext } from "@app/pages";
+import { GlobalDataContext } from "@app/contexts/global-data";
 import { NavigationContext } from "@app/contexts/navigation";
 import { ISlide } from "@app/components/Slides";
 import Breadcrumbs from "../Breadcrumbs";
@@ -21,7 +21,6 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
     const { currentIndex } = useContext(NavigationContext);
     const slideRef = useRef<HTMLDivElement | null>(null);
     const resizeTimeoutRef = useRef<number | undefined>(undefined);
-    const [hasOverflow, setHasOverflow] = useState<boolean>(false);
     const { primary } = useMemo(
         () => body[currentIndex] as Slice<Partial<ISlide>>,
         [body, currentIndex]
@@ -36,8 +35,8 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
         resizeTimeoutRef.current = window.setTimeout(() => {
             if (!slideRef.current) return;
 
-            const { scrollHeight, clientHeight } = slideRef.current;
-            setHasOverflow(scrollHeight > clientHeight);
+            const { scrollHeight, clientHeight, classList } = slideRef.current;
+            classList[scrollHeight > clientHeight ? "add" : "remove"](styles.hasOverflow);
         }, 250);
     }
 
@@ -59,7 +58,6 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
             ref={slideRef}
             {...className(styles.slide, props.className)}
             style={{
-                ["--slide-alignment" as string]: hasOverflow ? "flex-start" : "center",
                 ["--slide-bg-pattern" as string]: (primary.slide_bg_pattern as ImageField)?.url
                     ? `url(${(primary.slide_bg_pattern as ImageField).url})`
                     : undefined

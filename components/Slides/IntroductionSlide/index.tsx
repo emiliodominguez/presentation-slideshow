@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { GlobalDataContext } from "@app/pages";
+import { GlobalDataContext } from "@app/contexts/global-data";
 import { IntroductionSlideProps } from "./interfaces";
 import styles from "./IntroductionSlide.module.scss";
 
