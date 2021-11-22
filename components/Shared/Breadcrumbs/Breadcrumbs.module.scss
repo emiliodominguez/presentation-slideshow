@@ -9,6 +9,7 @@
     padding-right: 25px;
     line-height: 1.5;
     font-size: 14px;
+    pointer-events: none;
     z-index: z-index(important);
 
     &::before {

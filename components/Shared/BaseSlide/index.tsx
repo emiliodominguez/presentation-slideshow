@@ -4,9 +4,9 @@ import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
 import { GlobalDataContext } from "@app/pages";
 import { NavigationContext } from "@app/contexts/navigation";
+import { ISlide } from "@app/components/Slides";
 import Breadcrumbs from "../Breadcrumbs";
 import styles from "./BaseSlide.module.scss";
-import { ISlide } from "@app/components/Slides";
 
 interface BaseSlideProps {
     className?: string;
@@ -55,6 +55,7 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
 
     return (
         <div
+            id="base-slide"
             ref={slideRef}
             {...className(styles.slide, props.className)}
             style={{

@@ -4,7 +4,7 @@ import useEventListener from "./useEventListener";
 /**
  * Sets a real viewport height unit
  */
-function useRealViewportHeight(): void {
+export default function useRealViewportHeight(): void {
     const vhUnitTimeout = useRef<number>(0);
 
     /**
@@ -26,5 +26,3 @@ function useRealViewportHeight(): void {
 
     useEventListener("resize", getViewportHeightUnit);
 }
-
-export default useRealViewportHeight;
