@@ -60,9 +60,8 @@ Besides those files this is a detailes view of the main project structure.
     └── .next                       # Next configuration files
     └── .storybook                  # Storybook configuration files
     └── components                  # Components folder
-    │   ├── Layout                  # The main layout wrapper
-    │   │   ├── LanguageSelector    # The language selector
-    │   │   └── Navigation          # The slides navigation
+    │   ├── LanguageSelector        # The language selector
+    │   └── Navigation              # The slides navigation
     │   ├── Shared                  # Shared components
     │   │   └── BaseSlide           # The base slide component
     │   │   └── Breadcrumbs         # The top slide breadcrumbs
