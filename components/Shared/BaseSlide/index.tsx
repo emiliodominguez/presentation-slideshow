@@ -1,10 +1,9 @@
-import React, { PropsWithChildren, useContext, useRef, useEffect, useMemo } from "react";
-import { ImageField, Slice } from "@prismicio/types";
+import React, { PropsWithChildren, useContext, useRef, useEffect } from "react";
+import { ImageField } from "@prismicio/types";
 import useEventListener from "@app/hooks/useEventListener";
 import { className } from "@app/shared/helpers/classname";
 import { GlobalDataContext } from "@app/contexts/global-data";
 import { NavigationContext } from "@app/contexts/navigation";
-import { ISlide } from "@app/components/Slides";
 import Breadcrumbs from "../Breadcrumbs";
 import styles from "./BaseSlide.module.scss";
 
@@ -21,10 +20,9 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
     const { currentIndex } = useContext(NavigationContext);
     const slideRef = useRef<HTMLDivElement | null>(null);
     const resizeTimeoutRef = useRef<number | undefined>(undefined);
-    const { primary } = useMemo(
-        () => body[currentIndex] as Slice<Partial<ISlide>>,
-        [body, currentIndex]
-    );
+    const {
+        primary: { dark_theme_enabled, slide_bg_pattern }
+    } = body[currentIndex] ?? {};
 
     /**
      * Checks if the slide is overflowing
@@ -44,11 +42,11 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
         checkOverflow();
 
         // Sets the dark theme modifier based on the slide configuration
-        const action = primary.dark_theme_enabled ? "add" : "remove";
+        const action = dark_theme_enabled ? "add" : "remove";
         document.body.classList[action]("dark-theme");
 
         return () => clearTimeout(resizeTimeoutRef.current);
-    }, [primary.dark_theme_enabled]);
+    }, [dark_theme_enabled]);
 
     useEventListener("resize", checkOverflow);
 
@@ -58,8 +56,8 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
             ref={slideRef}
             {...className(styles.slide, props.className)}
             style={{
-                ["--slide-bg-pattern" as string]: (primary.slide_bg_pattern as ImageField)?.url
-                    ? `url(${(primary.slide_bg_pattern as ImageField).url})`
+                ["--slide-bg-pattern" as string]: (slide_bg_pattern as ImageField)?.url
+                    ? `url(${(slide_bg_pattern as ImageField).url})`
                     : undefined
             }}
         >
