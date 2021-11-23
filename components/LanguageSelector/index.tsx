@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LocalizationContext, locales } from "@app/contexts/localization";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
-import EdgeBox from "../../Shared/EdgeBox";
+import EdgeBox from "../Shared/EdgeBox";
 import styles from "./LanguageSelector.module.scss";
 
 /**

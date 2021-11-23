@@ -5,7 +5,7 @@ import { NavigationContext } from "@app/contexts/navigation";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
 import { icons } from "@app/shared/icons";
-import EdgeBox from "../../Shared/EdgeBox";
+import EdgeBox from "../Shared/EdgeBox";
 import styles from "./Navigation.module.scss";
 
 /**

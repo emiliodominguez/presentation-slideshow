@@ -7,7 +7,8 @@ import { Document } from "@prismicio/client/types/documents";
 import { LocalizationContext } from "@app/contexts/localization";
 import { NavigationContext } from "@app/contexts/navigation";
 import GlobalDataContextProvider, { PresentationContent } from "@app/contexts/global-data";
-import Layout from "@app/components/Layout";
+import LanguageSelector from "@app/components/LanguageSelector";
+import Navigation from "@app/components/Navigation";
 import Slide from "@app/components/Slides";
 
 export interface IndexPageProps {
@@ -47,9 +48,11 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
                 />
             </Head>
 
-            <Layout>
+            <main>
+                <LanguageSelector />
+                <Navigation />
                 <Slide />
-            </Layout>
+            </main>
         </GlobalDataContextProvider>
     );
 }
