@@ -24,6 +24,10 @@ export interface ISlide {
     slide_bg_pattern?: ImageField;
 }
 
+interface ComponentMap {
+    [key: string]: JSX.Element;
+}
+
 /**
  * Sets the current slide based on its type
  */
@@ -32,7 +36,7 @@ function setCurrentSlide(slice: Slice): JSX.Element {
 
     const { slice_type, primary, items } = slice;
     const content = primary as any;
-    const componentMap = {
+    const componentMap: ComponentMap = {
         title_slide: <IntroductionSlide content={content} />,
         agenda_slide: <AgendaSlide content={content} />,
         chapter_intro_slide: <ChapterIntroSlide content={content} />,
@@ -45,7 +49,7 @@ function setCurrentSlide(slice: Slice): JSX.Element {
         quote_slide: <QuoteSlide content={content} />,
         key_figures_slide: <KeyFiguresSlide content={{ ...content, key_figures: items }} />,
         chart_slide: <ChartSlide content={{ ...content, chart_items: items }} />
-    } as { [key: string]: JSX.Element };
+    };
 
     return componentMap[slice_type] ?? <ErrorSlide />;
 }
