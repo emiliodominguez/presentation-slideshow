@@ -2,7 +2,6 @@ import * as nextImage from "next/image";
 import LocalizationContextProvider from "@app/contexts/localization";
 import NavigationContextProvider from "@app/contexts/navigation";
 import GlobalDataContextProvider from "@app/contexts/global-data";
-import Layout from "@app/components/Layout";
 import BaseSlide from "@app/components/Shared/BaseSlide";
 import "@app/styles/main.scss";
 
@@ -30,9 +29,9 @@ export const decorators = [
         <LocalizationContextProvider>
             <NavigationContextProvider>
                 <GlobalDataContextProvider value={mockData}>
-                    <Layout>
+                    <main>
                         <BaseSlide>{Story()}</BaseSlide>
-                    </Layout>
+                    </main>
                 </GlobalDataContextProvider>
             </NavigationContextProvider>
         </LocalizationContextProvider>
