@@ -1,4 +1,4 @@
-import * as nextImage from "next/image";
+import * as NextImage from "next/image";
 import LocalizationContextProvider from "@app/contexts/localization";
 import NavigationContextProvider from "@app/contexts/navigation";
 import GlobalDataContextProvider from "@app/contexts/global-data";
@@ -8,29 +8,28 @@ import "@app/styles/main.scss";
 /**
  * Replaces next image component by an img with the same props
  */
-Object.defineProperty(nextImage, "default", {
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, "default", {
     configurable: true,
-    value: props => <img {...props} />
+    value: props => <OriginalNextImage {...props} unoptimized />
 });
 
-const mockData = {
+const mockedData = {
     project_title: "Storybook demo",
     project_description: "This is a placeholder text for Storybook",
-    body: [
-        {
-            slice_type: "text_slide",
-            primary: { slide_navigation_id: [{ text: "Demo slide" }] }
-        }
-    ]
+    body: [{ slice_type: "text_slide", primary: { slide_navigation_id: [{ text: "Demo slide" }] } }]
 };
 
 export const decorators = [
     Story => (
         <LocalizationContextProvider>
             <NavigationContextProvider>
-                <GlobalDataContextProvider value={mockData}>
+                <GlobalDataContextProvider value={mockedData}>
                     <main>
-                        <BaseSlide>{Story()}</BaseSlide>
+                        <BaseSlide>
+                            <Story />
+                        </BaseSlide>
                     </main>
                 </GlobalDataContextProvider>
             </NavigationContextProvider>

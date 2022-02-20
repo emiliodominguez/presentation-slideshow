@@ -1,26 +1,25 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import CenteredTextSlide from "@app/components/Slides/CenteredTextSlide";
-import { CenteredTextSlideProps } from "@app/components/Slides/CenteredTextSlide/inderfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: CenteredTextSlide,
     title: "Slides/CenteredTextSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof CenteredTextSlide>;
 
-const exampleData: any = {
+const mockedData: any = {
     slide_navigation_id: [{ type: "heading4", text: "Centered text slide" }],
     slide_title: [{ type: "heading2", text: "Some title" }],
     slide_subtitle: [{ type: "paragraph", text: "Some subtitle" }]
 };
 
-export const LightThemeStory: VFC<CenteredTextSlideProps> = () => (
-    <CenteredTextSlide content={exampleData} />
+const Template: ComponentStory<typeof CenteredTextSlide> = () => (
+    <CenteredTextSlide content={mockedData} />
 );
 
-export const DarkThemeStory: VFC<CenteredTextSlideProps> = () => {
-    useDarkTheme();
-    return <CenteredTextSlide content={exampleData} />;
-};
+export const LightThemeStory = Template.bind({});
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.decorators = [withDarkTheme];

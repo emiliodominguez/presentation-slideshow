@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ChartSlide from "@app/components/Slides/ChartSlide";
-import { ChartSlideProps } from "@app/components/Slides/ChartSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: ChartSlide,
     title: "Slides/ChartSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof ChartSlide>;
 
-const exampleData: any = {
+const mockedData: any = {
     dark_theme_enabled: true,
     slide_title: [{ type: "heading2", text: "Lorem ipsum" }],
     slide_description: [{ type: "paragraph", text: "Lorem ipsum dolor sit amet" }],
@@ -42,9 +40,10 @@ const exampleData: any = {
     ]
 };
 
-export const LightThemeStory: VFC<ChartSlideProps> = () => <ChartSlide content={exampleData} />;
+const Template: ComponentStory<typeof ChartSlide> = () => <ChartSlide content={mockedData} />;
 
-export const DarkThemeStory: VFC<ChartSlideProps> = () => {
-    useDarkTheme();
-    return <ChartSlide content={exampleData} />;
-};
+export const LightThemeStory = Template.bind({});
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.decorators = [withDarkTheme];

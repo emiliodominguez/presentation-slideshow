@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import TextAndImageSlide from "@app/components/Slides/TextAndImageSlide";
-import { TextAndImageSlideProps } from "@app/components/Slides/TextAndImageSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: TextAndImageSlide,
     title: "Slides/TextAndImageSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof TextAndImageSlide>;
 
-const exampleData = (dark: boolean): any => ({
+const mockedData = (dark: boolean): any => ({
     slide_navigation_id: [{ type: "heading4", text: "Text and image slide" }],
     slide_title: [{ type: "heading2", text: "Lorem ipsum dolor" }],
     slide_content: [
@@ -50,22 +48,32 @@ const exampleData = (dark: boolean): any => ({
     slide_image_right_aligned: true
 });
 
-export const LightThemeStoryImageToTheRight: VFC<TextAndImageSlideProps> = () => (
-    <TextAndImageSlide content={exampleData(false)} />
-);
+const Template: ComponentStory<typeof TextAndImageSlide> = args => <TextAndImageSlide {...args} />;
 
-export const LightThemeStoryImageToTheLeft: VFC<TextAndImageSlideProps> = () => (
-    <TextAndImageSlide content={{ ...exampleData(false), slide_image_right_aligned: false }} />
-);
+export const LightThemeStoryImageToTheRight = Template.bind({});
 
-export const DarkThemeStoryImageToTheRight: VFC<TextAndImageSlideProps> = () => {
-    useDarkTheme();
-    return <TextAndImageSlide content={exampleData(true)} />;
+LightThemeStoryImageToTheRight.args = {
+    content: mockedData(false)
 };
 
-export const DarkThemeStoryImageToTheLeft: VFC<TextAndImageSlideProps> = () => {
-    useDarkTheme();
-    return (
-        <TextAndImageSlide content={{ ...exampleData(true), slide_image_right_aligned: false }} />
-    );
+export const LightThemeStoryImageToTheLeft = Template.bind({});
+
+LightThemeStoryImageToTheLeft.args = {
+    content: { ...mockedData(false), slide_image_right_aligned: false }
 };
+
+export const DarkThemeStoryImageToTheRight = Template.bind({});
+
+DarkThemeStoryImageToTheRight.args = {
+    content: mockedData(true)
+};
+
+DarkThemeStoryImageToTheRight.decorators = [withDarkTheme];
+
+export const DarkThemeStoryImageToTheLeft = Template.bind({});
+
+DarkThemeStoryImageToTheLeft.args = {
+    content: { ...mockedData(true), slide_image_right_aligned: false }
+};
+
+DarkThemeStoryImageToTheLeft.decorators = [withDarkTheme];

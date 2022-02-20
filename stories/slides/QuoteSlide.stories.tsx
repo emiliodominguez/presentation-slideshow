@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import QuoteSlide from "@app/components/Slides/QuoteSlide";
-import { QuoteSlideProps } from "@app/components/Slides/QuoteSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: QuoteSlide,
     title: "Slides/QuoteSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof QuoteSlide>;
 
-const exampleData = (dark: boolean): any => ({
+const mockedData = (dark: boolean): any => ({
     slide_navigation_id: [{ type: "heading4", text: "Quote slide" }],
     slide_thumbnail: { url: `/assets/logos/isologo_${dark ? "white" : "black"}.png` },
     slide_quote: [
@@ -25,11 +23,18 @@ const exampleData = (dark: boolean): any => ({
     slide_phone: [{ type: "paragraph", text: "+15555555555" }]
 });
 
-export const LightThemeStory: VFC<QuoteSlideProps> = () => (
-    <QuoteSlide content={exampleData(false)} />
-);
+const Template: ComponentStory<typeof QuoteSlide> = args => <QuoteSlide {...args} />;
 
-export const DarkThemeStory: VFC<QuoteSlideProps> = () => {
-    useDarkTheme();
-    return <QuoteSlide content={exampleData(true)} />;
+export const LightThemeStory = Template.bind({});
+
+LightThemeStory.args = {
+    content: mockedData(false)
 };
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.args = {
+    content: mockedData(true)
+};
+
+DarkThemeStory.decorators = [withDarkTheme];

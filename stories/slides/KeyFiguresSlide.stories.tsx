@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import KeyFiguresSlide from "@app/components/Slides/KeyFiguresSlide";
-import { KeyFiguresSlideProps } from "@app/components/Slides/KeyFiguresSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: KeyFiguresSlide,
     title: "Slides/KeyFiguresSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof KeyFiguresSlide>;
 
-const exampleData = (dark: boolean): any => ({
+const mockedData = (dark: boolean): any => ({
     slide_navigation_id: [{ type: "heading4", text: "Key figures" }],
     slide_title: [{ type: "heading2", text: "Slide title" }],
     slide_subtitle: [
@@ -56,11 +54,18 @@ const exampleData = (dark: boolean): any => ({
     ]
 });
 
-export const LightThemeStory: VFC<KeyFiguresSlideProps> = () => (
-    <KeyFiguresSlide content={exampleData(false)} />
-);
+const Template: ComponentStory<typeof KeyFiguresSlide> = args => <KeyFiguresSlide {...args} />;
 
-export const DarkThemeStory: VFC<KeyFiguresSlideProps> = () => {
-    useDarkTheme();
-    return <KeyFiguresSlide content={exampleData(true)} />;
+export const LightThemeStory = Template.bind({});
+
+LightThemeStory.args = {
+    content: mockedData(false)
 };
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.args = {
+    content: mockedData(true)
+};
+
+DarkThemeStory.decorators = [withDarkTheme];
