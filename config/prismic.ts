@@ -1,5 +1,6 @@
-import Prismic from "@prismicio/client";
+import { createClient, getRepositoryEndpoint } from "@prismicio/client";
 
-const apiEndpoint = String(process.env.PRISMIC_URL);
+const repoName = String(process.env.PRISMIC_REPO_NAME);
 const accessToken = String(process.env.PRISMIC_TOKEN);
-export const client = Prismic.client(apiEndpoint, { accessToken });
+const endpoint = getRepositoryEndpoint(repoName);
+export const client = createClient(endpoint, { accessToken });
