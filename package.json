@@ -11,7 +11,8 @@
         "test:watch": "jest --watch",
         "prettier": "prettier --write **/*.{js,jsx,ts,tsx,json}",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
+        "build-storybook": "build-storybook",
+        "prepare": "husky install"
     },
     "dependencies": {
         "@prismicio/client": "^6.3.0",
@@ -52,7 +53,7 @@
         "eslint-import-resolver-babel-module": "^5.3.1",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-prettier": "^4.0.0",
-        "husky": "^7.0.4",
+        "husky": "^7.0.0",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^27.5.1",
         "lint-staged": "^12.3.4",
@@ -62,5 +63,11 @@
         "style-loader": "^2.0.0",
         "typescript": "^4.5.5",
         "webpack": "^5.69.1"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "prettier --write",
+            "eslint --fix"
+        ]
     }
 }
