@@ -16,13 +16,13 @@ export const locales = Object.freeze<Locale[]>([
     {
         id: "es-ar",
         alt: "Español - Argentina",
-        text: "ES-AR",
-        default: true
+        text: "ES-AR"
     },
     {
         id: "en-gb",
         alt: "English - United Kingdom",
-        text: "EN-GB"
+        text: "EN-GB",
+        default: true
     }
 ]);
 
