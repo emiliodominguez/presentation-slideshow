@@ -5,7 +5,7 @@ import { NavigationContext } from "@app/contexts/navigation";
 import { className } from "@app/shared/helpers/classname";
 import { keyShortcuts } from "@app/shared/shortcuts";
 import { icons } from "@app/shared/icons";
-import EdgeBox from "../Shared/EdgeBox";
+import EdgeBox, { EdgeBoxPosition } from "../Shared/EdgeBox";
 import styles from "./Navigation.module.scss";
 
 /**
@@ -17,7 +17,7 @@ export default function Navigation(): JSX.Element {
         useContext(NavigationContext);
 
     return (
-        <EdgeBox keyShortcut={keyShortcuts.toggleNavigation} boxPosition="bottom">
+        <EdgeBox keyShortcut={keyShortcuts.toggleNavigation} boxPosition={EdgeBoxPosition.Bottom}>
             <nav className={styles.navigation}>
                 {/* Go to previous item */}
                 <button onClick={goToPrevious} disabled={disabledNav.previous}>
