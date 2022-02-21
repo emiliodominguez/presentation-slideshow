@@ -13,6 +13,7 @@ import styles from "./MapSlide.module.scss";
  * An interactive map slide
  */
 export default function MapSlide(props: MapSlideProps): ReactElement {
+    const mapRef = useRef<HTMLDivElement>(null);
     const mapService = useRef<MapService | null>(null);
     const [current, setCurrent] = useState<number | null>(() => (props.content.locations.length > 0 ? 0 : null));
 
@@ -40,9 +41,12 @@ export default function MapSlide(props: MapSlideProps): ReactElement {
 
     // Initial setup
     useEffect(() => {
+        if (!mapRef.current) return;
+
         // Instantiate Map Service
         mapService.current = new MapService(
             {
+                container: mapRef.current,
                 center: getFirstLocationCenter(),
                 style: props.content.slide_map ? camelCase(props.content.slide_map as string) : undefined
             },
@@ -63,7 +67,7 @@ export default function MapSlide(props: MapSlideProps): ReactElement {
 
     return (
         <>
-            <div className={styles.map} id="map" />
+            <div ref={mapRef} className={styles.map} />
 
             {/* Locations tags */}
             <div className={styles.locations}>
