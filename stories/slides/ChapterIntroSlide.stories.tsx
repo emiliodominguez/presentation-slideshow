@@ -15,9 +15,7 @@ const mockedData: any = {
     slide_title: [{ type: "heading2", text: "The chapter 1 title" }]
 };
 
-const Template: ComponentStory<typeof ChapterIntroSlide> = () => (
-    <ChapterIntroSlide content={mockedData} />
-);
+const Template: ComponentStory<typeof ChapterIntroSlide> = () => <ChapterIntroSlide content={mockedData} />;
 
 export const LightThemeStory = Template.bind({});
 

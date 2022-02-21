@@ -13,8 +13,7 @@ import styles from "./Navigation.module.scss";
  */
 export default function Navigation(): JSX.Element {
     const { body } = useContext(GlobalDataContext);
-    const { currentIndex, disabledNav, goTo, goToNext, goToPrevious } =
-        useContext(NavigationContext);
+    const { currentIndex, disabledNav, goTo, goToNext, goToPrevious } = useContext(NavigationContext);
 
     return (
         <EdgeBox keyShortcut={keyShortcuts.toggleNavigation} boxPosition={EdgeBoxPosition.Bottom}>
@@ -29,11 +28,7 @@ export default function Navigation(): JSX.Element {
                     const id = item.primary.slide_navigation_id as TitleField<"filled">;
 
                     return (
-                        <button
-                            key={`nav_${i}`}
-                            onClick={() => goTo(i)}
-                            {...className({ [styles.current]: currentIndex === i })}
-                        >
+                        <button key={`nav_${i}`} onClick={() => goTo(i)} {...className({ [styles.current]: currentIndex === i })}>
                             {id.length > 0 ? id[0].text : `Slide ${i + 1}`}
                         </button>
                     );

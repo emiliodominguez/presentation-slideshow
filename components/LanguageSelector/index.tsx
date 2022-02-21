@@ -12,11 +12,7 @@ export default function LanguageSelector(): JSX.Element {
     const { locale, setLocale } = useContext(LocalizationContext);
 
     return (
-        <EdgeBox
-            keyShortcut={keyShortcuts.toggleLanguage}
-            boxPosition={EdgeBoxPosition.Top}
-            startHidden
-        >
+        <EdgeBox keyShortcut={keyShortcuts.toggleLanguage} boxPosition={EdgeBoxPosition.Top} startHidden>
             <div className={styles.languageSelector}>
                 {locales.map(x => (
                     <button

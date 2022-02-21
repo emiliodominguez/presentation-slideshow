@@ -11,9 +11,7 @@ export default function ErrorSlide(props: ErrorSlideProps): JSX.Element {
     return (
         <div className={styles.content}>
             <h2 className="title">...oops!</h2>
-            <h3 className="subtitle-small">
-                {props.message ?? "There was an error setting the slide"}
-            </h3>
+            <h3 className="subtitle-small">{props.message ?? "There was an error setting the slide"}</h3>
         </div>
     );
 }

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rick
+* source:	https://sketchfab.com/3d-models/rick-766fe46adfda44078cd27f254d09b285
+* author:	CzernO (https://sketchfab.com/czernobog)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rick" (https://sketchfab.com/3d-models/rick-766fe46adfda44078cd27f254d09b285) by CzernO (https://sketchfab.com/czernobog) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

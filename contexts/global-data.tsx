@@ -24,12 +24,6 @@ export const GlobalDataContext = createContext<PresentationContent>({} as Presen
 /**
  * Global data context provider
  */
-export default function GlobalDataContextProvider(
-    props: PropsWithChildren<GlobalDataContextProviderProps>
-): JSX.Element {
-    return (
-        <GlobalDataContext.Provider value={props.value}>
-            {props.children}
-        </GlobalDataContext.Provider>
-    );
+export default function GlobalDataContextProvider(props: PropsWithChildren<GlobalDataContextProviderProps>): JSX.Element {
+    return <GlobalDataContext.Provider value={props.value}>{props.children}</GlobalDataContext.Provider>;
 }

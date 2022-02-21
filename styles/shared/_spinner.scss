@@ -1,0 +1,38 @@
+@mixin spinner($color, $size, $full-size: false) {
+    @if ($full-size) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(var(--primary-black));
+        }
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        min-width: $size;
+        height: $size;
+        border: 5px solid $color;
+        border-bottom-color: rgb(var(--primary-white));
+        border-radius: 50%;
+        animation: spin linear infinite 1s;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

@@ -58,11 +58,7 @@ describe("getContrastColor", () => {
         const darkColorContrast = "#ccc";
 
         // When
-        const lightColorResult = getContrastColor(
-            lightColor,
-            lightColorContrast,
-            darkColorContrast
-        );
+        const lightColorResult = getContrastColor(lightColor, lightColorContrast, darkColorContrast);
         const darkColorResult = getContrastColor(darkColor, lightColorContrast, darkColorContrast);
 
         // Then

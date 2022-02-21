@@ -1,0 +1,54 @@
+@import "../../../styles/shared/spinner";
+@import "../../../styles/variables/media-queries";
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity ease 500ms;
+
+    &.loaded {
+        opacity: 1;
+    }
+}
+
+.spinner {
+    $spinner-size: 20px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -$spinner-size * 0.5;
+    margin-left: -$spinner-size * 0.5;
+    @include spinner(rgb(var(--primary-orange)), $spinner-size);
+}
+
+.textContent {
+    position: relative;
+    z-index: 1;
+
+    @media #{$min-width-lg} {
+        max-width: 40vw;
+    }
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 50vw;
+        background-image: linear-gradient(90deg, #000, transparent);
+    }
+
+    h2,
+    > div {
+        position: relative;
+        z-index: 1;
+    }
+}

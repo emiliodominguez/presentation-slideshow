@@ -15,13 +15,7 @@ export default function LogoAndTitle(props: LogoAndTitleProps): JSX.Element {
 
     return (
         <div className={styles.logoAndTitle}>
-            <Image
-                width={50}
-                height={50}
-                objectFit="contain"
-                src={isologo_color?.url ?? "/assets/logos/isologo_color.png"}
-                alt="Isologo"
-            />
+            <Image width={50} height={50} objectFit="contain" src={isologo_color?.url ?? "/assets/logos/isologo_color.png"} alt="Isologo" />
 
             <h2 className="title-medium">{props.title}</h2>
         </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useEffect, useMemo } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import { predicate } from "@prismicio/client";
 import PrismicDOM from "prismic-dom";
 import { PrismicDocument } from "@prismicio/types";
@@ -28,25 +29,21 @@ export default function IndexPage(props: IndexPageProps): JSX.Element {
     }, [props.content, locale]) as PresentationContent;
 
     useEffect(() => {
-        if (presentationContent && presentationContent.body.length > 0)
-            setCountRef.current(presentationContent.body.length);
+        if (presentationContent && presentationContent.body.length > 0) setCountRef.current(presentationContent.body.length);
     }, [presentationContent]);
 
-    if (!presentationContent)
-        throw new Error("Couldn't load the main content. Check your configuration!");
+    if (!presentationContent) throw new Error("Couldn't load the main content. Check your configuration!");
 
     return (
         <GlobalDataContextProvider value={presentationContent}>
             <Head>
-                {presentationContent.project_title.length > 0 && (
-                    <title>{presentationContent.project_title[0].text}</title>
-                )}
+                {presentationContent.project_title.length > 0 && <title>{presentationContent.project_title[0].text}</title>}
 
-                <meta
-                    name="description"
-                    content={PrismicDOM.RichText.asText(presentationContent.project_description)}
-                />
+                <meta name="description" content={PrismicDOM.RichText.asText(presentationContent.project_description)} />
             </Head>
+
+            {/* Youtube iFrame API */}
+            <Script async src="https://www.youtube.com/iframe_api" />
 
             <main>
                 <LanguageSelector />

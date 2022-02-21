@@ -24,11 +24,7 @@ export default function TextAndImageSlide(props: TextAndImageSlideProps): JSX.El
                 />
 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    key={props.content.slide_image.url!}
-                    src={props.content.slide_image.url!}
-                    alt={props.content.slide_image.alt!}
-                />
+                <img key={props.content.slide_image.url!} src={props.content.slide_image.url!} alt={props.content.slide_image.alt!} />
             </div>
         </div>
     );

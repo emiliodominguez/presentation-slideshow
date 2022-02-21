@@ -1,9 +1,6 @@
 import { PropsWithChildren, useContext } from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import LocalizationContextProvider, {
-    LocalizationContext,
-    locales
-} from "@app/contexts/localization";
+import LocalizationContextProvider, { LocalizationContext, locales } from "@app/contexts/localization";
 
 /**
  * A mocked provider component

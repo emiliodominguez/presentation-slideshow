@@ -16,13 +16,9 @@ function DummyComponent(): JSX.Element {
 // }
 
 beforeEach(() => {
-    jest.spyOn(window, "addEventListener").mockImplementation((event, handler, _options?) =>
-        registeredEvents.set(event, handler)
-    );
+    jest.spyOn(window, "addEventListener").mockImplementation((event, handler, _options?) => registeredEvents.set(event, handler));
 
-    jest.spyOn(window, "removeEventListener").mockImplementation((event, _handler, _options?) =>
-        registeredEvents.delete(event)
-    );
+    jest.spyOn(window, "removeEventListener").mockImplementation((event, _handler, _options?) => registeredEvents.delete(event));
 });
 
 afterEach(() => {

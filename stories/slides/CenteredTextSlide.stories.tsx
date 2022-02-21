@@ -14,9 +14,7 @@ const mockedData: any = {
     slide_subtitle: [{ type: "paragraph", text: "Some subtitle" }]
 };
 
-const Template: ComponentStory<typeof CenteredTextSlide> = () => (
-    <CenteredTextSlide content={mockedData} />
-);
+const Template: ComponentStory<typeof CenteredTextSlide> = () => <CenteredTextSlide content={mockedData} />;
 
 export const LightThemeStory = Template.bind({});
 

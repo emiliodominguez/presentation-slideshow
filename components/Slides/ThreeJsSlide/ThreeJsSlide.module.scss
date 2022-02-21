@@ -1,0 +1,31 @@
+@import "../../../styles/shared/animations";
+@import "../../../styles/shared/spinner";
+@import "../../../styles/variables/media-queries";
+
+.content {
+    display: flex;
+    align-items: center;
+
+    canvas,
+    .spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+.textBlock {
+    max-width: 750px;
+    pointer-events: none;
+    z-index: 1;
+
+    :global(.body-text) {
+        margin-top: 15px;
+    }
+}
+
+.spinner {
+    @include spinner(#80d409, 20px, true);
+}

@@ -40,6 +40,7 @@ export default function IntroductionSlide(props: IntroductionSlideProps): JSX.El
                     objectFit="contain"
                     alt={props.content.slide_logo.alt ?? setAlt()}
                     src={props.content.slide_logo.url ?? setLogo()}
+                    priority
                 />
             </div>
 

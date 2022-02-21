@@ -56,9 +56,7 @@ export default function BaseSlide(props: PropsWithChildren<BaseSlideProps>): JSX
             ref={slideRef}
             {...className(styles.slide, props.className)}
             style={{
-                ["--slide-bg-pattern" as string]: (slide_bg_pattern as ImageField)?.url
-                    ? `url(${(slide_bg_pattern as ImageField).url})`
-                    : undefined
+                ["--slide-bg-pattern" as string]: (slide_bg_pattern as ImageField)?.url ? `url(${(slide_bg_pattern as ImageField).url})` : undefined
             }}
         >
             {!props.hideBreadcrumbs && <Breadcrumbs />}

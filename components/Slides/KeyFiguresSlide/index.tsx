@@ -25,13 +25,7 @@ export default function KeyFiguresSlide(props: KeyFiguresSlideProps): JSX.Elemen
                     props.content.key_figures.map(x => (
                         <div className={styles.keyFigure} key={x.key_figure_title[0].text}>
                             <div className={styles.icon}>
-                                <Image
-                                    width={70}
-                                    height={70}
-                                    objectFit="contain"
-                                    src={x.key_figure_icon.url!}
-                                    alt={x.key_figure_icon.alt!}
-                                />
+                                <Image width={70} height={70} objectFit="contain" src={x.key_figure_icon.url!} alt={x.key_figure_icon.alt!} />
                             </div>
 
                             <div

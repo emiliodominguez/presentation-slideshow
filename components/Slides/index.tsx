@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import dynamic from "next/dynamic";
 import { Slice, BooleanField, TitleField, ImageField } from "@prismicio/types";
 import { NavigationContext } from "@app/contexts/navigation";
 import { GlobalDataContext } from "@app/contexts/global-data";
@@ -15,7 +16,12 @@ import QuoteSlide from "./QuoteSlide";
 import KeyFiguresSlide from "./KeyFiguresSlide";
 import ChartSlide from "./ChartSlide";
 import ErrorSlide from "./ErrorSlide";
+import NasaSlide from "./NasaSlide";
+import YouTubeSlide from "./YouTubeSlide";
 import BaseSlide from "../Shared/BaseSlide";
+
+const MapSlide = dynamic(() => import("./MapSlide"), { ssr: false });
+const ThreeJsSlide = dynamic(() => import("./ThreeJsSlide"), { ssr: false });
 
 export interface ISlide {
     dark_theme_enabled: BooleanField;
@@ -48,7 +54,11 @@ function setCurrentSlide(slice: Slice): JSX.Element {
         elements_alt_slide: <ElementsAltSlide content={{ ...content, elements: items }} />,
         quote_slide: <QuoteSlide content={content} />,
         key_figures_slide: <KeyFiguresSlide content={{ ...content, key_figures: items }} />,
-        chart_slide: <ChartSlide content={{ ...content, chart_items: items }} />
+        chart_slide: <ChartSlide content={{ ...content, chart_items: items }} />,
+        map_slide: <MapSlide content={{ ...content, locations: items }} />,
+        threejs_slide: <ThreeJsSlide content={content} />,
+        nasa_slide: <NasaSlide content={content} />,
+        youtube_slide: <YouTubeSlide content={content} />
     });
 
     return componentMap[slice_type] ?? <ErrorSlide />;
@@ -61,7 +71,5 @@ export default function Slide(): JSX.Element {
     const { currentIndex } = useContext(NavigationContext);
     const { body } = useContext(GlobalDataContext);
 
-    return (
-        <BaseSlide key={`slide_${currentIndex}`}>{setCurrentSlide(body[currentIndex])}</BaseSlide>
-    );
+    return <BaseSlide key={`slide_${currentIndex}`}>{setCurrentSlide(body[currentIndex])}</BaseSlide>;
 }

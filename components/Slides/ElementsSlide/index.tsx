@@ -14,13 +14,7 @@ export default function ElementsSlide(props: ElementsSlideProps): JSX.Element {
                     props.content.elements.map(x => (
                         <div className={styles.element} key={x.grid_item_title[0].text}>
                             <div className={styles.icon}>
-                                <Image
-                                    width={50}
-                                    height={50}
-                                    objectFit="contain"
-                                    src={x.grid_item_thumbnail.url!}
-                                    alt={x.grid_item_thumbnail.alt!}
-                                />
+                                <Image width={50} height={50} objectFit="contain" src={x.grid_item_thumbnail.url!} alt={x.grid_item_thumbnail.alt!} />
                             </div>
 
                             <h3 className="subtitle">{x.grid_item_title[0].text}</h3>

@@ -1,0 +1,49 @@
+@import "../../../styles/variables/media-queries";
+
+.youTubeSlide {
+    align-items: center !important;
+    overflow-y: hidden !important;
+}
+
+.videoWrapper {
+    position: fixed;
+    padding-bottom: 56.25%;
+
+    &,
+    .video {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video {
+        position: absolute;
+        pointer-events: none;
+    }
+}
+
+.textContent {
+    position: relative;
+    z-index: 1;
+
+    @media #{$min-width-lg} {
+        max-width: 40vw;
+    }
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 50vw;
+        background-image: linear-gradient(90deg, #000, transparent);
+    }
+
+    h2,
+    > div {
+        position: relative;
+        z-index: 1;
+    }
+}

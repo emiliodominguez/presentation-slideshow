@@ -25,10 +25,7 @@ export default function ChartSlide(props: ChartSlideProps): JSX.Element {
 
     return (
         <div className={styles.content}>
-            <div
-                className={styles.pieChart}
-                style={{ backgroundImage: `conic-gradient(${setPieChart()})` }}
-            >
+            <div className={styles.pieChart} style={{ backgroundImage: `conic-gradient(${setPieChart()})` }}>
                 <div className={styles.inner}>
                     <h2 className="subtitle">{props.content.slide_title[0].text}</h2>
 
@@ -45,10 +42,7 @@ export default function ChartSlide(props: ChartSlideProps): JSX.Element {
             <div className={styles.pieChartReference}>
                 {props.content.chart_items.map((x, i) => (
                     <p key={`reference_${i}`} className={styles.reference}>
-                        <span
-                            className={styles.color}
-                            style={{ backgroundColor: x.item_color as string }}
-                        />
+                        <span className={styles.color} style={{ backgroundColor: x.item_color as string }} />
 
                         <span className={styles.label}>{x.item_label[0].text}</span>
                         <span className={styles.percentage}>{x.item_percentage}%</span>
