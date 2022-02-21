@@ -3,7 +3,6 @@ import { LngLatLike } from "mapbox-gl";
 import PrismicDOM from "prismic-dom";
 import { className } from "@app/shared/helpers/classname";
 import { camelCase } from "@app/shared/helpers/strings";
-import { isBrowser } from "@app/shared/helpers/common";
 import EdgeBox, { EdgeBoxPosition } from "@app/components/Shared/EdgeBox";
 import MapService from "./services/MapService";
 import { MapSlideProps } from "./interfaces";
@@ -24,8 +23,8 @@ export default function MapSlide(props: MapSlideProps): ReactElement {
     const getFirstLocationCenter = useCallback((): LngLatLike | undefined => {
         if (!props.content.locations || props.content.locations.length === 0) return undefined;
 
-        const first = props.content.locations[0];
-        return [Number(first.location_longitude), Number(first.location_latitude)];
+        const { location_longitude, location_latitude } = props.content.locations[0];
+        return [location_longitude ?? 0, location_latitude ?? 0];
     }, [props.content.locations]);
 
     /**
@@ -34,8 +33,7 @@ export default function MapSlide(props: MapSlideProps): ReactElement {
      * @param position - The location latitude and longitude
      */
     function flyToLocation(index: number, position: LngLatLike): void {
-        if (!mapService.current) return;
-        mapService.current.flyToLocation({ center: position, curve: 1, zoom: 12 });
+        mapService.current?.flyToLocation({ center: position, curve: 1, zoom: 12 });
         setCurrent(index);
     }
 
@@ -44,26 +42,29 @@ export default function MapSlide(props: MapSlideProps): ReactElement {
         if (!mapRef.current) return;
 
         // Instantiate Map Service
-        mapService.current = new MapService(
-            {
-                container: mapRef.current,
-                center: getFirstLocationCenter(),
-                style: props.content.slide_map ? camelCase(props.content.slide_map as string) : undefined
-            },
-            props.content.dark_theme_enabled
-        );
+        if (!mapService.current)
+            mapService.current = new MapService(
+                {
+                    container: mapRef.current,
+                    center: getFirstLocationCenter(),
+                    style: props.content.slide_map ? camelCase(props.content.slide_map as string) : undefined
+                },
+                props.content.dark_theme_enabled
+            );
 
         // Set markers
         props.content.locations.map(x =>
             mapService.current?.addMarker(x.location_name[0].text, [Number(x.location_longitude), Number(x.location_latitude)])
         );
+    }, [props.content, getFirstLocationCenter]);
 
-        // Dispose resources
+    // Dispose resources
+    useEffect(() => {
         return () => {
             mapService.current?.clear();
             mapService.current = null;
         };
-    }, [props.content, getFirstLocationCenter]);
+    }, []);
 
     return (
         <>

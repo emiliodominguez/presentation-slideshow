@@ -1,12 +1,16 @@
 import { Map as MapboxMap, FlyToOptions, LngLatLike, MapboxOptions, Marker } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+interface MappedStyles {
+    [key: string]: string;
+}
+
 export default class MapService {
     private _map: MapboxMap;
 
     private readonly markers: Map<string, Marker>;
 
-    private readonly styles: { [key: string]: string } = {
+    private readonly styles: MappedStyles = {
         streets: "streets-v11",
         outdoors: "outdoors-v11",
         light: "light-v10",
@@ -29,14 +33,6 @@ export default class MapService {
     // #region Public methods
 
     /**
-     * Fly to a specific location
-     * @param options - The method options
-     */
-    flyToLocation(options: FlyToOptions): void {
-        this._map = this._map.flyTo(options);
-    }
-
-    /**
      * Adds a marker to the map
      * @param id - The marker ID
      * @param position - The marker position
@@ -44,6 +40,14 @@ export default class MapService {
     addMarker(id: string, position: LngLatLike): void {
         const marker = new Marker().setLngLat(position).addTo(this._map);
         this.markers.set(id, marker);
+    }
+
+    /**
+     * Fly to a specific location
+     * @param options - The method options
+     */
+    flyToLocation(options: FlyToOptions): void {
+        this._map = this._map.flyTo(options);
     }
 
     /**
@@ -73,7 +77,7 @@ export default class MapService {
             container: this.options?.container ?? "map",
             center: this.setCenter(),
             zoom: this.options?.zoom ?? 12,
-            style: "mapbox://styles/mapbox/" + this.styles[this.options?.style ? this.options.style.toString() : defaultMap]
+            style: `mapbox://styles/mapbox/${this.styles[this.options?.style?.toString() ?? defaultMap]}?optimize=true`
         });
     }
 
@@ -84,8 +88,7 @@ export default class MapService {
     private setCenter(): LngLatLike {
         const center = this.options?.center as number[];
         const defaultCenter = [-60.65355938114498, -32.93958537722223]; // Rosario
-
-        return (center && center.length > 0 && center[0] && center[1] ? center : defaultCenter) as LngLatLike;
+        return (center.every(x => typeof x === "number") ? center : defaultCenter) as LngLatLike;
     }
 
     // #endregion
