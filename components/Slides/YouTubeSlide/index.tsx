@@ -2,7 +2,7 @@ import PrismicDOM from "prismic-dom";
 import { useEffect } from "react";
 import { isBrowser } from "@app/shared/helpers/common";
 import useBaseSlide from "@app/hooks/useBaseSlide";
-import { YouTubeSlideProps } from "./interfaces";
+import { YouTubeSlideProps } from "./YouTubeSlide.model";
 import styles from "./YouTubeSlide.module.scss";
 
 /**

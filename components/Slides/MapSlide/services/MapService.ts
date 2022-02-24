@@ -76,7 +76,7 @@ export default class MapService {
             accessToken: String(process.env.NEXT_PUBLIC_MAPBOX_TOKEN),
             container: this.options?.container ?? "map",
             center: this.setCenter(),
-            zoom: this.options?.zoom ?? 12,
+            zoom: this.options?.zoom ?? 10,
             style: `mapbox://styles/mapbox/${this.styles[this.options?.style?.toString() ?? defaultMap]}?optimize=true`
         });
     }

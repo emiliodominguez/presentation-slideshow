@@ -3,8 +3,8 @@ import { PerspectiveCamera, AnimationMixer, PointLight } from "three";
 import PrismicDOM from "prismic-dom";
 import ThreeJsService from "./services/ThreeJsService";
 import useEventListener from "@app/hooks/useEventListener";
-import { RendererSize } from "./interfaces/RendererSize";
-import { ThreeJsSlideProps } from "./interfaces/Slide";
+import { RendererSize } from "./interfaces/RendererSize.model";
+import { ThreeJsSlideProps } from "./interfaces/ThreeJsSlide.model";
 import styles from "./ThreeJsSlide.module.scss";
 
 const timeoutDelay = 200;

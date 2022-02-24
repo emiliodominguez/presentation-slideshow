@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { KeyFiguresSlideProps } from "./interfaces";
+import { KeyFiguresSlideProps } from "./KeyFiguresSlide.model";
 import styles from "./KeyFiguresSlide.module.scss";
 
 /**

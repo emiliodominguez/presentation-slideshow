@@ -1,7 +1,7 @@
 import { className } from "@app/shared/helpers/classname";
 import PrismicDOM from "prismic-dom";
 import { useEffect, useRef, useState } from "react";
-import { NasaSlideProps } from "./interfaces";
+import { NasaSlideProps } from "./NasaSlide.model";
 import styles from "./NasaSlide.module.scss";
 
 /**

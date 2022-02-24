@@ -5,7 +5,7 @@ import { className } from "@app/shared/helpers/classname";
 import { camelCase } from "@app/shared/helpers/strings";
 import EdgeBox, { EdgeBoxPosition } from "@app/components/Shared/EdgeBox";
 import MapService from "./services/MapService";
-import { MapSlideProps } from "./interfaces";
+import { MapSlideProps } from "./MapSlide.model";
 import styles from "./MapSlide.module.scss";
 
 /**

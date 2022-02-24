@@ -16,11 +16,7 @@ $detail-content-blur: blur(10px);
                 backdrop-filter: $detail-content-blur;
             }
 
-            @include custom-scrollbar(
-                5px,
-                rgb(var(--primary-dark-gray)),
-                rgb(var(--primary-orange))
-            );
+            @include custom-scrollbar(5px, rgb(var(--primary-dark-gray)), rgb(var(--primary-orange)));
 
             h3 {
                 color: rgb(var(--primary-white));
@@ -118,15 +114,20 @@ $detail-content-blur: blur(10px);
 .locationDetail {
     $border-radius: 10px;
 
-    max-width: 400px;
-    height: 550px;
+    width: 350px;
+    min-height: 45vh;
     border-radius: $border-radius;
     text-align: right;
     overflow: hidden;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
     @media #{$max-width-md} {
-        max-width: 85vw;
-        height: 70vh;
+        width: 85vw;
+        min-height: 65vh;
     }
 
     &,
@@ -136,7 +137,7 @@ $detail-content-blur: blur(10px);
 
     .detailHeader {
         position: relative;
-        height: 35%;
+        height: 200px;
         border-radius: $border-radius $border-radius 0 0;
         background-size: cover;
         background-position: center;
@@ -145,12 +146,12 @@ $detail-content-blur: blur(10px);
         z-index: 1;
 
         @media #{$max-width-md} {
-            height: 30%;
+            height: 150px;
         }
     }
 
     .detailContent {
-        height: 65%;
+        flex: 1;
         padding: 20px;
         overflow-y: auto;
         border-radius: 0 0 $border-radius $border-radius;
@@ -163,10 +164,6 @@ $detail-content-blur: blur(10px);
         @supports (backdrop-filter: $detail-content-blur) {
             background-color: rgba(var(--primary-white), 0.25);
             backdrop-filter: $detail-content-blur;
-        }
-
-        @media #{$max-width-md} {
-            height: 70%;
         }
 
         h3 {

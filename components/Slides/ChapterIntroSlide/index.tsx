@@ -1,5 +1,5 @@
 import PrismicDOM from "prismic-dom";
-import { ChapterIntroSlideProps } from "./interfaces";
+import { ChapterIntroSlideProps } from "./ChapterIntroSlide.model";
 import styles from "./ChapterIntroSlide.module.scss";
 
 /**

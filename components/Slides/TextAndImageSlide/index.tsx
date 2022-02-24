@@ -1,6 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import { className } from "@app/shared/helpers/classname";
-import { TextAndImageSlideProps } from "./interfaces";
+import { TextAndImageSlideProps } from "./TextAndImageSlide.model";
 import styles from "./TextAndImageSlide.module.scss";
 
 /**
