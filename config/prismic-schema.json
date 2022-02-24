@@ -88,7 +88,7 @@
             "type": "Slices",
             "fieldset": "Slice zone",
             "config": {
-                "labels": null,
+                "labels": {},
                 "choices": {
                     "title_slide": {
                         "type": "Slice",
@@ -979,6 +979,298 @@
                                 }
                             }
                         }
+                    },
+                    "map_slide": {
+                        "type": "Slice",
+                        "fieldset": "Map slide",
+                        "description": "An interactive map slide",
+                        "icon": "map",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_map": {
+                                "type": "Select",
+                                "config": {
+                                    "options": [
+                                        "Streets",
+                                        "Outdoors",
+                                        "Light",
+                                        "Dark",
+                                        "Satellite",
+                                        "Satellite Streets",
+                                        "Navigation Day",
+                                        "Navigation Night"
+                                    ],
+                                    "label": "Map type",
+                                    "placeholder": "Set the map type"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "location_picture": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Location picture"
+                                }
+                            },
+                            "location_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3",
+                                    "label": "Location name",
+                                    "placeholder": "Set the location's name"
+                                }
+                            },
+                            "location_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "Location description",
+                                    "placeholder": "Set the location's description"
+                                }
+                            },
+                            "location_latitude": {
+                                "type": "Number",
+                                "config": {
+                                    "label": "Location latitude",
+                                    "placeholder": "Set the location's latitude",
+                                    "min": -90,
+                                    "max": 90
+                                }
+                            },
+                            "location_longitude": {
+                                "type": "Number",
+                                "config": {
+                                    "label": "Location longitude",
+                                    "placeholder": "Set the location's longitude",
+                                    "min": -180,
+                                    "max": 180
+                                }
+                            }
+                        }
+                    },
+                    "slido_slide": {
+                        "type": "Slice",
+                        "fieldset": "Slido slide",
+                        "description": "A slide with a slido url",
+                        "icon": "poll",
+                        "display": "list",
+                        "non-repeat": {
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slido_url": {
+                                "type": "Link",
+                                "config": {
+                                    "label": "Poll URL",
+                                    "placeholder": "Set the poll URL",
+                                    "select": null
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "threejs_slide": {
+                        "type": "Slice",
+                        "fieldset": "ThreeJS slide",
+                        "description": "A slide with a 3D model",
+                        "icon": "3d_rotation",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Set the slide title"
+                                }
+                            },
+                            "slide_excerpt": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "Slide excerpt",
+                                    "placeholder": "Set the slide excerpt"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "nasa_slide": {
+                        "type": "Slice",
+                        "fieldset": "Nasa slide",
+                        "description": "A slide showing the image of the day",
+                        "icon": "star",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Set the slide title"
+                                }
+                            },
+                            "slide_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Slide description",
+                                    "placeholder": "Set the slide description"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "youtube_slide": {
+                        "type": "Slice",
+                        "fieldset": "YouTube slide",
+                        "description": "A slide showing a YouTube video",
+                        "icon": "ondemand_video",
+                        "display": "list",
+                        "non-repeat": {
+                            "dark_theme_enabled": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "disabled",
+                                    "placeholder_true": "enabled",
+                                    "default_value": true,
+                                    "label": "Dark theme enabled"
+                                }
+                            },
+                            "chapter_name": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Chapter name",
+                                    "placeholder": "Set the chapter name"
+                                }
+                            },
+                            "slide_navigation_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading4",
+                                    "label": "Navigation ID",
+                                    "placeholder": "Set the identifier for the navigation"
+                                }
+                            },
+                            "slide_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Slide title",
+                                    "placeholder": "Set the slide title"
+                                }
+                            },
+                            "slide_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Slide description",
+                                    "placeholder": "Set the slide description"
+                                }
+                            },
+                            "youtube_id": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading5",
+                                    "label": "YouTube ID",
+                                    "placeholder": "Set the video ID"
+                                }
+                            }
+                        },
+                        "repeat": {}
                     }
                 }
             }
