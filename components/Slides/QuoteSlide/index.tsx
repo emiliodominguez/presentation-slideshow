@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { QuoteSlideProps } from "./interfaces";
+import { QuoteSlideProps } from "./QuoteSlide.model";
 import styles from "./QuoteSlide.module.scss";
 
 /**

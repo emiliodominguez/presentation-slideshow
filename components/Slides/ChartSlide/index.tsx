@@ -1,6 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import { className } from "@app/shared/helpers/classname";
-import { ChartSlideProps } from "./interfaces";
+import { ChartSlideProps } from "./ChartSlide.model";
 import styles from "./ChartSlide.module.scss";
 
 /**

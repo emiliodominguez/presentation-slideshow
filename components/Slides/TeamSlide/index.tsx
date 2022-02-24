@@ -1,7 +1,7 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
 import { RichTextField } from "@prismicio/types";
-import { TeamSlideProps } from "./interfaces";
+import { TeamSlideProps } from "./TeamSlide.model";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
 import styles from "./TeamSlide.module.scss";
 
