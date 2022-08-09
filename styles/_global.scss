@@ -1,3 +1,5 @@
+@use "./variables/media-queries" as *;
+
 *,
 *::before,
 *::after {
@@ -74,6 +76,29 @@ main {
 
         &:hover {
             text-decoration: underline;
+        }
+    }
+}
+
+.no-content-message {
+    text-align: center;
+    font-weight: lighter;
+    padding: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    @media #{$max-width-md} {
+        flex-direction: column;
+    }
+
+    svg {
+        height: 25px;
+
+        path {
+            fill: rgb(var(--primary-orange));
         }
     }
 }
