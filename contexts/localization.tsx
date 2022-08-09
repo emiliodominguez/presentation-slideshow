@@ -14,24 +14,15 @@ interface Locale {
 
 export const locales = Object.freeze<Locale[]>([
     {
-        id: "es-ar",
-        alt: "Español - Argentina",
-        text: "ES-AR",
-        default: true
-    },
-    {
-        id: "en-gb",
-        alt: "English - United Kingdom",
-        text: "EN-GB"
+        id: "en-us",
+        alt: "English - United States",
+        text: "EN-US"
     }
 ]);
 
-const defaultLocale = locales.find(x => x.default)!.id;
+const defaultLocale = (locales.find(x => x.default) ?? locales[0]).id;
 
-export const LocalizationContext = createContext<ILocalizationContext>({
-    locale: defaultLocale,
-    setLocale: () => {}
-});
+export const LocalizationContext = createContext<ILocalizationContext>({} as ILocalizationContext);
 
 /**
  * Localization context provider
