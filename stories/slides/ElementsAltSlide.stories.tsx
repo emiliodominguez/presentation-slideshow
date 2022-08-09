@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ElementsAltSlide from "@app/components/Slides/ElementsAltSlide";
-import { ElementsAltSlideProps } from "@app/components/Slides/ElementsAltSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: ElementsAltSlide,
     title: "Slides/ElementsAltSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof ElementsAltSlide>;
 
-const exampleData = (dark: boolean): any => ({
+const mockedData = (dark: boolean): any => ({
     slide_navigation_id: [{ type: "heading4", text: "Elements grid alternative" }],
     elements: [
         {
@@ -46,11 +44,18 @@ const exampleData = (dark: boolean): any => ({
     ]
 });
 
-export const LightThemeStory: VFC<ElementsAltSlideProps> = () => (
-    <ElementsAltSlide content={exampleData(false)} />
-);
+const Template: ComponentStory<typeof ElementsAltSlide> = args => <ElementsAltSlide {...args} />;
 
-export const DarkThemeStory: VFC<ElementsAltSlideProps> = () => {
-    useDarkTheme();
-    return <ElementsAltSlide content={exampleData(true)} />;
+export const LightThemeStory = Template.bind({});
+
+LightThemeStory.args = {
+    content: mockedData(false)
 };
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.args = {
+    content: mockedData(true)
+};
+
+DarkThemeStory.decorators = [withDarkTheme];

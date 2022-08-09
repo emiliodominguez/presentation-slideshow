@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PrismicDOM from "prismic-dom";
-import { ElementsSlideProps } from "./interfaces";
+import { ElementsSlideProps } from "./ElementsSlide.model";
 import styles from "./ElementsSlide.module.scss";
 
 /**

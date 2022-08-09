@@ -1,4 +1,4 @@
-import { CenteredTextSlideProps } from "./inderfaces";
+import { CenteredTextSlideProps } from "./CenteredTextSlide.model";
 import styles from "./CenteredTextSlide.module.scss";
 
 /**

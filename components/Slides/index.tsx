@@ -36,7 +36,7 @@ function setCurrentSlide(slice: Slice): JSX.Element {
 
     const { slice_type, primary, items } = slice;
     const content = primary as any;
-    const componentMap: ComponentMap = {
+    const componentMap: ComponentMap = Object.freeze({
         title_slide: <IntroductionSlide content={content} />,
         agenda_slide: <AgendaSlide content={content} />,
         chapter_intro_slide: <ChapterIntroSlide content={content} />,
@@ -49,7 +49,7 @@ function setCurrentSlide(slice: Slice): JSX.Element {
         quote_slide: <QuoteSlide content={content} />,
         key_figures_slide: <KeyFiguresSlide content={{ ...content, key_figures: items }} />,
         chart_slide: <ChartSlide content={{ ...content, chart_items: items }} />
-    };
+    });
 
     return componentMap[slice_type] ?? <ErrorSlide />;
 }

@@ -1,6 +1,6 @@
 import PrismicDOM from "prismic-dom";
 import LogoAndTitle from "@app/components/Shared/LogoAndTitle";
-import { AgendaSlideProps } from "./interfaces";
+import { AgendaSlideProps } from "./AgendaSlide.model";
 import styles from "./AgendaSlide.module.scss";
 
 /**

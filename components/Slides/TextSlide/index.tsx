@@ -1,5 +1,5 @@
 import PrismicDOM from "prismic-dom";
-import { TextSlideProps } from "./interfaces";
+import { TextSlideProps } from "./TextSlide.model";
 import styles from "./TextSlide.module.scss";
 
 /**

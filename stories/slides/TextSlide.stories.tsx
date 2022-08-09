@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import TextSlide from "@app/components/Slides/TextSlide";
-import { TextSlideProps } from "@app/components/Slides/TextSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: TextSlide,
     title: "Slides/TextSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof TextSlide>;
 
-const exampleData: any = {
+const mockedData: any = {
     slide_navigation_id: [{ type: "heading4", text: "Text slide" }],
     slide_title: [{ type: "heading2", text: "Lorem ipsum dolor" }],
     text_blocks: [
@@ -58,9 +56,10 @@ const exampleData: any = {
     ]
 };
 
-export const LightThemeStory: VFC<TextSlideProps> = () => <TextSlide content={exampleData} />;
+const Template: ComponentStory<typeof TextSlide> = () => <TextSlide content={mockedData} />;
 
-export const DarkThemeStory: VFC<TextSlideProps> = () => {
-    useDarkTheme();
-    return <TextSlide content={exampleData} />;
-};
+export const LightThemeStory = Template.bind({});
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.decorators = [withDarkTheme];

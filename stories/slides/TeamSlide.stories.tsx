@@ -1,16 +1,14 @@
-import { VFC } from "react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import TeamSlide from "@app/components/Slides/TeamSlide";
-import { TeamSlideProps } from "@app/components/Slides/TeamSlide/interfaces";
-import useDarkTheme from "../hooks/useDarkTheme";
+import withDarkTheme from "../decorators/withDarkTheme";
 
 export default {
     component: TeamSlide,
     title: "Slides/TeamSlide",
     argTypes: { content: { description: "The slide content" } }
-} as Meta;
+} as ComponentMeta<typeof TeamSlide>;
 
-const exampleData = (dark: boolean): any => ({
+const mockedData = (dark: boolean): any => ({
     slide_navigation_id: [{ type: "heading4", text: "Team" }],
     slide_title: [{ type: "heading2", text: "Team" }],
     team: [
@@ -59,11 +57,18 @@ const exampleData = (dark: boolean): any => ({
     ]
 });
 
-export const LightThemeStory: VFC<TeamSlideProps> = () => (
-    <TeamSlide content={exampleData(false)} />
-);
+const Template: ComponentStory<typeof TeamSlide> = args => <TeamSlide {...args} />;
 
-export const DarkThemeStory: VFC<TeamSlideProps> = () => {
-    useDarkTheme();
-    return <TeamSlide content={exampleData(true)} />;
+export const LightThemeStory = Template.bind({});
+
+LightThemeStory.args = {
+    content: mockedData(false)
 };
+
+export const DarkThemeStory = Template.bind({});
+
+DarkThemeStory.args = {
+    content: mockedData(true)
+};
+
+DarkThemeStory.decorators = [withDarkTheme];

@@ -5,16 +5,23 @@ import { icons } from "@app/shared/icons";
 import styles from "./EdgeBox.module.scss";
 
 interface EdgeBoxProps {
-    boxPosition: "top" | "bottom" | "left" | "right";
+    boxPosition: EdgeBoxPosition;
     startHidden?: boolean;
     keyShortcut?: (e: KeyboardEvent) => boolean;
 }
 
+export enum EdgeBoxPosition {
+    Top = "top",
+    Bottom = "bottom",
+    Left = "left",
+    Right = "right"
+}
+
 const positionsMap = Object.freeze({
-    top: { className: styles.toTop, icon: icons.chevronUp },
-    bottom: { className: styles.toBottom, icon: icons.chevronDown },
-    left: { className: styles.toLeft, icon: icons.chevronLeft },
-    right: { className: styles.toRight, icon: icons.chevronRight }
+    [EdgeBoxPosition.Top]: { className: styles.toTop, icon: icons.chevronUp },
+    [EdgeBoxPosition.Bottom]: { className: styles.toBottom, icon: icons.chevronDown },
+    [EdgeBoxPosition.Left]: { className: styles.toLeft, icon: icons.chevronLeft },
+    [EdgeBoxPosition.Right]: { className: styles.toRight, icon: icons.chevronRight }
 });
 
 /**
