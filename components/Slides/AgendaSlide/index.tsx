@@ -9,7 +9,14 @@ import styles from "./AgendaSlide.module.scss";
 export default function AgendaSlide(props: AgendaSlideProps): JSX.Element {
     return (
         <div className={styles.content}>
-            <iframe src="https://css-tricks.com/" frameBorder="0"></iframe>
+            <LogoAndTitle title={props.content.slide_title[0].text} />
+
+            <div
+                className="body-text-small"
+                dangerouslySetInnerHTML={{
+                    __html: PrismicDOM.RichText.asHtml(props.content.slide_content)
+                }}
+            />
         </div>
     );
 }
